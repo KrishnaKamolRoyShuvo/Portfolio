@@ -1,25 +1,31 @@
 /**
- * Custom Interactive Magnetic Cursor
+ * Custom Interactive Precision Magnetic Cursor
  */
 export function initCustomCursor() {
-  // Check if touch device
   if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
     return;
   }
 
-  const dot = document.createElement('div');
-  dot.className = 'custom-cursor-dot';
+  // Create custom cursor elements
+  let dot = document.querySelector('.custom-cursor-dot');
+  let ring = document.querySelector('.custom-cursor-ring');
 
-  const ring = document.createElement('div');
-  ring.className = 'custom-cursor-ring';
+  if (!dot) {
+    dot = document.createElement('div');
+    dot.className = 'custom-cursor-dot';
+    document.body.appendChild(dot);
+  }
 
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
+  if (!ring) {
+    ring = document.createElement('div');
+    ring.className = 'custom-cursor-ring';
+    document.body.appendChild(ring);
+  }
 
-  let mouseX = -100;
-  let mouseY = -100;
-  let ringX = -100;
-  let ringY = -100;
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX;
+  let ringY = mouseY;
   let isHovering = false;
   let isViewing = false;
 
@@ -27,24 +33,30 @@ export function initCustomCursor() {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    // Immediate update for dot
-    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
   });
 
-  // Smooth lerp loop for the outer ring
+  window.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+
   function render() {
-    const ease = 0.18;
+    const ease = 0.2;
     ringX += (mouseX - ringX) * ease;
     ringY += (mouseY - ringY) * ease;
 
-    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
     requestAnimationFrame(render);
   }
   render();
 
-  // Attach hover listeners to interactable elements
   function attachHoverListeners() {
-    const interactables = document.querySelectorAll('a, button, input, textarea, select, [data-cursor="hover"]');
+    const interactables = document.querySelectorAll(
+      'a, button, input, textarea, select, [data-cursor="hover"], .glass-card, [data-tilt]'
+    );
     interactables.forEach((el) => {
       el.addEventListener('mouseenter', () => {
         isHovering = true;
@@ -69,12 +81,11 @@ export function initCustomCursor() {
     });
   }
 
-  // Click pulse animation
   window.addEventListener('mousedown', () => {
-    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%) scale(0.85)`;
+    ring.classList.add('cursor-click');
   });
   window.addEventListener('mouseup', () => {
-    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%) scale(1)`;
+    ring.classList.remove('cursor-click');
   });
 
   attachHoverListeners();

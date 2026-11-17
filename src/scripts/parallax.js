@@ -16,7 +16,6 @@ export function initParallaxAndMotion() {
     touchMultiplier: 2.0
   });
 
-  // Synchronize Lenis with GSAP ScrollTrigger
   lenis.on('scroll', ScrollTrigger.update);
 
   gsap.ticker.add((time) => {
@@ -24,12 +23,13 @@ export function initParallaxAndMotion() {
   });
   gsap.ticker.lagSmoothing(0);
 
-  // 2. Parallax Floating Elements in Hero
-  const parallaxElements = document.querySelectorAll('[data-parallax-speed]');
-  parallaxElements.forEach((el) => {
-    const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0.2;
-    gsap.to(el, {
-      y: () => -(window.innerHeight * speed * 0.4),
+  // 2. Hero Section Zoom-Out Parallax Transition
+  const heroContent = document.getElementById('hero-content');
+  if (heroContent) {
+    gsap.to(heroContent, {
+      scale: 0.92,
+      opacity: 0.75,
+      y: 60,
       ease: 'none',
       scrollTrigger: {
         trigger: '#hero',
@@ -38,7 +38,7 @@ export function initParallaxAndMotion() {
         scrub: true
       }
     });
-  });
+  }
 
   // 3. Counter Animation for Fast Facts
   const counters = document.querySelectorAll('[data-counter-target]');
@@ -115,10 +115,10 @@ export function initParallaxAndMotion() {
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -7;
-      const rotateY = ((x - centerX) / centerX) * 7;
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
       card.style.setProperty('--mouse-x', `${x}px`);
       card.style.setProperty('--mouse-y', `${y}px`);
     });
@@ -128,25 +128,38 @@ export function initParallaxAndMotion() {
     });
   });
 
-  // 7. General Fade-Up Entrance Animations
-  const revealElements = document.querySelectorAll('.reveal-on-scroll');
-  revealElements.forEach((el) => {
-    gsap.fromTo(
-      el,
-      { opacity: 0, y: 35 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        }
+  // 7. Floating Back-to-Top Button with Circular Progress
+  const backToTopBtn = document.getElementById('floating-back-to-top');
+  const progressCircle = document.getElementById('scroll-progress-circle');
+  if (backToTopBtn) {
+    const circumference = 2 * Math.PI * 18; // radius 18
+    if (progressCircle) {
+      progressCircle.style.strokeDasharray = `${circumference}`;
+      progressCircle.style.strokeDashoffset = `${circumference}`;
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(Math.max(scrollY / docHeight, 0), 1) : 0;
+
+      if (scrollY > 350) {
+        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
       }
-    );
-  });
+
+      if (progressCircle) {
+        progressCircle.style.strokeDashoffset = `${circumference * (1 - progress)}`;
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      lenis.scrollTo(0, { duration: 1.2 });
+    });
+  }
 
   return { lenis };
 }

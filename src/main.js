@@ -1,4 +1,5 @@
 import './styles/index.css';
+import { initPreloader } from './scripts/preloader.js';
 import { initTheme } from './scripts/theme.js';
 import { initCustomCursor } from './scripts/cursor.js';
 import { initWaterRipple } from './scripts/waterRipple.js';
@@ -9,7 +10,16 @@ import { initContactFeatures } from './scripts/contact.js';
 import { initGallery } from './scripts/gallery.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Water Ripple Engine
+  // 1. Multi-Language Greetings Preloader (Dennis Snellenberg Style)
+  initPreloader(() => {
+    // Reveal callbacks once preloader finishes
+    const heroContent = document.getElementById('hero-content');
+    if (heroContent) {
+      heroContent.classList.remove('opacity-0');
+    }
+  });
+
+  // 2. Real WebGL Water Ripple Engine
   const waterEngine = initWaterRipple();
 
   // Water Ripple Toggle Button in Header
@@ -24,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Three.js Background
+  // 3. Three.js Background
   const threeBg = initThreeBackground();
 
-  // 3. Theme Controller (Dark & Day Mode)
+  // 4. Theme Controller (Dark & Day Mode)
   initTheme({
     onThemeChange: () => {
       if (threeBg && threeBg.updateThemeColors) {
@@ -36,19 +46,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 4. Custom Mouse Pointer
+  // 5. Custom Mouse Pointer
   const cursorController = initCustomCursor();
 
-  // 5. Parallax & Smooth Momentum Scrolling
+  // 6. Parallax, Hero Zoom-Out & Smooth Momentum Scrolling
   initParallaxAndMotion();
 
-  // 6. Interactive Developer CLI Terminal
+  // 7. Interactive Developer CLI Terminal with Ghost Command Watermark
   initTerminal();
 
-  // 7. Contact Hub & Live Features
+  // 8. Contact Hub & Live Features
   initContactFeatures();
 
-  // 8. Client Projects Gallery
+  // 9. Client Projects Bento Gallery (Emerald/Teal aesthetic + Progressive Reveal)
   initGallery(cursorController);
 
   // Dynamic Typewriter Effect for Hero
@@ -80,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!isDeleting && charIdx === currentRole.length) {
         isDeleting = true;
-        typeDelay = 2200; // Pause at full word
+        typeDelay = 2200;
       } else if (isDeleting && charIdx === 0) {
         isDeleting = false;
         roleIdx = (roleIdx + 1) % roles.length;
