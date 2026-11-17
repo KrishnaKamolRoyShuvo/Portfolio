@@ -23,19 +23,25 @@ export function initParallaxAndMotion() {
   });
   gsap.ticker.lagSmoothing(0);
 
-  // 2. Hero Section Zoom-Out Parallax Transition
+  // 2. Dennis Snellenberg Hero Parallax Transition (Pinned Fade & Upward Content Slide)
+  const heroSection = document.getElementById('hero');
   const heroContent = document.getElementById('hero-content');
-  if (heroContent) {
-    gsap.to(heroContent, {
-      scale: 0.92,
-      opacity: 0.75,
-      y: 60,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
+  
+  if (heroSection && heroContent) {
+    ScrollTrigger.create({
+      trigger: heroSection,
+      start: 'top top',
+      end: '+=80%',
+      pin: true,
+      pinSpacing: false,
+      scrub: 0.5,
+      onUpdate: (self) => {
+        const p = self.progress;
+        gsap.set(heroContent, {
+          scale: 1.0 - p * 0.08,
+          opacity: Math.max(0, 1.0 - p * 1.3),
+          y: p * 50
+        });
       }
     });
   }
@@ -115,8 +121,8 @@ export function initParallaxAndMotion() {
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -6;
-      const rotateY = ((x - centerX) / centerX) * 6;
+      const rotateX = ((y - centerY) / centerY) * -5;
+      const rotateY = ((x - centerX) / centerX) * 5;
 
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
       card.style.setProperty('--mouse-x', `${x}px`);

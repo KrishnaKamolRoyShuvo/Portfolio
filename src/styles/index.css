@@ -4,29 +4,31 @@
 
 @layer base {
   :root {
-    --bg-primary: #07090e;
-    --bg-secondary: #0d111a;
-    --bg-card: #121722;
+    /* Night Palette (Default) */
+    --bg-primary: #101722;
+    --bg-secondary: #1C2939;
+    --bg-card: #1C2939;
     --border-color: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(99, 102, 241, 0.4);
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --accent-cyan: #06b6d4;
-    --accent-indigo: #6366f1;
-    --glow-color: rgba(99, 102, 241, 0.15);
+    --border-hover: rgba(96, 165, 250, 0.4);
+    --text-primary: #E8EEF7;
+    --text-secondary: #A0AEC0;
+    --accent-primary: #60A5FA;
+    --accent-secondary: #1E3A5F;
+    --glow-color: rgba(96, 165, 250, 0.15);
   }
 
   html.light {
-    --bg-primary: #f8fafc;
-    --bg-secondary: #ffffff;
-    --bg-card: #ffffff;
-    --border-color: rgba(15, 23, 42, 0.1);
-    --border-hover: rgba(99, 102, 241, 0.5);
-    --text-primary: #0f172a;
-    --text-secondary: #334155;
-    --accent-cyan: #0284c7;
-    --accent-indigo: #4f46e5;
-    --glow-color: rgba(99, 102, 241, 0.08);
+    /* Day Palette (User requested: #F4F7FB, #FFFFFF, #202C3B, #64748B, #2563EB, #BFDBFE) */
+    --bg-primary: #F4F7FB;
+    --bg-secondary: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --border-color: rgba(226, 232, 240, 0.85);
+    --border-hover: rgba(37, 99, 235, 0.4);
+    --text-primary: #202C3B;
+    --text-secondary: #64748B;
+    --accent-primary: #2563EB;
+    --accent-secondary: #BFDBFE;
+    --glow-color: rgba(37, 99, 235, 0.08);
   }
 
   body {
@@ -40,7 +42,7 @@
 
 /* Custom Selection */
 ::selection {
-  background-color: #6366f1;
+  background-color: #2563EB;
   color: #ffffff;
 }
 
@@ -52,16 +54,16 @@
   background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.25);
+  background: rgba(148, 163, 184, 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.6);
+  background: rgba(37, 99, 235, 0.6);
 }
 
-/* UNIVERSAL CURSOR SUPPRESSION ON FINE POINTER (DESKTOP) */
+/* UNIVERSAL CURSOR SUPPRESSION ON DESKTOP */
 @media (hover: hover) and (pointer: fine) {
-  html, body, a, button, input, textarea, select, [data-cursor], .glass-card, [data-tilt], * {
+  html, body, a, button, input, textarea, select, [data-cursor], .glass-card, .bento-card, [data-tilt], * {
     cursor: none !important;
   }
 }
@@ -81,6 +83,10 @@
   transition: opacity 0.15s ease;
   box-shadow: 0 0 10px #06b6d4, 0 0 20px rgba(6, 182, 212, 0.6);
 }
+html.light .custom-cursor-dot {
+  background-color: #2563EB;
+  box-shadow: 0 0 10px #2563EB, 0 0 20px rgba(37, 99, 235, 0.4);
+}
 
 .custom-cursor-ring {
   pointer-events: none;
@@ -99,6 +105,9 @@
               border-color 0.2s ease,
               transform 0.1s ease;
 }
+html.light .custom-cursor-ring {
+  border-color: rgba(37, 99, 235, 0.7);
+}
 
 .custom-cursor-ring.cursor-hover {
   width: 58px;
@@ -106,6 +115,10 @@
   background-color: rgba(6, 182, 212, 0.12);
   border-color: #06b6d4;
   backdrop-filter: blur(1.5px);
+}
+html.light .custom-cursor-ring.cursor-hover {
+  background-color: rgba(37, 99, 235, 0.1);
+  border-color: #2563EB;
 }
 
 .custom-cursor-ring.cursor-view::after {
@@ -119,6 +132,9 @@
   letter-spacing: 0.1em;
   color: #06b6d4;
 }
+html.light .custom-cursor-ring.cursor-view::after {
+  color: #2563EB;
+}
 
 .custom-cursor-ring.cursor-click {
   transform: translate(-50%, -50%) scale(0.85);
@@ -130,15 +146,180 @@
   }
 }
 
-/* Water Ripple Canvas Overlay */
+/* Transparent High-DPI Water Canvas */
 #water-canvas {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* 3D Background Canvas */
+#webgl-bg {
+  position: fixed;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 35;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+/* Apple-Glass Panels (Night Mode) */
+.glass-panel {
+  background: rgba(28, 41, 57, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+}
+
+.glass-card {
+  background: rgba(28, 41, 57, 0.65);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 30px -10px var(--glow-color);
+  transform: translateY(-3px);
+}
+
+/* Emerald Bento Cards */
+.bento-card {
+  position: relative;
+  background: radial-gradient(120% 120% at 50% 0%, rgba(6, 44, 40, 0.45) 0%, rgba(4, 24, 22, 0.65) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bento-card:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Sticky Stacked Cards Parallax */
+.stacked-card {
+  position: sticky;
+  top: 96px;
+}
+
+/* =========================================
+   DAY MODE (APPLE GLASS & PALETTE SYSTEM)
+   ========================================= */
+html.light body {
+  background-color: #F4F7FB;
+  color: #202C3B;
+}
+
+html.light .text-white {
+  color: #202C3B !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400 {
+  color: #64748B !important;
+}
+
+/* Apple Glass Panel in Day Mode */
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Apple Glass Card in Day Mode */
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+html.light .glass-card:hover {
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 12px 30px -6px rgba(37, 99, 235, 0.12);
+}
+
+/* Bento Card in Day Mode */
+html.light .bento-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+html.light .bento-card:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 12px 30px -6px rgba(16, 185, 129, 0.15);
+}
+
+/* Flagship Software Engineering Tech Badges (Day Mode Fix) */
+html.light .stacked-card span.font-mono,
+html.light .stacked-card span.text-cyan-300,
+html.light .stacked-card span.text-indigo-300,
+html.light .stacked-card span.text-emerald-300 {
+  background-color: #EFF6FF !important;
+  border: 1px solid #BFDBFE !important;
+  color: #1D4ED8 !important;
+  font-weight: 600 !important;
+}
+
+/* MicroShift Demo Box (Day Mode Fix) */
+html.light .bg-slate-950\/70,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900 {
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #202C3B !important;
+}
+
+/* Day Mode Developer CLI Terminal */
+html.light #terminal-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.08) !important;
+}
+html.light #terminal-card .bg-slate-900\/90 {
+  background-color: #F1F5F9 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+html.light #terminal-card .bg-slate-900\/50 {
+  background-color: #F8FAFC !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+html.light #terminal-card .text-white {
+  color: #202C3B !important;
+}
+html.light #terminal-card .text-slate-400 {
+  color: #64748B !important;
+}
+html.light #terminal-card .text-slate-300 {
+  color: #334155 !important;
+}
+html.light #terminal-card input {
+  color: #202C3B !important;
+}
+html.light #terminal-card input::placeholder {
+  color: #94A3B8 !important;
+}
+html.light #terminal-ghost-watermark {
+  color: #94A3B8 !important;
+  opacity: 0.12 !important;
+}
+
+/* Buttons with Gradient preserve crisp white text */
+html.light .bg-gradient-to-r,
+html.light .bg-gradient-to-r span,
+html.light .bg-gradient-to-r svg,
+html.light .bg-cyan-500,
+html.light .bg-indigo-600,
+html.light .bg-emerald-600 {
+  color: #ffffff !important;
 }
 
 /* Dennis Snellenberg Preloader */
@@ -166,204 +347,11 @@ html.light #preloader * {
 /* Light Mode Badges & Floating Pills High-Contrast */
 html.light [data-parallax-speed] {
   background: rgba(255, 255, 255, 0.95) !important;
-  color: #0f172a !important;
-  border-color: rgba(15, 23, 42, 0.15) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  color: #202C3B !important;
+  border: 1px solid rgba(226, 232, 240, 1) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
 }
 html.light [data-parallax-speed] span:not(.rounded-full) {
-  color: #0f172a !important;
+  color: #202C3B !important;
   font-weight: 600;
-}
-html.light section span.font-mono {
-  color: #0284c7 !important;
-}
-
-/* 3D Background Canvas */
-#webgl-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.85;
-}
-
-/* Glassmorphism Utilities */
-.glass-panel {
-  background: rgba(18, 23, 34, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-color);
-}
-
-.glass-card {
-  background: rgba(13, 17, 26, 0.65);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--border-color);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card:hover {
-  border-color: var(--border-hover);
-  box-shadow: 0 12px 30px -10px var(--glow-color);
-  transform: translateY(-4px);
-}
-
-/* Emerald Bento Cards (Matching Reference Aesthetic) */
-.bento-card {
-  position: relative;
-  background: radial-gradient(120% 120% at 50% 0%, rgba(6, 44, 40, 0.45) 0%, rgba(4, 24, 22, 0.65) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.15);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.bento-card:hover {
-  border-color: rgba(16, 185, 129, 0.5);
-  box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.18);
-  transform: translateY(-4px);
-}
-html.light .bento-card {
-  background: #ffffff;
-  border-color: rgba(16, 185, 129, 0.25);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
-}
-html.light .bento-card:hover {
-  border-color: rgba(16, 185, 129, 0.6);
-  box-shadow: 0 12px 28px -4px rgba(16, 185, 129, 0.15);
-}
-
-/* Text Gradients */
-.gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-html.light .gradient-text {
-  background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #475569 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-accent {
-  background: linear-gradient(135deg, #06b6d4 0%, #6366f1 50%, #a855f7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Sticky Stacked Cards Parallax */
-.stacked-card {
-  position: sticky;
-  top: 96px;
-}
-
-/* Light Mode High-Contrast Typography & Surface Polish */
-html.light body {
-  background-color: #f8fafc;
-  color: #0f172a;
-}
-
-html.light .text-white {
-  color: #0f172a !important;
-}
-
-html.light .text-slate-300 {
-  color: #334155 !important;
-}
-
-html.light .text-slate-400 {
-  color: #475569 !important;
-}
-
-html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(15, 23, 42, 0.08);
-  box-shadow: 0 4px 25px -4px rgba(15, 23, 42, 0.06);
-}
-
-html.light .glass-card {
-  background: rgba(255, 255, 255, 0.94);
-  border-color: rgba(15, 23, 42, 0.1);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-}
-
-html.light .bg-slate-950\/70,
-html.light .bg-slate-900\/80,
-html.light .bg-slate-900 {
-  background-color: #f1f5f9 !important;
-  border-color: rgba(15, 23, 42, 0.1) !important;
-}
-
-/* Preserve bright crisp text on colored buttons */
-html.light .bg-gradient-to-r,
-html.light .bg-gradient-to-r span,
-html.light .bg-gradient-to-r svg,
-html.light .bg-cyan-500,
-html.light .bg-indigo-600,
-html.light .bg-emerald-600 {
-  color: #ffffff !important;
-}
-
-/* Light mode skill chips and badges contrast */
-html.light .glass-panel span.text-slate-200,
-html.light .glass-card span.text-slate-200 {
-  color: #0f172a !important;
-  background-color: rgba(241, 245, 249, 0.9) !important;
-  border-color: rgba(15, 23, 42, 0.12) !important;
-  font-weight: 500;
-}
-
-html.light .text-indigo-300 {
-  color: #4338ca !important;
-  font-weight: 600;
-}
-html.light .bg-indigo-500\/20 {
-  background-color: rgba(99, 102, 241, 0.15) !important;
-  border: 1px solid rgba(99, 102, 241, 0.3) !important;
-}
-
-html.light .text-cyan-300 {
-  color: #0369a1 !important;
-  font-weight: 600;
-}
-
-html.light .text-emerald-300\/60 {
-  color: #047857 !important;
-}
-
-/* Terminal Console preserves true Dark Hacker theme */
-html.light #terminal-card {
-  background-color: #07090e !important;
-  border-color: #1e2638 !important;
-}
-html.light #terminal-card .text-white {
-  color: #ffffff !important;
-}
-html.light #terminal-card .text-slate-400 {
-  color: #94a3b8 !important;
-}
-html.light #terminal-card .text-slate-300 {
-  color: #cbd5e1 !important;
-}
-html.light #terminal-card input {
-  color: #ffffff !important;
-}
-
-/* Dennis Snellenberg Preloader */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999999;
-  background-color: #07090e;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
 }

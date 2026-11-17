@@ -9,6 +9,7 @@ export function initPreloader(onComplete) {
     return;
   }
 
+  // Greetings sequence with Bengali "নমস্কার" strictly 2nd as requested
   const greetings = [
     'Hello',
     'নমস্কার',
@@ -16,7 +17,6 @@ export function initPreloader(onComplete) {
     'Ciao',
     'Olá',
     'こんにちは',
-    'Hallå',
     'Guten Tag',
     'হ্যালো'
   ];
@@ -24,6 +24,7 @@ export function initPreloader(onComplete) {
   let index = 0;
   greetingEl.textContent = `• ${greetings[0]}`;
 
+  // 200ms per word = ~1.6s total reading duration
   const interval = setInterval(() => {
     index++;
     if (index < greetings.length) {
@@ -31,7 +32,7 @@ export function initPreloader(onComplete) {
     } else {
       clearInterval(interval);
 
-      // Slide up exit animation with curved SVG path
+      // Dennis Snellenberg iconic curved upward slide
       const tl = gsap.timeline({
         onComplete: () => {
           preloader.style.display = 'none';
@@ -42,28 +43,24 @@ export function initPreloader(onComplete) {
 
       tl.to(greetingEl, {
         opacity: 0,
-        y: -20,
-        duration: 0.3,
+        y: -30,
+        duration: 0.35,
         ease: 'power2.in'
       });
 
       if (svgCurve) {
-        // Dennis Snellenberg curved curtain animation
-        const initialCurve = 'M0 0 L100 0 L100 100 Q50 100 0 100 Z';
-        const targetCurve = 'M0 0 L100 0 L100 100 Q50 0 0 100 Z';
-
         tl.to(svgCurve, {
-          attr: { d: targetCurve },
-          duration: 0.8,
-          ease: 'power3.in'
-        }, '-=0.1');
+          attr: { d: 'M0 0 L100 0 L100 100 Q50 0 0 100 Z' },
+          duration: 0.9,
+          ease: 'power4.in'
+        }, '-=0.15');
       }
 
       tl.to(preloader, {
         yPercent: -100,
-        duration: 0.85,
+        duration: 0.95,
         ease: 'power4.inOut'
-      }, '-=0.6');
+      }, '-=0.7');
     }
-  }, 140);
+  }, 200);
 }

@@ -1,7 +1,7 @@
 /**
  * Interactive Client Portfolio Bento Gallery (36 Projects)
- * Inspired by modern emerald/teal glowing bento-grid aesthetic
- * Active verified sites prioritized on top + Progressive variable step reveal
+ * Progressive Reveal Sequence: 7 -> 12 -> 20 -> 30 -> 36
+ * Formulated so every step forms a clean, complete solid rectangular layout.
  */
 
 export function initGallery(cursorController) {
@@ -10,10 +10,10 @@ export function initGallery(cursorController) {
   const filterBtns = document.querySelectorAll('[data-gallery-filter]');
   if (!container) return;
 
+  const STEPS = [7, 12, 20, 30, 36];
+  let currentStepIndex = 0;
   let allProjects = [];
   let currentFiltered = [];
-  let visibleCount = 6;
-  const stepSize = 6; // Completes 2 full rows (3 cols per row) per click
 
   async function loadProjects() {
     try {
@@ -21,13 +21,13 @@ export function initGallery(cursorController) {
       if (res.ok) {
         allProjects = await res.json();
       } else {
-        throw new Error('Failed to load JSON');
+        throw new Error('Fallback to local');
       }
     } catch {
-      console.warn('Fallback: checking local projects array');
+      console.warn('Fallback loading projects');
     }
 
-    // Sort: Verified active links (HTTP 200) first!
+    // Sort: Live working links (HTTP 200) strictly on top
     allProjects.sort((a, b) => {
       const aLive = a.status === 200 || a.status === '200' ? 1 : 0;
       const bLive = b.status === 200 || b.status === '200' ? 1 : 0;
@@ -38,7 +38,7 @@ export function initGallery(cursorController) {
   }
 
   function applyFilter(category) {
-    visibleCount = 6; // reset count on filter change
+    currentStepIndex = 0; // Reset to 7 on filter change
     if (category === '*') {
       currentFiltered = allProjects;
     } else {
@@ -51,64 +51,74 @@ export function initGallery(cursorController) {
   }
 
   function render() {
-    const toShow = currentFiltered.slice(0, visibleCount);
+    const targetCount = STEPS[currentStepIndex] || 36;
+    const toShow = currentFiltered.slice(0, targetCount);
 
     container.innerHTML = toShow
       .map((p, idx) => {
         const isLive = p.status === 200 || p.status === '200';
-        const isFeaturedSpan = idx % 5 === 0; // Bento variation: every 5th card spans 2 columns on lg screens
+        
+        // Bento rectangular layout calculations:
+        // When 7 items shown: Item 0 and Item 6 span 2 cols to complete a perfect 3x3 rectangle on lg, and 2-col on md
+        // When 20 items shown: Item 0 spans 2 cols to fill 21 column slots (7 rows of 3)
+        let spanClass = '';
+        if (targetCount === 7 && (idx === 0 || idx === 6)) {
+          spanClass = 'sm:col-span-2 lg:col-span-2';
+        } else if (targetCount === 20 && idx === 0) {
+          spanClass = 'sm:col-span-2 lg:col-span-2';
+        }
 
         const statusBadge = isLive
-          ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+          ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 dark:text-emerald-400 border border-emerald-500/30">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               Live Online
             </span>`
-          : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-teal-500/10 text-teal-300 border border-teal-500/20">
-              <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
-              Delivered Work
+          : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-slate-500/15 text-slate-400 border border-slate-500/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+              Client System
             </span>`;
 
         const imgSrc = p.local_image || p.image;
         const targetUrl = p.url || '#';
 
         return `
-          <div class="bento-card group rounded-3xl overflow-hidden flex flex-col justify-between border border-emerald-950/80 hover:border-emerald-500/50 bg-[#061817]/60 backdrop-blur-xl transition-all duration-500 shadow-xl hover:shadow-emerald-950/40 ${isFeaturedSpan ? 'sm:col-span-2 lg:col-span-2' : ''}" data-tilt data-cursor="view">
+          <div class="bento-card group rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-500 shadow-xl ${spanClass}" data-tilt data-cursor="view">
             <div class="relative overflow-hidden aspect-[16/9] bg-slate-950">
               <img 
                 src="${imgSrc}" 
                 alt="${p.title}" 
                 loading="lazy" 
-                class="w-full h-full object-cover object-top filter brightness-[0.92] group-hover:brightness-100 transition-all duration-700 group-hover:scale-105"
+                class="w-full h-full object-cover object-top filter brightness-[0.95] group-hover:brightness-100 transition-all duration-700 group-hover:scale-105"
                 onerror="this.src='images/profile-hero.jpg'"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#061817] via-transparent to-transparent opacity-90"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-85"></div>
               <div class="absolute top-3.5 right-3.5">
                 ${statusBadge}
               </div>
               <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-                <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-300 bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-800/40 backdrop-blur">
+                <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 dark:text-emerald-300 bg-black/60 px-2.5 py-0.5 rounded-full border border-emerald-500/30 backdrop-blur">
                   ${p.category || 'Client System'}
                 </span>
-                <span class="text-[10px] text-emerald-400/60 font-mono">#${idx + 1}</span>
+                <span class="text-[10px] text-slate-400 font-mono">#${idx + 1}</span>
               </div>
             </div>
 
             <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
               <div>
-                <h4 class="text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1">
+                <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors line-clamp-1">
                   ${p.title}
                 </h4>
-                <p class="text-xs text-emerald-300/60 font-mono line-clamp-1 mt-1">
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-mono line-clamp-1 mt-1">
                   ${p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'Commercial Client'}
                 </p>
               </div>
 
-              <div class="flex items-center justify-between pt-4 border-t border-emerald-900/40">
+              <div class="flex items-center justify-between pt-4 border-t border-slate-200/60 dark:border-slate-800">
                 <a 
                   href="${targetUrl}" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  class="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+                  class="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 transition-colors"
                 >
                   <span>Launch Website</span>
                   <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,18 +133,19 @@ export function initGallery(cursorController) {
       })
       .join('');
 
-    // Update Load More Button state
+    // Update Load More Button label and step state
     if (loadMoreBtn) {
-      if (visibleCount >= currentFiltered.length) {
+      if (toShow.length >= currentFiltered.length || currentStepIndex >= STEPS.length - 1) {
         loadMoreBtn.innerHTML = `
           <span>All ${currentFiltered.length} Projects Unveiled</span>
           <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
         `;
         loadMoreBtn.classList.add('opacity-60', 'pointer-events-none');
       } else {
+        const nextTarget = STEPS[currentStepIndex + 1];
         loadMoreBtn.classList.remove('opacity-60', 'pointer-events-none');
         loadMoreBtn.innerHTML = `
-          <span>Explore More Projects (${visibleCount} of ${currentFiltered.length})</span>
+          <span>Explore More Projects (${toShow.length} of ${currentFiltered.length})</span>
           <svg class="w-4 h-4 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         `;
       }
@@ -145,11 +156,13 @@ export function initGallery(cursorController) {
     }
   }
 
-  // Handle Load More Button Click
+  // Handle Load More Step Click (7 -> 12 -> 20 -> 30 -> 36)
   if (loadMoreBtn) {
     loadMoreBtn.addEventListener('click', () => {
-      visibleCount += stepSize;
-      render();
+      if (currentStepIndex < STEPS.length - 1) {
+        currentStepIndex++;
+        render();
+      }
     });
   }
 
