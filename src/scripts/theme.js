@@ -8,6 +8,7 @@ export function initTheme(callbacks = {}) {
   function setTheme(theme) {
     if (theme === 'light') {
       document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
       if (toggleBtn) {
         toggleBtn.innerHTML = `
@@ -19,6 +20,7 @@ export function initTheme(callbacks = {}) {
       }
     } else {
       document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
       if (toggleBtn) {
         toggleBtn.innerHTML = `

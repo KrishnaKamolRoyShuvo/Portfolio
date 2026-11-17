@@ -105,10 +105,10 @@ export function initGallery(cursorController) {
 
             <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
               <div>
-                <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors line-clamp-1">
+                <h4 class="text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1">
                   ${p.title}
                 </h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 font-mono line-clamp-1 mt-1">
+                <p class="text-xs text-slate-300 font-mono line-clamp-1 mt-1">
                   ${p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'Commercial Client'}
                 </p>
               </div>

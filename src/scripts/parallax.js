@@ -23,24 +23,43 @@ export function initParallaxAndMotion() {
   });
   gsap.ticker.lagSmoothing(0);
 
-  // 2. Dennis Snellenberg Hero Parallax Transition (Pinned Fade & Upward Content Slide)
+  // 2. Dennis Snellenberg Hero Parallax Transition (Pinned Fade & Upward Content Slide on Desktop)
   const heroSection = document.getElementById('hero');
   const heroContent = document.getElementById('hero-content');
   
   if (heroSection && heroContent) {
-    ScrollTrigger.create({
-      trigger: heroSection,
-      start: 'top top',
-      end: '+=80%',
-      pin: true,
-      pinSpacing: false,
-      scrub: 0.5,
-      onUpdate: (self) => {
-        const p = self.progress;
-        gsap.set(heroContent, {
-          scale: 1.0 - p * 0.08,
-          opacity: Math.max(0, 1.0 - p * 1.3),
-          y: p * 50
+    ScrollTrigger.matchMedia({
+      // Desktop & Tablet (>= 768px): Pinned Dennis Snellenberg zoom-out parallax
+      "(min-width: 768px)": function() {
+        ScrollTrigger.create({
+          trigger: heroSection,
+          start: 'top top',
+          end: '+=80%',
+          pin: true,
+          pinSpacing: false,
+          scrub: 0.5,
+          onUpdate: (self) => {
+            const p = self.progress;
+            gsap.set(heroContent, {
+              scale: 1.0 - p * 0.08,
+              opacity: Math.max(0, 1.0 - p * 1.3),
+              y: p * 50
+            });
+          }
+        });
+      },
+      // Mobile (< 768px): Natural flow without pin clipping
+      "(max-width: 767px)": function() {
+        gsap.to(heroContent, {
+          opacity: 0.3,
+          scale: 0.96,
+          ease: 'power1.out',
+          scrollTrigger: {
+            trigger: heroSection,
+            start: 'bottom 85%',
+            end: 'bottom 15%',
+            scrub: true
+          }
         });
       }
     });
@@ -73,20 +92,24 @@ export function initParallaxAndMotion() {
     );
   });
 
-  // 4. Sticky Stacked Project Cards Parallax
-  const projectCards = document.querySelectorAll('.stacked-card');
-  projectCards.forEach((card, index) => {
-    if (index < projectCards.length - 1) {
-      gsap.to(card, {
-        scale: 0.94,
-        opacity: 0.5,
-        filter: 'blur(3px)',
-        ease: 'power1.out',
-        scrollTrigger: {
-          trigger: projectCards[index + 1],
-          start: 'top 65%',
-          end: 'top 20%',
-          scrub: true
+  // 4. Sticky Stacked Project Cards Parallax (Desktop / Tablet only)
+  ScrollTrigger.matchMedia({
+    "(min-width: 768px)": function() {
+      const projectCards = document.querySelectorAll('.stacked-card');
+      projectCards.forEach((card, index) => {
+        if (index < projectCards.length - 1) {
+          gsap.to(card, {
+            scale: 0.94,
+            opacity: 0.5,
+            filter: 'blur(3px)',
+            ease: 'power1.out',
+            scrollTrigger: {
+              trigger: projectCards[index + 1],
+              start: 'top 65%',
+              end: 'top 20%',
+              scrub: true
+            }
+          });
         }
       });
     }

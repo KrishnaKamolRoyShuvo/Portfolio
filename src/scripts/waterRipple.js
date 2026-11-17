@@ -242,13 +242,14 @@ export function initWaterRipple() {
 
     if (prevU !== null) {
       const dist = Math.hypot(u - prevU, v - prevV);
-      const steps = Math.min(16, Math.max(1, Math.ceil(dist * 220)));
+      const steps = Math.min(16, Math.max(1, Math.ceil(dist * 200)));
       for (let i = 1; i <= steps; i++) {
         const t = i / steps;
-        addDrop(prevU + (u - prevU) * t, prevV + (v - prevV) * t, 0.014, 0.03);
+        // Wider, organic liquid displacement (radius 0.038 instead of 0.014)
+        addDrop(prevU + (u - prevU) * t, prevV + (v - prevV) * t, 0.038, 0.045);
       }
     } else {
-      addDrop(u, v, 0.014, 0.03);
+      addDrop(u, v, 0.038, 0.045);
     }
     prevU = u;
     prevV = v;
@@ -257,7 +258,8 @@ export function initWaterRipple() {
   window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
   window.addEventListener('mouseleave', () => { prevU = null; prevV = null; });
   window.addEventListener('mousedown', (e) => {
-    addDrop(e.clientX / window.innerWidth, 1.0 - (e.clientY / window.innerHeight), 0.045, 0.18);
+    // Broad, tactile ripple for click
+    addDrop(e.clientX / window.innerWidth, 1.0 - (e.clientY / window.innerHeight), 0.085, 0.22);
   });
   window.addEventListener('touchmove', (e) => {
     if (e.touches[0]) onMove(e.touches[0].clientX, e.touches[0].clientY);
@@ -265,9 +267,29 @@ export function initWaterRipple() {
   window.addEventListener('touchstart', (e) => {
     if (e.touches[0]) {
       prevU = null;
-      addDrop(e.touches[0].clientX / window.innerWidth, 1.0 - (e.touches[0].clientY / window.innerHeight), 0.045, 0.18);
+      addDrop(e.touches[0].clientX / window.innerWidth, 1.0 - (e.touches[0].clientY / window.innerHeight), 0.085, 0.22);
     }
   }, { passive: true });
+
+  // Ambient gentle raindrops (2 to 4 subtle drops periodically, dissipating smoothly)
+  let rainTimer = null;
+  function scheduleRaindrops() {
+    if (isEnabled && document.visibilityState === 'visible') {
+      const count = Math.floor(Math.random() * 3) + 2; // 2, 3, or 4 drops
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          if (!isEnabled) return;
+          const rx = 0.06 + Math.random() * 0.88;
+          const ry = 0.06 + Math.random() * 0.88;
+          // Gentle, subtle ripple that dissipates quickly
+          addDrop(rx, ry, 0.035 + Math.random() * 0.015, 0.022 + Math.random() * 0.012);
+        }, i * (120 + Math.random() * 160));
+      }
+    }
+    const nextWait = 2000 + Math.random() * 1500; // every 2.0s - 3.5s
+    rainTimer = setTimeout(scheduleRaindrops, nextWait);
+  }
+  rainTimer = setTimeout(scheduleRaindrops, 1500);
 
   window.addEventListener('resize', resize);
 

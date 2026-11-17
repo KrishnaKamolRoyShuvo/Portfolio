@@ -24,15 +24,37 @@ export function initPreloader(onComplete) {
   let index = 0;
   greetingEl.textContent = `• ${greetings[0]}`;
 
-  // 200ms per word = ~1.6s total reading duration
-  const interval = setInterval(() => {
+  function nextGreeting() {
     index++;
     if (index < greetings.length) {
-      greetingEl.textContent = `• ${greetings[index]}`;
+      // Quick transition out, change word, quick transition in with stay
+      gsap.to(greetingEl, {
+        opacity: 0,
+        y: -8,
+        scale: 0.96,
+        duration: 0.05,
+        ease: 'power2.in',
+        onComplete: () => {
+          greetingEl.textContent = `• ${greetings[index]}`;
+          gsap.fromTo(
+            greetingEl,
+            { opacity: 0, y: 8, scale: 0.96 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.08,
+              ease: 'power2.out',
+              onComplete: () => {
+                // Stays for 160ms before next transition (~2.3s total sequence)
+                setTimeout(nextGreeting, 160);
+              }
+            }
+          );
+        }
+      });
     } else {
-      clearInterval(interval);
-
-      // Dennis Snellenberg iconic curved upward slide
+      // Finished all greetings: outro transition with semi-rounded bottom
       const tl = gsap.timeline({
         onComplete: () => {
           preloader.style.display = 'none';
@@ -43,24 +65,28 @@ export function initPreloader(onComplete) {
 
       tl.to(greetingEl, {
         opacity: 0,
-        y: -30,
-        duration: 0.35,
+        y: -24,
+        duration: 0.22,
         ease: 'power2.in'
       });
 
+      // Semi-rounded bottom curve (gentle arc, not overly carved)
       if (svgCurve) {
         tl.to(svgCurve, {
-          attr: { d: 'M0 0 L100 0 L100 100 Q50 0 0 100 Z' },
-          duration: 0.9,
-          ease: 'power4.in'
-        }, '-=0.15');
+          attr: { d: 'M0 0 L100 0 L100 80 Q50 115 0 80 Z' },
+          duration: 0.7,
+          ease: 'power3.in'
+        }, '-=0.08');
       }
 
       tl.to(preloader, {
         yPercent: -100,
-        duration: 0.95,
+        duration: 0.8,
         ease: 'power4.inOut'
-      }, '-=0.7');
+      }, '-=0.55');
     }
-  }, 200);
+  }
+
+  // Initial stay on first greeting then begin sequence
+  setTimeout(nextGreeting, 220);
 }

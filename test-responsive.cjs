@@ -103,6 +103,17 @@ async function runTests() {
       await page.waitForTimeout(400);
       await page.screenshot({ path: path.join(screenshotsDir, `${vp.name}_4_day_mode_flagship.png`) });
 
+      // Check Skills Matrix in Day Mode (Verify chip contrast)
+      const skillsSection = page.locator('#skills');
+      await skillsSection.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(400);
+      const skillChipColor = await page.locator('.skill-chip').first().evaluate((el) => {
+        const style = window.getComputedStyle(el);
+        return { color: style.color, bg: style.backgroundColor };
+      });
+      console.log(`Day Mode Skill Chip color: ${skillChipColor.color}, bg: ${skillChipColor.bg}`);
+      await page.screenshot({ path: path.join(screenshotsDir, `${vp.name}_6_day_mode_skills.png`) });
+
       // Check Hero in Day Mode
       await page.locator('#hero').scrollIntoViewIfNeeded();
       await page.waitForTimeout(400);
