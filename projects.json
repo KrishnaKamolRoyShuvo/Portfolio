@@ -1,0 +1,290 @@
+[
+  {
+    "title": "Modern Portfolio",
+    "url": "https://muntasirhasnat.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Portfolio-Muntasir-Hasnat-scaled.jpg",
+    "category": "portfolio",
+    "status": "ERR: URLError",
+    "local_image": "images/client-projects/project-1.jpg"
+  },
+  {
+    "title": "Professional Portfolio",
+    "url": "http://danaosbornedesign.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Portfolio-Dana-Osborne-scaled.jpg",
+    "category": "portfolio",
+    "status": 200,
+    "local_image": "images/client-projects/project-2.jpg"
+  },
+  {
+    "title": "Traditional Portfolio",
+    "url": "https://ahmedzia.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Portfolio-ahmed-zia-scaled.jpg",
+    "category": "portfolio",
+    "status": 200,
+    "local_image": "images/client-projects/project-3.jpg"
+  },
+  {
+    "title": "Branding Agency Website",
+    "url": "https://www.alboria.es",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Agency-Alboria-scaled.jpg",
+    "category": "agency",
+    "status": 200,
+    "local_image": "images/client-projects/project-4.jpg"
+  },
+  {
+    "title": "Law Agency Website",
+    "url": "https://ebarot.com",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Agency-Ebadot-scaled.jpg",
+    "category": "agency",
+    "status": 200,
+    "local_image": "images/client-projects/project-5.jpg"
+  },
+  {
+    "title": "Designing Agency Website",
+    "url": "https://gbdesignstudio.co.uk",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Agency-Gb-Designs-scaled.jpg",
+    "category": "agency",
+    "status": 200,
+    "local_image": "images/client-projects/project-6.jpg"
+  },
+  {
+    "title": "Consultancy Agency Website",
+    "url": "https://getlevrg.com",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Agency-getlevrg-1-scaled.jpg",
+    "category": "agency",
+    "status": 200,
+    "local_image": "images/client-projects/project-7.jpg"
+  },
+  {
+    "title": "Law Agency Website",
+    "url": "https://grmfamilylaw.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Agency-LAW-scaled.jpg",
+    "category": "agency",
+    "status": 200,
+    "local_image": "images/client-projects/project-8.jpg"
+  },
+  {
+    "title": "Consultancy Agency Website",
+    "url": "http://agencymavericks.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Agency-Mevrics-scaled.jpg",
+    "category": "agency",
+    "status": 200,
+    "local_image": "images/client-projects/project-9.jpg"
+  },
+  {
+    "title": "Medical Courier Service Website",
+    "url": "https://www.farmakoerier.nl/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Delivery-farmakoerier-scaled.jpg",
+    "category": "transport and courier",
+    "status": 200,
+    "local_image": "images/client-projects/project-10.jpg"
+  },
+  {
+    "title": "Shipping Website",
+    "url": "https://www.steelboxco.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Shipping-website-scaled.jpg",
+    "category": "transport and courier",
+    "status": "ERR: HTTPError",
+    "local_image": "images/client-projects/project-11.jpg"
+  },
+  {
+    "title": "Car Rental Website",
+    "url": "https://azullocation.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Car-Rental--scaled.jpg",
+    "category": "transport and courier",
+    "status": 200,
+    "local_image": "images/client-projects/project-12.jpg"
+  },
+  {
+    "title": "ExamReadyMaths",
+    "url": "https://examreadymaths.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Educational-examreadymaths-scaled.jpg",
+    "category": "educational",
+    "status": "ERR: URLError",
+    "local_image": "images/client-projects/project-13.jpg"
+  },
+  {
+    "title": "Math Tuition Website",
+    "url": "https://www.explorelearning.co.uk/gcse-maths-tuition",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Educational-GCSE-Maths-tuiton-scaled.jpg",
+    "category": "educational",
+    "status": 200,
+    "local_image": "images/client-projects/project-14.jpg"
+  },
+  {
+    "title": "Music Learning Website",
+    "url": "https://smartlearnlms.com/online-music-teaching-platform/index",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Educational-Music-school-scaled.jpg",
+    "category": "educational",
+    "status": "ERR: URLError",
+    "local_image": "images/client-projects/project-15.jpg"
+  },
+  {
+    "title": "ThemeGrove Wordpress Website",
+    "url": "https://themesgrove.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Ecommerce-themeGrove-scaled.jpg",
+    "category": "ecommerce",
+    "status": 200,
+    "local_image": "images/client-projects/project-16.jpg"
+  },
+  {
+    "title": "Chiropractic Medical Website",
+    "url": "https://chiroosteopathybd.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Medical-Chiropathi-scaled.jpg",
+    "category": "medical",
+    "status": "ERR: HTTPError",
+    "local_image": "images/client-projects/project-17.jpg"
+  },
+  {
+    "title": "Meditation Online Service Website",
+    "url": "https://freedomeft.org.uk/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Medical-meditation-website-scaled.jpg",
+    "category": "medical",
+    "status": 200,
+    "local_image": "images/client-projects/project-18.jpg"
+  },
+  {
+    "title": "All American Electric",
+    "url": "https://all-americanelectric.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-All-American-Electric-scaled.jpg",
+    "category": "repairing",
+    "status": 200,
+    "local_image": "images/client-projects/project-19.jpg"
+  },
+  {
+    "title": "Phone Repairing Website",
+    "url": "https://phonerepairanaheim.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-Anaheim--scaled.jpg",
+    "category": "repairing",
+    "status": 200,
+    "local_image": "images/client-projects/project-20.jpg"
+  },
+  {
+    "title": "Dryers &amp; Dishwashers Service Website",
+    "url": "https://askorepairsf.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-Asko-scaled.jpg",
+    "category": "repairing",
+    "status": 200,
+    "local_image": "images/client-projects/project-21.jpg"
+  },
+  {
+    "title": "Home Appliances Repair Website",
+    "url": "https://bertazzonirepairsf.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-Bertazzoni-scaled.jpg",
+    "category": "repairing",
+    "status": "ERR: timeout",
+    "local_image": "images/client-projects/project-22.jpg"
+  },
+  {
+    "title": "Kitchen Appliances Repairing Website",
+    "url": "https://dacorrepairsf.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-Decor-scaled.jpg",
+    "category": "repairing",
+    "status": "ERR: timeout",
+    "local_image": "images/client-projects/project-23.jpg"
+  },
+  {
+    "title": "Cooking Appliances Repair Website",
+    "url": "https://dcsrepairsf.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-DSC-scaled.jpg",
+    "category": "repairing",
+    "status": 200,
+    "local_image": "images/client-projects/project-24.jpg"
+  },
+  {
+    "title": "Phone Repairing Website",
+    "url": "https://phonebulance.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-phonebulance-scaled.jpg",
+    "category": "repairing",
+    "status": 200,
+    "local_image": "images/client-projects/project-25.jpg"
+  },
+  {
+    "title": "Refrigerator Repairing Website",
+    "url": "https://subzerorepairsf.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-SUBzero-scaled.jpg",
+    "category": "repairing",
+    "status": "ERR: timeout",
+    "local_image": "images/client-projects/project-26.jpg"
+  },
+  {
+    "title": "Appliances Repairing Website",
+    "url": "https://thermadorrepairsf.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-THERMADOR-scaled.jpg",
+    "category": "repairing",
+    "status": 200,
+    "local_image": "images/client-projects/project-27.jpg"
+  },
+  {
+    "title": "Electrical Repair Website",
+    "url": "https://allforelectric.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-Varela-American-Electric-scaled.jpg",
+    "category": "repairing",
+    "status": 200,
+    "local_image": "images/client-projects/project-28.jpg"
+  },
+  {
+    "title": "Wired Up Electrical Repair Website",
+    "url": "https://neigborelectrical.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-Wired-up-scaled.jpg",
+    "category": "repairing",
+    "status": 200,
+    "local_image": "images/client-projects/project-29.jpg"
+  },
+  {
+    "title": "Cooking Stuffs Repair Website",
+    "url": "https://wolfrepairsf.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Repairing-Wolf-scaled.jpg",
+    "category": "repairing",
+    "status": 200,
+    "local_image": "images/client-projects/project-30.jpg"
+  },
+  {
+    "title": "Boba Bar Restaurant Website",
+    "url": "https://bobabar.co.uk/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Restuarant-Boba-Bar-scaled.jpg",
+    "category": "restaurant",
+    "status": 200,
+    "local_image": "images/client-projects/project-31.jpg"
+  },
+  {
+    "title": "BubbleTreat Restaurant Website",
+    "url": "https://bubbletreatmanor.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Restuarant-Bubbletreat-scaled.jpg",
+    "category": "restaurant",
+    "status": "ERR: URLError",
+    "local_image": "images/client-projects/project-32.jpg"
+  },
+  {
+    "title": "Online Restaurant Website",
+    "url": "https://order.chardchicken.com.au/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Restuarant-CHARD-scaled.jpg",
+    "category": "restaurant",
+    "status": 200,
+    "local_image": "images/client-projects/project-33.jpg"
+  },
+  {
+    "title": "Guzman Y Gomez Restaurant Website",
+    "url": "https://www.guzmanygomez.com.au/our-food/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Restuarant-Guzman-Y-Gomez-scaled.jpg",
+    "category": "restaurant",
+    "status": 200,
+    "local_image": "images/client-projects/project-34.jpg"
+  },
+  {
+    "title": "Mexican Food Restaurant Website",
+    "url": "https://picodegallo.com.au/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Restuarant-Pico-de-Gallo-scaled.jpg",
+    "category": "restaurant",
+    "status": "ERR: URLError",
+    "local_image": "images/client-projects/project-35.jpg"
+  },
+  {
+    "title": "Unique Restaurant Website",
+    "url": "https://thewoodmansarms.com/",
+    "image": "https://kkwebmaster.com/wp-content/uploads/2025/06/Restuarant-TheWoodMansArms-scaled.jpg",
+    "category": "restaurant",
+    "status": 200,
+    "local_image": "images/client-projects/project-36.jpg"
+  }
+]
