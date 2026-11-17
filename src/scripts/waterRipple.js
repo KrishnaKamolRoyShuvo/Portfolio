@@ -255,19 +255,31 @@ export function initWaterRipple() {
     prevV = v;
   }
 
+  function triggerClickRipples(clientX, clientY) {
+    if (!isEnabled) return;
+    const u = clientX / window.innerWidth;
+    const v = 1.0 - (clientY / window.innerHeight);
+
+    // Natural multi-ring concentric ripples with tighter, refined wave width
+    addDrop(u, v, 0.048, 0.10);
+    setTimeout(() => {
+      if (isEnabled) addDrop(u, v, 0.042, 0.075);
+    }, 55);
+    setTimeout(() => {
+      if (isEnabled) addDrop(u, v, 0.036, 0.045);
+    }, 115);
+  }
+
   window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
   window.addEventListener('mouseleave', () => { prevU = null; prevV = null; });
-  window.addEventListener('mousedown', (e) => {
-    // Broad, tactile ripple for click
-    addDrop(e.clientX / window.innerWidth, 1.0 - (e.clientY / window.innerHeight), 0.085, 0.22);
-  });
+  window.addEventListener('mousedown', (e) => triggerClickRipples(e.clientX, e.clientY));
   window.addEventListener('touchmove', (e) => {
     if (e.touches[0]) onMove(e.touches[0].clientX, e.touches[0].clientY);
   }, { passive: true });
   window.addEventListener('touchstart', (e) => {
     if (e.touches[0]) {
       prevU = null;
-      addDrop(e.touches[0].clientX / window.innerWidth, 1.0 - (e.touches[0].clientY / window.innerHeight), 0.085, 0.22);
+      triggerClickRipples(e.touches[0].clientX, e.touches[0].clientY);
     }
   }, { passive: true });
 

@@ -10,7 +10,7 @@ export function initGallery(cursorController) {
   const filterBtns = document.querySelectorAll('[data-gallery-filter]');
   if (!container) return;
 
-  const STEPS = [7, 12, 20, 30, 36];
+  const STEPS = [6, 12, 18, 24, 30, 36];
   let currentStepIndex = 0;
   let allProjects = [];
   let currentFiltered = [];
@@ -38,7 +38,7 @@ export function initGallery(cursorController) {
   }
 
   function applyFilter(category) {
-    currentStepIndex = 0; // Reset to 7 on filter change
+    currentStepIndex = 0; // Reset to first step on filter change
     if (category === '*') {
       currentFiltered = allProjects;
     } else {
@@ -58,18 +58,35 @@ export function initGallery(cursorController) {
       .map((p, idx) => {
         const isLive = p.status === 200 || p.status === '200';
         
-        // Bento rectangular layout calculations:
-        // When 7 items shown: Item 0 and Item 6 span 2 cols to complete a perfect 3x3 rectangle on lg, and 2-col on md
-        // When 20 items shown: Item 0 spans 2 cols to fill 21 column slots (7 rows of 3)
-        let spanClass = '';
-        if (targetCount === 7 && (idx === 0 || idx === 6)) {
-          spanClass = 'sm:col-span-2 lg:col-span-2';
-        } else if (targetCount === 20 && idx === 0) {
-          spanClass = 'sm:col-span-2 lg:col-span-2';
+        // Bento dynamic rhythm every 12 items:
+        // 0: 1 Big horizontal (2 cols, 2 rows)
+        // 1, 2: 2 Small vertical (in col 3, rows 1 & 2)
+        // 3, 4, 5: 3 Small horizontal (row 3)
+        // 6, 7: 2 Small vertical (in col 1, rows 4 & 5)
+        // 8: 1 Big horizontal (cols 2-3, rows 4 & 5)
+        // 9, 10, 11: 3 Small horizontal (row 6)
+        const mod12 = idx % 12;
+        let spanClass = 'col-span-1 row-span-1';
+        let isBig = false;
+
+        if (mod12 === 0) {
+          spanClass = 'lg:col-span-2 lg:row-span-2';
+          isBig = true;
+        } else if (mod12 === 1 || mod12 === 2) {
+          spanClass = 'lg:col-span-1 lg:row-span-1';
+        } else if (mod12 >= 3 && mod12 <= 5) {
+          spanClass = 'lg:col-span-1 lg:row-span-1';
+        } else if (mod12 === 6 || mod12 === 7) {
+          spanClass = 'lg:col-span-1 lg:row-span-1';
+        } else if (mod12 === 8) {
+          spanClass = 'lg:col-span-2 lg:row-span-2';
+          isBig = true;
+        } else {
+          spanClass = 'lg:col-span-1 lg:row-span-1';
         }
 
         const statusBadge = isLive
-          ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 dark:text-emerald-400 border border-emerald-500/30">
+          ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               Live Online
             </span>`
@@ -80,10 +97,12 @@ export function initGallery(cursorController) {
 
         const imgSrc = p.local_image || p.image;
         const targetUrl = p.url || '#';
+        const imgAspect = isBig ? 'aspect-[16/10] sm:aspect-[16/9]' : 'aspect-[16/9]';
+        const paddingClass = isBig ? 'p-6 sm:p-7' : 'p-5';
 
         return `
           <div class="bento-card group rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-500 shadow-xl ${spanClass}" data-tilt data-cursor="view">
-            <div class="relative overflow-hidden aspect-[16/9] bg-slate-950">
+            <div class="relative overflow-hidden ${imgAspect} bg-slate-950">
               <img 
                 src="${imgSrc}" 
                 alt="${p.title}" 
@@ -103,9 +122,9 @@ export function initGallery(cursorController) {
               </div>
             </div>
 
-            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div class="${paddingClass} flex-1 flex flex-col justify-between space-y-4">
               <div>
-                <h4 class="text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1">
+                <h4 class="text-base ${isBig ? 'sm:text-xl' : 'sm:text-base'} font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1">
                   ${p.title}
                 </h4>
                 <p class="text-xs text-slate-300 font-mono line-clamp-1 mt-1">
@@ -118,7 +137,7 @@ export function initGallery(cursorController) {
                   href="${targetUrl}" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  class="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 transition-colors"
+                  class="inline-flex items-center gap-2 text-xs font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
                 >
                   <span>Launch Website</span>
                   <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

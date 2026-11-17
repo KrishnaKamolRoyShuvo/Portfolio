@@ -168,26 +168,50 @@ html.light .custom-cursor-ring.cursor-view::after {
 }
 
 /* =========================================
+   ALTERNATING SECTION BACKGROUND SYSTEM
+   Solid Sections: #flagship & #experience
+   Water Ripple Sections: #hero, #research, #gallery, #skills, #terminal, #contact
+   ========================================= */
+.section-solid-bg {
+  position: relative;
+  z-index: 10;
+  background-color: var(--bg-primary);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+}
+html.light .section-solid-bg {
+  background-color: #F4F7FB;
+  box-shadow: 0 20px 40px -15px rgba(32, 44, 59, 0.06);
+}
+
+#hero, #research, #gallery, #skills, #terminal, #contact, footer {
+  position: relative;
+  z-index: 10;
+  background: transparent !important;
+}
+
+/* =========================================
    APPLE LIQUID GLASS SURFACES (NIGHT MODE)
    ========================================= */
 .glass-panel {
-  background: rgba(28, 41, 57, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.35);
+  background: rgba(28, 41, 57, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.45),
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .glass-card {
-  background: rgba(28, 41, 57, 0.65);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.45);
+  background: rgba(28, 41, 57, 0.70);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.45),
+              inset 0 1px 1px rgba(255, 255, 255, 0.12);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-card:hover {
-  border-color: var(--border-hover);
+  border-color: rgba(96, 165, 250, 0.4);
   box-shadow: 0 16px 36px -10px var(--glow-color);
   transform: translateY(-3px);
 }
@@ -195,16 +219,17 @@ html.light .custom-cursor-ring.cursor-view::after {
 /* Bento Client Cards */
 .bento-card {
   position: relative;
-  background: rgba(28, 41, 57, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  background: rgba(28, 41, 57, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.5),
+              inset 0 1px 1px rgba(255, 255, 255, 0.12);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .bento-card:hover {
   border-color: rgba(96, 165, 250, 0.5);
-  box-shadow: 0 15px 35px -5px rgba(96, 165, 250, 0.15);
+  box-shadow: 0 16px 36px -5px rgba(96, 165, 250, 0.2);
   transform: translateY(-4px);
 }
 
@@ -303,43 +328,75 @@ html.light .text-slate-400 {
   color: #64748B !important;
 }
 
-/* Apple Liquid Glass Panel in Day Mode */
+/* Apple Liquid Glass Panel in Day Mode (iOS 27 Specular Frosted Glass) */
 html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.90);
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  box-shadow: 0 10px 30px -4px rgba(32, 44, 59, 0.06), 0 2px 6px -1px rgba(32, 44, 59, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 16px 36px -4px rgba(32, 44, 59, 0.06), 
+              0 4px 12px -2px rgba(32, 44, 59, 0.03),
+              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
 }
 
 /* Apple Liquid Glass Card in Day Mode */
 html.light .glass-card {
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  box-shadow: 0 10px 30px -4px rgba(32, 44, 59, 0.06), 0 2px 6px -1px rgba(32, 44, 59, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 16px 36px -4px rgba(32, 44, 59, 0.06), 
+              0 4px 12px -2px rgba(32, 44, 59, 0.03),
+              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
 }
 html.light .glass-card:hover {
-  border-color: rgba(37, 99, 235, 0.35);
-  box-shadow: 0 16px 36px -6px rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.4) !important;
+  box-shadow: 0 20px 42px -6px rgba(37, 99, 235, 0.14),
+              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Bento Card in Day Mode */
 html.light .bento-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 10px 30px -4px rgba(32, 44, 59, 0.06), 0 2px 6px -1px rgba(32, 44, 59, 0.03);
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 16px 36px -4px rgba(32, 44, 59, 0.06), 
+              0 4px 12px -2px rgba(32, 44, 59, 0.03),
+              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
 }
 html.light .bento-card:hover {
-  border-color: rgba(37, 99, 235, 0.45);
-  box-shadow: 0 16px 36px -6px rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.45) !important;
+  box-shadow: 0 20px 42px -6px rgba(37, 99, 235, 0.14),
+              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
 }
 html.light .bento-card h4 {
   color: #202C3B !important;
 }
 html.light .bento-card p.font-mono {
   color: #64748B !important;
+}
+
+/* Input Fields & Textareas (Day Mode Liquid Glass) */
+html.light input,
+html.light textarea,
+html.light select {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  color: #202C3B !important;
+}
+html.light input:focus,
+html.light textarea:focus {
+  border-color: #2563EB !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+/* Unified Primary CTA Buttons */
+html.light button[type="submit"],
+html.light a[download] {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.35) !important;
 }
 
 /* Section Number Pills in Day Mode */

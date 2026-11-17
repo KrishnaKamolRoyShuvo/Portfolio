@@ -52,13 +52,13 @@ async function runTests() {
     await page.waitForTimeout(200);
 
     // 3. Test Progressive Bento Gallery Reveal (7 -> 12 -> 20 -> 30 -> 36)
-    console.log('Testing Progressive Bento Gallery Steps (7 -> 12 -> 20)...');
+    console.log('Testing Progressive Bento Gallery Steps (6 -> 12 -> 18)...');
     const gallerySection = page.locator('#gallery');
     await gallerySection.scrollIntoViewIfNeeded();
     await page.waitForTimeout(600);
 
     const countInitial = await page.locator('#client-gallery-grid .bento-card').count();
-    console.log(`Initial visible projects count: ${countInitial} (expected 7)`);
+    console.log(`Initial visible projects count: ${countInitial} (expected 6)`);
 
     const loadMoreBtn = page.locator('#load-more-projects-btn');
     if (await loadMoreBtn.isVisible()) {
@@ -70,7 +70,7 @@ async function runTests() {
       await loadMoreBtn.click();
       await page.waitForTimeout(400);
       const countStep3 = await page.locator('#client-gallery-grid .bento-card').count();
-      console.log(`After click 2: ${countStep3} projects (expected 20)`);
+      console.log(`After click 2: ${countStep3} projects (expected 18)`);
     }
 
     await page.screenshot({ path: path.join(screenshotsDir, `${vp.name}_2_gallery_step.png`) });
