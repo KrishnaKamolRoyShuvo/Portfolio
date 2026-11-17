@@ -497,6 +497,21 @@ html.light .bg-slate-900 {
   color: #202C3B !important;
 }
 
+/* Terminal Output Body Responsive Sizing */
+#terminal-body {
+  min-height: 420px;
+}
+@media (min-width: 640px) {
+  #terminal-body {
+    min-height: 460px;
+  }
+}
+@media (min-width: 1024px) {
+  #terminal-body {
+    min-height: 480px;
+  }
+}
+
 /* Day Mode Developer CLI Terminal & Command Reference Suite (Lighter Color & 5px Blur) */
 html.light #terminal-card,
 html.light .terminal-ref-card {
