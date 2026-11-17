@@ -46,8 +46,8 @@ export function initPreloader(onComplete) {
               duration: 0.08,
               ease: 'power2.out',
               onComplete: () => {
-                // Stays for 160ms before next transition (~2.3s total sequence)
-                setTimeout(nextGreeting, 160);
+                // Stays for 225ms before next transition (+0.5s total across sequence)
+                setTimeout(nextGreeting, 225);
               }
             }
           );
@@ -88,5 +88,5 @@ export function initPreloader(onComplete) {
   }
 
   // Initial stay on first greeting then begin sequence
-  setTimeout(nextGreeting, 220);
+  setTimeout(nextGreeting, 270);
 }

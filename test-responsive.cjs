@@ -36,8 +36,8 @@ async function runTests() {
     const preloaderVisible = await page.isVisible('#preloader');
     console.log(`Preloader initial visible: ${preloaderVisible}`);
 
-    // Wait for preloader to complete (~2.5s)
-    await page.waitForTimeout(2800);
+    // Wait for preloader to complete (~3.0s with +0.5s extended duration)
+    await page.waitForTimeout(3400);
     const preloaderGone = !(await page.isVisible('#preloader'));
     console.log(`Preloader finished and hidden: ${preloaderGone}`);
 
