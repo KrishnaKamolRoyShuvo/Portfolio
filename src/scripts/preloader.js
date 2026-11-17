@@ -54,7 +54,15 @@ export function initPreloader(onComplete) {
         }
       });
     } else {
-      // Finished all greetings: outro transition with semi-rounded bottom
+      // Finished all greetings: Dennis Snellenberg parabolic curved curtain exit
+      const curveWrap = document.getElementById('preloader-curve-wrap');
+      const isMobile = window.innerWidth < 640;
+      const initialCurveHeight = isMobile ? '7vh' : '11vh';
+
+      if (curveWrap) {
+        gsap.set(curveWrap, { height: initialCurveHeight });
+      }
+
       const tl = gsap.timeline({
         onComplete: () => {
           preloader.style.display = 'none';
@@ -70,20 +78,21 @@ export function initPreloader(onComplete) {
         ease: 'power2.in'
       });
 
-      // Semi-rounded bottom curve (gentle arc, not overly carved)
-      if (svgCurve) {
-        tl.to(svgCurve, {
-          attr: { d: 'M0 0 L100 0 L100 80 Q50 115 0 80 Z' },
-          duration: 0.7,
-          ease: 'power3.in'
-        }, '-=0.08');
-      }
-
+      // Lift preloader upward
       tl.to(preloader, {
         yPercent: -100,
-        duration: 0.8,
+        duration: 0.85,
         ease: 'power4.inOut'
-      }, '-=0.55');
+      }, '-=0.05');
+
+      // Simultaneously flatten curve as it finishes
+      if (curveWrap) {
+        tl.to(curveWrap, {
+          height: '0vh',
+          duration: 0.85,
+          ease: 'power4.inOut'
+        }, '<');
+      }
     }
   }
 
