@@ -82,10 +82,17 @@ async function runTests() {
       await themeBtn.click();
       await page.waitForTimeout(500);
 
-      // Check terminal in Day Mode
+      // Check terminal in Day Mode and test Command Suite clicking
       const terminalSection = page.locator('#terminal');
       await terminalSection.scrollIntoViewIfNeeded();
       await page.waitForTimeout(400);
+
+      // Click Command Suite button 'skills'
+      const skillsBtn = page.locator('[data-terminal-cmd="skills"]');
+      if (await skillsBtn.isVisible()) {
+        await skillsBtn.click();
+        await page.waitForTimeout(300);
+      }
 
       // Type in CLI
       const terminalInput = page.locator('#terminal-input');
@@ -96,6 +103,18 @@ async function runTests() {
       }
 
       await page.screenshot({ path: path.join(screenshotsDir, `${vp.name}_3_day_mode_terminal.png`) });
+
+      // Check Footer CV (PDF) link styling in Day Mode
+      const footerCvLink = page.locator('footer a[download]');
+      if (await footerCvLink.isVisible()) {
+        const footerCvBg = await footerCvLink.evaluate(el => window.getComputedStyle(el).backgroundColor);
+        console.log(`Footer CV link background: ${footerCvBg} (should be transparent/none)`);
+      }
+
+      // Check HSC & SSC honors text (verify "Golden" is removed)
+      const hscText = await page.locator('#experience').innerText();
+      const hasGolden = hscText.includes('Golden');
+      console.log(`Contains 'Golden' in timeline: ${hasGolden} (expected: false)`);
 
       // Check Flagship tech badges in Day Mode
       const flagshipSection = page.locator('#flagship');

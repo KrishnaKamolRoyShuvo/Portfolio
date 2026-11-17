@@ -1,7 +1,12 @@
 /**
  * Interactive Client Portfolio Bento Gallery (36 Projects)
- * Progressive Reveal Sequence: 7 -> 12 -> 20 -> 30 -> 36
- * Formulated so every step forms a clean, complete solid rectangular layout.
+ * Exact Bento Pattern:
+ *   Row 1-2: 1 Big Left (cols 1-2, rows 1-2) + 2 Small Right (col 3)
+ *   Row 3:   3 Small Horizontal (cols 1, 2, 3)
+ *   Row 4-5: 2 Small Left (col 1) + 1 Big Right (cols 2-3, rows 4-5)
+ *   Row 6:   3 Small Horizontal (cols 1, 2, 3)
+ *   Repeats cyclically every 12 items (6 items per 3 rows).
+ * Reveal Steps: 6 -> 12 -> 18 -> 24 -> 30 -> 36 (Solid Rectangular Geometry).
  */
 
 export function initGallery(cursorController) {
@@ -58,12 +63,12 @@ export function initGallery(cursorController) {
       .map((p, idx) => {
         const isLive = p.status === 200 || p.status === '200';
         
-        // Bento dynamic rhythm every 12 items:
+        // Exact Bento dynamic rhythm every 12 items:
         // 0: 1 Big horizontal (2 cols, 2 rows)
         // 1, 2: 2 Small vertical (in col 3, rows 1 & 2)
         // 3, 4, 5: 3 Small horizontal (row 3)
-        // 6, 7: 2 Small vertical (in col 1, rows 4 & 5)
-        // 8: 1 Big horizontal (cols 2-3, rows 4 & 5)
+        // 6: 1 Big horizontal on Right (cols 2-3, rows 4-5)
+        // 7, 8: 2 Small vertical on Left (in col 1, rows 4 & 5)
         // 9, 10, 11: 3 Small horizontal (row 6)
         const mod12 = idx % 12;
         let spanClass = 'col-span-1 row-span-1';
@@ -76,11 +81,11 @@ export function initGallery(cursorController) {
           spanClass = 'lg:col-span-1 lg:row-span-1';
         } else if (mod12 >= 3 && mod12 <= 5) {
           spanClass = 'lg:col-span-1 lg:row-span-1';
-        } else if (mod12 === 6 || mod12 === 7) {
-          spanClass = 'lg:col-span-1 lg:row-span-1';
-        } else if (mod12 === 8) {
-          spanClass = 'lg:col-span-2 lg:row-span-2';
+        } else if (mod12 === 6) {
+          spanClass = 'lg:col-start-2 lg:col-span-2 lg:row-span-2';
           isBig = true;
+        } else if (mod12 === 7 || mod12 === 8) {
+          spanClass = 'lg:col-span-1 lg:row-span-1';
         } else {
           spanClass = 'lg:col-span-1 lg:row-span-1';
         }
@@ -97,7 +102,7 @@ export function initGallery(cursorController) {
 
         const imgSrc = p.local_image || p.image;
         const targetUrl = p.url || '#';
-        const imgAspect = isBig ? 'aspect-[16/10] sm:aspect-[16/9]' : 'aspect-[16/9]';
+        const imgAspect = isBig ? 'aspect-[16/10] sm:aspect-[16/9]' : 'aspect-[16/10]';
         const paddingClass = isBig ? 'p-6 sm:p-7' : 'p-5';
 
         return `
@@ -159,44 +164,48 @@ export function initGallery(cursorController) {
           <span>All ${currentFiltered.length} Projects Unveiled</span>
           <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
         `;
-        loadMoreBtn.classList.add('opacity-60', 'pointer-events-none');
+        loadMoreBtn.disabled = true;
+        loadMoreBtn.classList.add('opacity-50', 'cursor-not-allowed');
       } else {
-        const nextTarget = STEPS[currentStepIndex + 1];
-        loadMoreBtn.classList.remove('opacity-60', 'pointer-events-none');
+        const nextTarget = STEPS[currentStepIndex + 1] || currentFiltered.length;
+        const remaining = Math.min(nextTarget, currentFiltered.length) - toShow.length;
         loadMoreBtn.innerHTML = `
-          <span>Explore More Projects (${toShow.length} of ${currentFiltered.length})</span>
-          <svg class="w-4 h-4 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <span>Unveil More Projects (+${remaining})</span>
+          <svg class="w-4 h-4 text-cyan-400 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         `;
+        loadMoreBtn.disabled = false;
+        loadMoreBtn.classList.remove('opacity-50', 'cursor-not-allowed');
       }
-    }
-
-    if (cursorController && cursorController.attachHoverListeners) {
-      cursorController.attachHoverListeners();
     }
   }
 
-  // Handle Load More Step Click (7 -> 12 -> 20 -> 30 -> 36)
+  // Load More Button Event
   if (loadMoreBtn) {
     loadMoreBtn.addEventListener('click', () => {
       if (currentStepIndex < STEPS.length - 1) {
         currentStepIndex++;
         render();
+        // Re-init tilt on newly injected cards
+        if (window.VanillaTilt) {
+          const newCards = container.querySelectorAll('[data-tilt]');
+          window.VanillaTilt.init(newCards, { max: 8, speed: 400, glare: true, 'max-glare': 0.15 });
+        }
       }
     });
   }
 
-  // Handle Category Filters
+  // Filter Buttons
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       filterBtns.forEach((b) => {
-        b.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-500');
-        b.classList.add('text-slate-400', 'border-slate-800');
+        b.classList.remove('bg-cyan-500', 'text-slate-950', 'shadow');
+        b.classList.add('text-slate-400');
       });
-      btn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-500');
-      btn.classList.remove('text-slate-400', 'border-slate-800');
+      btn.classList.add('bg-cyan-500', 'text-slate-950', 'shadow');
+      btn.classList.remove('text-slate-400');
 
-      const filter = btn.getAttribute('data-gallery-filter');
-      applyFilter(filter);
+      const filterVal = btn.getAttribute('data-gallery-filter');
+      applyFilter(filterVal);
     });
   });
 

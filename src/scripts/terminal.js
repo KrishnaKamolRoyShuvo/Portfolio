@@ -1,10 +1,9 @@
 /**
- * Interactive Developer Terminal CLI with Ghost Command Watermark
+ * Interactive Developer Terminal CLI with Command Reference Suite
  */
 export function initTerminal() {
   const terminalBody = document.getElementById('terminal-body');
   const terminalInput = document.getElementById('terminal-input');
-  const ghostWatermark = document.getElementById('terminal-ghost-watermark');
   if (!terminalBody || !terminalInput) return;
 
   const history = [];
@@ -118,11 +117,6 @@ export function initTerminal() {
   };
 
   function appendOutput(cmd, htmlContent) {
-    if (ghostWatermark) {
-      ghostWatermark.style.opacity = '0';
-      ghostWatermark.style.pointerEvents = 'none';
-    }
-
     const entry = document.createElement('div');
     entry.className = 'mb-2';
     entry.innerHTML = `
@@ -136,31 +130,33 @@ export function initTerminal() {
     terminalBody.scrollTop = terminalBody.scrollHeight;
   }
 
+  function runCmd(rawCmd) {
+    const cmd = rawCmd.trim().toLowerCase();
+    if (!cmd) return;
+
+    history.push(rawCmd);
+    historyIndex = history.length;
+
+    if (cmd === 'clear') {
+      terminalBody.innerHTML = '';
+      return;
+    }
+
+    if (COMMANDS[cmd]) {
+      appendOutput(rawCmd, COMMANDS[cmd]());
+    } else {
+      appendOutput(
+        rawCmd,
+        `<span class="text-rose-400">Command not found: "${rawCmd}". Type <span class="text-cyan-400 underline cursor-pointer" data-terminal-cmd="help">help</span> to view available commands.</span>`
+      );
+    }
+  }
+
   terminalInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-      const rawCmd = terminalInput.value.trim();
-      const cmd = rawCmd.toLowerCase();
+      const rawCmd = terminalInput.value;
       terminalInput.value = '';
-
-      if (!cmd) return;
-
-      history.push(rawCmd);
-      historyIndex = history.length;
-
-      if (cmd === 'clear') {
-        terminalBody.innerHTML = '';
-        if (ghostWatermark) ghostWatermark.style.opacity = '0.12';
-        return;
-      }
-
-      if (COMMANDS[cmd]) {
-        appendOutput(rawCmd, COMMANDS[cmd]());
-      } else {
-        appendOutput(
-          rawCmd,
-          `<span class="text-rose-400">Command not found: "${rawCmd}". Type <span class="text-cyan-400 underline cursor-pointer" onclick="document.getElementById('terminal-input').value='help'; document.getElementById('terminal-input').focus();">help</span> to view available commands.</span>`
-        );
-      }
+      runCmd(rawCmd);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (historyIndex > 0) {
@@ -175,6 +171,20 @@ export function initTerminal() {
       } else {
         historyIndex = history.length;
         terminalInput.value = '';
+      }
+    }
+  });
+
+  // Attach direct execution listeners to Command Palette buttons
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-terminal-cmd]');
+    if (trigger) {
+      const cmd = trigger.getAttribute('data-terminal-cmd');
+      if (cmd) {
+        terminalInput.value = cmd;
+        runCmd(cmd);
+        terminalInput.value = '';
+        terminalInput.focus();
       }
     }
   });

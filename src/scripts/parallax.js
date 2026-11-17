@@ -37,13 +37,13 @@ export function initParallaxAndMotion() {
           end: '+=80%',
           pin: true,
           pinSpacing: false,
-          scrub: 0.5,
+          scrub: 0.15,
           onUpdate: (self) => {
             const p = self.progress;
             gsap.set(heroContent, {
-              scale: 1.0 - p * 0.08,
-              opacity: Math.max(0, 1.0 - p * 1.3),
-              y: p * 50
+              scale: 1.0 - p * 0.06,
+              opacity: Math.max(0, 1.0 - p * 1.2),
+              y: p * 40
             });
           }
         });
@@ -115,7 +115,7 @@ export function initParallaxAndMotion() {
     }
   });
 
-  // 5. Timeline Progress Tracer Line
+  // 5. Timeline Progress Tracer Line (Balanced Pacing)
   const timelineProgress = document.getElementById('timeline-progress-bar');
   const timelineContainer = document.getElementById('timeline-container');
   if (timelineProgress && timelineContainer) {
@@ -127,9 +127,9 @@ export function initParallaxAndMotion() {
         ease: 'none',
         scrollTrigger: {
           trigger: timelineContainer,
-          start: 'top 70%',
-          end: 'bottom 80%',
-          scrub: 0.5
+          start: 'top 45%',
+          end: 'bottom 85%',
+          scrub: 1.2
         }
       }
     );

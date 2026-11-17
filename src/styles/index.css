@@ -393,16 +393,34 @@ html.light textarea:focus {
 
 /* Unified Primary CTA Buttons */
 html.light button[type="submit"],
-html.light a[download] {
+html.light #hero a[download],
+html.light header a[download],
+html.light .btn-download {
   background: #2563EB !important;
   color: #FFFFFF !important;
   box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.35) !important;
 }
 
+/* Footer Link Reset in Day Mode */
+html.light footer a,
+html.light footer a[download] {
+  background: transparent !important;
+  color: #64748B !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 500 !important;
+}
+html.light footer a:hover,
+html.light footer a[download]:hover {
+  color: #2563EB !important;
+}
+
 /* Section Number Pills in Day Mode */
-html.light .section-pill {
+html.light .section-pill,
+html.light .section-pill span {
   background: rgba(37, 99, 235, 0.08) !important;
-  border: 1px solid rgba(37, 99, 235, 0.22) !important;
+  border-color: rgba(37, 99, 235, 0.22) !important;
   color: #1D4ED8 !important;
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.05);
 }
@@ -460,12 +478,17 @@ html.light .bg-slate-900 {
   color: #202C3B !important;
 }
 
-/* Day Mode Developer CLI Terminal */
-html.light #terminal-card {
-  background-color: #FFFFFF !important;
-  border: 1px solid #CBD5E1 !important;
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.08) !important;
+/* Day Mode Developer CLI Terminal & Command Reference Suite */
+html.light #terminal-card,
+html.light .terminal-ref-card {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 20px 45px -10px rgba(32, 44, 59, 0.08), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
 }
+
 html.light #terminal-card .bg-slate-900\/90 {
   background-color: #F1F5F9 !important;
   border-bottom: 1px solid #E2E8F0 !important;
@@ -474,24 +497,33 @@ html.light #terminal-card .bg-slate-900\/50 {
   background-color: #F8FAFC !important;
   border-top: 1px solid #E2E8F0 !important;
 }
-html.light #terminal-card .text-white {
-  color: #202C3B !important;
+html.light #terminal-card .text-white,
+html.light .terminal-ref-card .text-white {
+  color: #1E293B !important;
 }
-html.light #terminal-card .text-slate-400 {
+html.light #terminal-card .text-slate-400,
+html.light .terminal-ref-card .text-slate-400 {
   color: #64748B !important;
 }
 html.light #terminal-card .text-slate-300 {
   color: #334155 !important;
 }
 html.light #terminal-card input {
-  color: #202C3B !important;
+  color: #1E293B !important;
 }
 html.light #terminal-card input::placeholder {
   color: #94A3B8 !important;
 }
-html.light #terminal-ghost-watermark {
-  color: #94A3B8 !important;
-  opacity: 0.12 !important;
+html.light .terminal-cmd-btn {
+  background: rgba(241, 245, 249, 0.9) !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+}
+html.light .terminal-cmd-btn:hover {
+  background: rgba(239, 246, 255, 0.98) !important;
+  border-color: rgba(37, 99, 235, 0.35) !important;
+}
+html.light .terminal-cmd-btn span.text-slate-300 {
+  color: #475569 !important;
 }
 
 /* Buttons with Gradient preserve crisp white text */
