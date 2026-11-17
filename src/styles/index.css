@@ -1,0 +1,311 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #07090e;
+    --bg-secondary: #0d111a;
+    --bg-card: #121722;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(99, 102, 241, 0.4);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent-cyan: #06b6d4;
+    --accent-indigo: #6366f1;
+    --glow-color: rgba(99, 102, 241, 0.15);
+  }
+
+  html.light {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --border-color: rgba(15, 23, 42, 0.1);
+    --border-hover: rgba(99, 102, 241, 0.5);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-cyan: #0284c7;
+    --accent-indigo: #4f46e5;
+    --glow-color: rgba(99, 102, 241, 0.08);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Light Mode High-Contrast Typography & Surface Polish */
+html.light body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400 {
+  color: #475569 !important;
+}
+
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 25px -4px rgba(15, 23, 42, 0.06);
+}
+
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+}
+
+html.light .bg-slate-950\/70,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900 {
+  background-color: #f1f5f9 !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Preserve bright crisp text on colored buttons */
+html.light .bg-gradient-to-r,
+html.light .bg-gradient-to-r span,
+html.light .bg-gradient-to-r svg,
+html.light .bg-cyan-500,
+html.light .bg-indigo-600 {
+  color: #ffffff !important;
+}
+
+/* Light mode skill chips and badges contrast */
+html.light .glass-panel span.text-slate-200,
+html.light .glass-card span.text-slate-200 {
+  color: #0f172a !important;
+  background-color: rgba(241, 245, 249, 0.9) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  font-weight: 500;
+}
+
+html.light .text-indigo-300 {
+  color: #4338ca !important;
+  font-weight: 600;
+}
+html.light .bg-indigo-500\/20 {
+  background-color: rgba(99, 102, 241, 0.15) !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+}
+
+html.light .text-cyan-300 {
+  color: #0369a1 !important;
+  font-weight: 600;
+}
+
+/* Terminal Console preserves true Dark Hacker theme */
+html.light #terminal-card {
+  background-color: #07090e !important;
+  border-color: #1e2638 !important;
+}
+html.light #terminal-card .text-white {
+  color: #ffffff !important;
+}
+html.light #terminal-card .text-slate-400 {
+  color: #94a3b8 !important;
+}
+html.light #terminal-card .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+html.light #terminal-card input {
+  color: #ffffff !important;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: #6366f1;
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.6);
+}
+
+/* Custom Cursor Elements */
+.custom-cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #06b6d4;
+  border-radius: 50%;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 0 12px #06b6d4;
+}
+
+.custom-cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(99, 102, 241, 0.7);
+  border-radius: 50%;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.custom-cursor-ring.cursor-hover {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(99, 102, 241, 0.15);
+  border-color: #06b6d4;
+  backdrop-filter: blur(2px);
+}
+
+.custom-cursor-ring.cursor-view::after {
+  content: 'EXPLORE';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #06b6d4;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor-dot, .custom-cursor-ring {
+    display: none !important;
+  }
+}
+
+/* Water Ripple Canvas Overlay */
+#water-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 40;
+  mix-blend-mode: screen;
+}
+html.light #water-canvas {
+  mix-blend-mode: multiply;
+  opacity: 0.65;
+}
+
+/* 3D Background Canvas */
+#webgl-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(18, 23, 34, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+}
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.glass-card {
+  background: rgba(13, 17, 26, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 30px -10px var(--glow-color);
+  transform: translateY(-4px);
+}
+
+/* Spotlight Effect */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(99, 102, 241, 0.4),
+    transparent 40%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Text Gradients */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html.light .gradient-text {
+  background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #475569 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #06b6d4 0%, #6366f1 50%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Sticky Stacked Cards Parallax */
+.stacked-card {
+  position: sticky;
+  top: 100px;
+}
