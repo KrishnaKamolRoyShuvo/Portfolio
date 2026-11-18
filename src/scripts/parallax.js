@@ -21,7 +21,7 @@ export function initParallaxAndMotion() {
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
   });
-  gsap.ticker.lagSmoothing(0);
+  gsap.ticker.lagSmoothing(500, 33);
 
   // 2. Dennis Snellenberg Hero Parallax Transition (Pinned Fade & Upward Content Slide on Desktop)
   const heroSection = document.getElementById('hero');
@@ -99,15 +99,14 @@ export function initParallaxAndMotion() {
       projectCards.forEach((card, index) => {
         if (index < projectCards.length - 1) {
           gsap.to(card, {
-            scale: 0.94,
-            opacity: 0.5,
-            filter: 'blur(3px)',
+            scale: 0.96,
+            opacity: 0.65,
             ease: 'power1.out',
             scrollTrigger: {
               trigger: projectCards[index + 1],
-              start: 'top 65%',
-              end: 'top 20%',
-              scrub: true
+              start: 'top 70%',
+              end: 'top 25%',
+              scrub: 0.6
             }
           });
         }

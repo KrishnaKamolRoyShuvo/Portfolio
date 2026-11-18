@@ -1,15 +1,24 @@
 /**
  * Dark Mode & Day Mode Theme Controller
+ * Defaults dynamically to real-time wall clock (Day: 6 AM - 6 PM; Night: 6 PM - 6 AM)
+ * Allows visitor to manually toggle and persist preference.
  */
 export function initTheme(callbacks = {}) {
   const toggleBtn = document.getElementById('theme-toggle-btn');
-  const savedTheme = localStorage.getItem('theme') || 'dark';
+  const savedTheme = localStorage.getItem('theme');
+  let currentTheme = savedTheme;
+  if (!currentTheme) {
+    const hour = new Date().getHours();
+    currentTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
+  }
 
-  function setTheme(theme) {
+  function setTheme(theme, isManualAction = false) {
     if (theme === 'light') {
       document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+      if (isManualAction) {
+        localStorage.setItem('theme', 'light');
+      }
       if (toggleBtn) {
         toggleBtn.innerHTML = `
           <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -21,7 +30,9 @@ export function initTheme(callbacks = {}) {
     } else {
       document.documentElement.classList.remove('light');
       document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+      if (isManualAction) {
+        localStorage.setItem('theme', 'dark');
+      }
       if (toggleBtn) {
         toggleBtn.innerHTML = `
           <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,13 +48,13 @@ export function initTheme(callbacks = {}) {
     }
   }
 
-  // Initialize
-  setTheme(savedTheme);
+  // Initialize icon & state
+  setTheme(currentTheme, false);
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
       const current = document.documentElement.classList.contains('light') ? 'light' : 'dark';
-      setTheme(current === 'light' ? 'dark' : 'light');
+      setTheme(current === 'light' ? 'dark' : 'light', true);
     });
   }
 

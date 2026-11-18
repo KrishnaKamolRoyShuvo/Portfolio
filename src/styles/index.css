@@ -272,6 +272,9 @@ html.light footer {
   .stacked-card {
     position: sticky;
     top: 96px;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 }
 @media (max-width: 767px) {
@@ -606,12 +609,30 @@ html.light .bg-emerald-600 {
   align-items: center;
   justify-content: center;
   overflow: visible;
+  transition: background-color 0.2s ease;
 }
 #preloader,
-#preloader *,
+#preloader * {
+  color: #ffffff !important;
+}
+#preloader-curve {
+  background-color: #07090e;
+  transition: background-color 0.2s ease;
+}
+
+/* Day Mode Preloader */
+html.light #preloader {
+  background-color: #F4F7FB !important;
+}
+html.light #preloader-curve {
+  background-color: #F4F7FB !important;
+}
 html.light #preloader,
 html.light #preloader * {
-  color: #ffffff !important;
+  color: #0F172A !important;
+}
+html.light #preloader .bg-cyan-400 {
+  background-color: #2563EB !important;
 }
 
 /* Light Mode Badges & Floating Pills High-Contrast */
