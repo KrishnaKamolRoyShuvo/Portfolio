@@ -3,61 +3,56 @@ import gsap from 'gsap';
 export function initPreloader(onComplete) {
   const preloader = document.getElementById('preloader');
   const greetingEl = document.getElementById('preloader-greeting');
-  const svgCurve = document.getElementById('preloader-curve');
   if (!preloader || !greetingEl) {
     if (onComplete) onComplete();
     return;
   }
 
-  // Greetings sequence with Bengali "নমস্কার" strictly 2nd as requested
+  // Exact multilingual greeting sequence specified by user
   const greetings = [
     'Hello',
-    'নমস্কার',
+    'Hola',
     'Bonjour',
     'Ciao',
+    'नमस्ते',
+    'নমস্কার',
+    'مرحباً',
+    '你好',
+    'Xin chào',
     'Olá',
-    'こんにちは',
-    'Guten Tag',
-    'হ্যালো'
+    'Hallo'
   ];
 
   let index = 0;
   greetingEl.textContent = `• ${greetings[0]}`;
 
+  // Stable word display with ultra-snappy switch (no lingering transition delay)
   function nextGreeting() {
     index++;
     if (index < greetings.length) {
-      // Quick transition out, change word, quick transition in with stay
+      // Instant, stable word swap with a crisp micro-fade (15ms)
       gsap.to(greetingEl, {
-        opacity: 0,
-        y: -8,
-        scale: 0.96,
-        duration: 0.05,
-        ease: 'power2.in',
+        opacity: 0.3,
+        duration: 0.015,
+        ease: 'none',
         onComplete: () => {
           greetingEl.textContent = `• ${greetings[index]}`;
-          gsap.fromTo(
-            greetingEl,
-            { opacity: 0, y: 8, scale: 0.96 },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.08,
-              ease: 'power2.out',
-              onComplete: () => {
-                // Stays for 200ms before next transition (-0.2s adjusted)
-                setTimeout(nextGreeting, 200);
-              }
+          gsap.to(greetingEl, {
+            opacity: 1,
+            duration: 0.015,
+            ease: 'none',
+            onComplete: () => {
+              // Stable viewing time per greeting (140ms)
+              setTimeout(nextGreeting, 140);
             }
-          );
+          });
         }
       });
     } else {
       // Finished all greetings: Dennis Snellenberg parabolic curved curtain exit
       const curveWrap = document.getElementById('preloader-curve-wrap');
       const isMobile = window.innerWidth < 640;
-      const initialCurveHeight = isMobile ? '7vh' : '11vh';
+      const initialCurveHeight = isMobile ? '7vh' : '10vh';
 
       if (curveWrap) {
         gsap.set(curveWrap, { height: initialCurveHeight });
@@ -71,31 +66,32 @@ export function initPreloader(onComplete) {
         }
       });
 
+      // Quick fade out of greeting
       tl.to(greetingEl, {
         opacity: 0,
-        y: -24,
-        duration: 0.22,
+        y: -18,
+        duration: 0.16,
         ease: 'power2.in'
       });
 
-      // Lift preloader upward
+      // Lift preloader curtain upward smoothly
       tl.to(preloader, {
         yPercent: -100,
-        duration: 0.85,
+        duration: 0.75,
         ease: 'power4.inOut'
-      }, '-=0.05');
+      }, '-=0.04');
 
-      // Simultaneously flatten curve as it finishes
+      // Flatten curve simultaneously
       if (curveWrap) {
         tl.to(curveWrap, {
           height: '0vh',
-          duration: 0.85,
+          duration: 0.75,
           ease: 'power4.inOut'
         }, '<');
       }
     }
   }
 
-  // Initial stay on first greeting then begin sequence
-  setTimeout(nextGreeting, 245);
+  // Initial stay on first greeting (150ms) then start sequence
+  setTimeout(nextGreeting, 150);
 }

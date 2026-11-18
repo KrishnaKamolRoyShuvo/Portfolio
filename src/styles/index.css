@@ -176,7 +176,7 @@ html.light .custom-cursor-ring.cursor-view::after {
 footer {
   position: relative;
   z-index: 10;
-  background: rgba(10, 15, 29, 0.78);
+  background: rgba(10, 15, 29, 0.62);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -184,7 +184,7 @@ footer {
 }
 html.light .section-solid-bg,
 html.light footer {
-  background: rgba(244, 247, 251, 0.65) !important;
+  background: rgba(244, 247, 251, 0.45) !important;
   backdrop-filter: blur(12px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
   border-top: 1px solid rgba(226, 232, 240, 0.75) !important;
@@ -202,7 +202,7 @@ html.light footer {
    Refined with subtle, lighter blur (12px)
    ========================================= */
 .glass-panel {
-  background: rgba(28, 41, 57, 0.68);
+  background: rgba(28, 41, 57, 0.48);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -211,7 +211,7 @@ html.light footer {
 }
 
 .glass-card {
-  background: rgba(28, 41, 57, 0.65);
+  background: rgba(28, 41, 57, 0.45);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -228,7 +228,7 @@ html.light footer {
 /* Bento Client Cards */
 .bento-card {
   position: relative;
-  background: rgba(28, 41, 57, 0.68);
+  background: rgba(28, 41, 57, 0.48);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
@@ -337,20 +337,9 @@ html.light .text-slate-400 {
   color: #64748B !important;
 }
 
-/* Apple Liquid Glass Panel in Day Mode (iOS 27 Specular Frosted Glass) */
-html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.75) !important;
-  border: 1px solid rgba(255, 255, 255, 0.85) !important;
-  box-shadow: 0 16px 36px -4px rgba(32, 44, 59, 0.06), 
-              0 4px 12px -2px rgba(32, 44, 59, 0.03),
-              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-}
-
 /* Apple Liquid Glass Panels & Cards in Day Mode (Clean, Lighter Color & 5px Blur) */
 html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.60) !important;
+  background: rgba(255, 255, 255, 0.40) !important;
   border: 1px solid rgba(255, 255, 255, 0.85) !important;
   box-shadow: 0 16px 36px -4px rgba(32, 44, 59, 0.05), 
               0 4px 12px -2px rgba(32, 44, 59, 0.02),
@@ -360,7 +349,7 @@ html.light .glass-panel {
 }
 
 html.light .glass-card {
-  background: rgba(255, 255, 255, 0.58) !important;
+  background: rgba(255, 255, 255, 0.38) !important;
   border: 1px solid rgba(255, 255, 255, 0.85) !important;
   box-shadow: 0 16px 36px -4px rgba(32, 44, 59, 0.05), 
               0 4px 12px -2px rgba(32, 44, 59, 0.02),
@@ -376,7 +365,7 @@ html.light .glass-card:hover {
 
 /* Bento Card in Day Mode (Clean, Lighter Color & 5px Blur) */
 html.light .bento-card {
-  background: rgba(255, 255, 255, 0.60) !important;
+  background: rgba(255, 255, 255, 0.40) !important;
   border: 1px solid rgba(255, 255, 255, 0.85) !important;
   box-shadow: 0 16px 36px -4px rgba(32, 44, 59, 0.05), 
               0 4px 12px -2px rgba(32, 44, 59, 0.02),
@@ -515,7 +504,7 @@ html.light .bg-slate-900 {
 /* Day Mode Developer CLI Terminal & Command Reference Suite (Lighter Color & 5px Blur) */
 html.light #terminal-card,
 html.light .terminal-ref-card {
-  background: rgba(255, 255, 255, 0.64) !important;
+  background: rgba(255, 255, 255, 0.42) !important;
   border: 1px solid rgba(255, 255, 255, 0.9) !important;
   box-shadow: 0 20px 45px -10px rgba(32, 44, 59, 0.06), 
               inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
