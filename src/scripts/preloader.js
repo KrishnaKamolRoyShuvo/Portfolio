@@ -8,9 +8,9 @@ export function initPreloader(onComplete) {
     return;
   }
 
-  // Exact multilingual greeting sequence specified by user
+  // Exact multilingual greeting sequence (Hallo first, Hello last)
   const greetings = [
-    'Hello',
+    'Hallo',
     'Hola',
     'Bonjour',
     'Ciao',
@@ -20,7 +20,7 @@ export function initPreloader(onComplete) {
     '你好',
     'Xin chào',
     'Olá',
-    'Hallo'
+    'Hello'
   ];
 
   let index = 0;
@@ -42,8 +42,9 @@ export function initPreloader(onComplete) {
             duration: 0.015,
             ease: 'none',
             onComplete: () => {
-              // Stable viewing time per greeting (140ms)
-              setTimeout(nextGreeting, 140);
+              // Viewing time: 150ms for final greeting 'Hello', 100ms for intermediate greetings
+              const viewingTime = (index === greetings.length - 1) ? 150 : 100;
+              setTimeout(nextGreeting, viewingTime);
             }
           });
         }
@@ -70,14 +71,14 @@ export function initPreloader(onComplete) {
       tl.to(greetingEl, {
         opacity: 0,
         y: -18,
-        duration: 0.16,
+        duration: 0.12,
         ease: 'power2.in'
       });
 
-      // Lift preloader curtain upward smoothly
+      // Lift preloader curtain upward smoothly (exact 0.60s)
       tl.to(preloader, {
         yPercent: -100,
-        duration: 0.75,
+        duration: 0.60,
         ease: 'power4.inOut'
       }, '-=0.04');
 
@@ -85,13 +86,13 @@ export function initPreloader(onComplete) {
       if (curveWrap) {
         tl.to(curveWrap, {
           height: '0vh',
-          duration: 0.75,
+          duration: 0.60,
           ease: 'power4.inOut'
         }, '<');
       }
     }
   }
 
-  // Initial stay on first greeting (150ms) then start sequence
-  setTimeout(nextGreeting, 150);
+  // Initial stay on first greeting 'Hallo' (exact 200ms) then start sequence
+  setTimeout(nextGreeting, 200);
 }
