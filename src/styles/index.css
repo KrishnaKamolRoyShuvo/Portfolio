@@ -513,14 +513,46 @@ html.light #dhaka-live-clock + svg {
 }
 
 /* Flagship Software Engineering Tech Badges (Day Mode Fix) */
-html.light .stacked-card span.font-mono,
+html.light .stacked-card .rounded-md.font-mono,
+html.light .stacked-card .rounded-full.font-mono:not(.live-status-badge):not(.project-type-badge),
 html.light .stacked-card span.text-cyan-300,
-html.light .stacked-card span.text-indigo-300,
-html.light .stacked-card span.text-emerald-300 {
+html.light .stacked-card span.text-indigo-300 {
   background-color: #E7F1F9 !important;
   border: 1px solid rgba(23, 100, 165, 0.25) !important;
   color: #1764A5 !important;
   font-weight: 600 !important;
+}
+
+/* Project Type Badge (Personal Engineering Project) */
+.project-type-badge {
+  background-color: rgba(161, 182, 201, 0.10) !important;
+  border: 1px solid rgba(161, 182, 201, 0.25) !important;
+  color: #A1B6C9 !important;
+}
+
+html.light .project-type-badge {
+  background-color: rgba(91, 113, 136, 0.08) !important;
+  border: 1px solid rgba(91, 113, 136, 0.25) !important;
+  color: #5B7188 !important;
+}
+
+/* Live Status Badge Styling */
+.live-status-badge {
+  background-color: rgba(74, 209, 192, 0.12) !important;
+  border: 1px solid rgba(74, 209, 192, 0.3) !important;
+  color: #4AD1C0 !important;
+}
+.live-status-badge span.rounded-full {
+  background-color: #4AD1C0 !important;
+}
+
+html.light .live-status-badge {
+  background-color: rgba(8, 126, 120, 0.08) !important;
+  border: 1px solid rgba(8, 126, 120, 0.25) !important;
+  color: #087E78 !important;
+}
+html.light .live-status-badge span.rounded-full {
+  background-color: #087E78 !important;
 }
 
 /* MicroShift Demo Box (Day Mode Fix) */
@@ -650,15 +682,100 @@ html.light #preloader .bg-cyan-400 {
 }
 
 /* Light Mode Badges & Floating Pills High-Contrast */
-html.light [data-parallax-speed] {
+html.light [data-parallax-speed],
+html.light .hero-floating-badge {
   background: rgba(255, 255, 255, 0.95) !important;
   color: #172E45 !important;
   border: 1px solid rgba(91, 113, 136, 0.25) !important;
   box-shadow: 0 4px 16px rgba(23, 46, 69, 0.06) !important;
 }
-html.light [data-parallax-speed] span:not(.rounded-full) {
+html.light [data-parallax-speed] span:not(.rounded-full),
+html.light .hero-floating-badge span:not(.rounded-full) {
   color: #172E45 !important;
   font-weight: 600;
+}
+
+/* =========================================
+   SUBTLE FLOATING ANIMATIONS (HERO 5 ELEMENTS)
+   Gentle, minimal vertical drift with asynchronous timing
+   ========================================= */
+@keyframes heroFloat1 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes heroFloat2 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(5px); }
+}
+@keyframes heroFloat3 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes heroFloat4 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(5px); }
+}
+@keyframes heroFloatCard {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.hero-float-1 {
+  animation: heroFloat1 5.4s ease-in-out infinite;
+  will-change: transform;
+}
+.hero-float-2 {
+  animation: heroFloat2 6.2s ease-in-out infinite 0.7s;
+  will-change: transform;
+}
+.hero-float-3 {
+  animation: heroFloat3 5.8s ease-in-out infinite 1.3s;
+  will-change: transform;
+}
+.hero-float-4 {
+  animation: heroFloat4 6.6s ease-in-out infinite 0.4s;
+  will-change: transform;
+}
+.hero-float-card {
+  animation: heroFloatCard 6.0s ease-in-out infinite 1.0s;
+  will-change: transform;
+}
+
+/* Symmetrical Positioning for Hero Satellites (Anchored directly to content and card) */
+.hero-satellite-badge-tl {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  z-index: 20;
+}
+.hero-satellite-badge-tr {
+  position: absolute;
+  top: -60px;
+  right: 0;
+  z-index: 20;
+}
+.hero-satellite-badge-bl {
+  position: absolute;
+  bottom: -52px;
+  left: 0;
+  z-index: 20;
+}
+.hero-satellite-badge-br {
+  position: absolute;
+  bottom: -52px;
+  right: 0;
+  z-index: 20;
+}
+
+.hero-floating-badge {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+}
+.hero-floating-badge:hover {
+  box-shadow: 0 10px 25px -4px rgba(104, 185, 245, 0.25);
+}
+html.light .hero-floating-badge:hover {
+  box-shadow: 0 10px 25px -4px rgba(23, 100, 165, 0.15);
 }
 
 /* =========================================

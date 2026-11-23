@@ -134,24 +134,34 @@ export function initParallaxAndMotion() {
     );
   }
 
-  // 6. 3D Tilt Micro-Interaction for Cards
+  // 6. 3D Tilt Micro-Interaction for Cards & Hero Floating Badges
   const tiltCards = document.querySelectorAll('[data-tilt]');
   tiltCards.forEach((card) => {
+    const isBadge = card.classList.contains('hero-floating-badge');
+    const tiltMax = isBadge ? 4 : 4;
+    const liftAmount = -2;
+
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'transform 0.2s ease-out';
+    });
+
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -5;
-      const rotateY = ((x - centerX) / centerX) * 5;
+      const rotateX = ((y - centerY) / centerY) * -tiltMax;
+      const rotateY = ((x - centerX) / centerX) * tiltMax;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+      card.style.transition = 'none';
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(${liftAmount}px)`;
       card.style.setProperty('--mouse-x', `${x}px`);
       card.style.setProperty('--mouse-y', `${y}px`);
     });
 
     card.addEventListener('mouseleave', () => {
+      card.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
     });
   });
