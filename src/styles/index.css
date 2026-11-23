@@ -744,13 +744,7 @@ html.light .hero-floating-badge span:not(.rounded-full) {
 /* Symmetrical Positioning for Hero Satellites (Anchored directly to content and card) */
 .hero-satellite-badge-tl {
   position: absolute;
-  top: -60px;
-  left: 0;
-  z-index: 20;
-}
-.hero-satellite-badge-tablet-tl {
-  position: absolute;
-  top: -60px;
+  top: -55px;
   left: 0;
   z-index: 20;
 }
@@ -762,7 +756,7 @@ html.light .hero-floating-badge span:not(.rounded-full) {
 }
 .hero-satellite-badge-bl {
   position: absolute;
-  bottom: -52px;
+  bottom: -57px;
   left: 0;
   z-index: 20;
 }
@@ -782,6 +776,16 @@ html.light .hero-floating-badge span:not(.rounded-full) {
 }
 html.light .hero-floating-badge:hover {
   box-shadow: none;
+}
+
+/* Explicitly disable hover border glow and shadow for Vision Transformer */
+.hero-satellite-badge-bl .hero-floating-badge:hover {
+  border-color: rgba(168, 85, 247, 0.3) !important;
+  box-shadow: none !important;
+}
+html.light .hero-satellite-badge-bl .hero-floating-badge:hover {
+  border-color: rgba(91, 113, 136, 0.25) !important;
+  box-shadow: none !important;
 }
 
 /* =========================================

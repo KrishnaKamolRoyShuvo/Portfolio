@@ -29,8 +29,8 @@ export function initParallaxAndMotion() {
   
   if (heroSection && heroContent) {
     ScrollTrigger.matchMedia({
-      // Desktop & Tablet (>= 768px): Pinned Dennis Snellenberg zoom-out parallax
-      "(min-width: 768px)": function() {
+      // Desktop (>= 1024px): Pinned Dennis Snellenberg zoom-out parallax (two-column layout)
+      "(min-width: 1024px)": function() {
         ScrollTrigger.create({
           trigger: heroSection,
           start: 'top top',
@@ -48,8 +48,8 @@ export function initParallaxAndMotion() {
           }
         });
       },
-      // Mobile (< 768px): Natural flow without pin clipping
-      "(max-width: 767px)": function() {
+      // Tablet & Mobile (< 1024px): Natural scroll flow without pin clipping
+      "(max-width: 1023px)": function() {
         gsap.to(heroContent, {
           opacity: 0.3,
           scale: 0.96,
