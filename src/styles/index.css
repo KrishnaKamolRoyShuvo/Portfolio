@@ -748,6 +748,12 @@ html.light .hero-floating-badge span:not(.rounded-full) {
   left: 0;
   z-index: 20;
 }
+.hero-satellite-badge-tablet-tl {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  z-index: 20;
+}
 .hero-satellite-badge-tr {
   position: absolute;
   top: -60px;
@@ -768,14 +774,14 @@ html.light .hero-floating-badge span:not(.rounded-full) {
 }
 
 .hero-floating-badge {
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease;
   user-select: none;
 }
 .hero-floating-badge:hover {
-  box-shadow: 0 10px 25px -4px rgba(104, 185, 245, 0.25);
+  box-shadow: none;
 }
 html.light .hero-floating-badge:hover {
-  box-shadow: 0 10px 25px -4px rgba(23, 100, 165, 0.15);
+  box-shadow: none;
 }
 
 /* =========================================
