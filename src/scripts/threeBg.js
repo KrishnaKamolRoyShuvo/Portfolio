@@ -100,14 +100,14 @@ export function initThreeBackground() {
   function updateThemeColors() {
     const isLight = document.documentElement.classList.contains('light');
     if (isLight) {
-      material.color.setHex(0x0284c7);
-      lineMaterial.color.setHex(0x6366f1);
-      lineMaterial.opacity = 0.12;
+      material.color.setHex(0x1764A5);
+      lineMaterial.color.setHex(0x4B55B5);
+      lineMaterial.opacity = 0.15;
       renderer.setClearColor(0x000000, 0);
     } else {
-      material.color.setHex(0x06b6d4);
-      lineMaterial.color.setHex(0x6366f1);
-      lineMaterial.opacity = 0.18;
+      material.color.setHex(0x68B9F5);
+      lineMaterial.color.setHex(0x9B9EFF);
+      lineMaterial.opacity = 0.22;
     }
   }
 

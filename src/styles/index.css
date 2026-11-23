@@ -4,31 +4,33 @@
 
 @layer base {
   :root {
-    /* Night Palette (Default) */
-    --bg-primary: #101722;
-    --bg-secondary: #1C2939;
-    --bg-card: #1C2939;
-    --border-color: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(96, 165, 250, 0.4);
-    --text-primary: #E8EEF7;
-    --text-secondary: #A0AEC0;
-    --accent-primary: #60A5FA;
-    --accent-secondary: #1E3A5F;
-    --glow-color: rgba(96, 165, 250, 0.15);
+    /* Night Palette */
+    --bg-primary: #0C1723;
+    --bg-secondary: #142536;
+    --bg-card: #1B3044;
+    --border-color: rgba(234, 245, 255, 0.08);
+    --border-hover: rgba(104, 185, 245, 0.4);
+    --text-primary: #EAF5FF;
+    --text-secondary: #A1B6C9;
+    --accent-primary: #68B9F5;
+    --accent-secondary: #9B9EFF;
+    --accent-tertiary: #4AD1C0;
+    --glow-color: rgba(104, 185, 245, 0.15);
   }
 
   html.light {
-    /* Day Palette (User requested: #F4F7FB, #FFFFFF, #202C3B, #64748B, #2563EB, #BFDBFE) */
-    --bg-primary: #F4F7FB;
-    --bg-secondary: #FFFFFF;
+    /* Day Palette */
+    --bg-primary: #F3F8FC;
+    --bg-secondary: #E7F1F9;
     --bg-card: #FFFFFF;
-    --border-color: rgba(226, 232, 240, 0.85);
-    --border-hover: rgba(37, 99, 235, 0.4);
-    --text-primary: #202C3B;
-    --text-secondary: #64748B;
-    --accent-primary: #2563EB;
-    --accent-secondary: #BFDBFE;
-    --glow-color: rgba(37, 99, 235, 0.08);
+    --border-color: rgba(91, 113, 136, 0.2);
+    --border-hover: rgba(23, 100, 165, 0.4);
+    --text-primary: #172E45;
+    --text-secondary: #5B7188;
+    --accent-primary: #1764A5;
+    --accent-secondary: #4B55B5;
+    --accent-tertiary: #087E78;
+    --glow-color: rgba(23, 100, 165, 0.08);
   }
 
   body {
@@ -42,8 +44,12 @@
 
 /* Custom Selection */
 ::selection {
-  background-color: #2563EB;
+  background-color: #1764A5;
   color: #ffffff;
+}
+html:not(.light) ::selection {
+  background-color: #68B9F5;
+  color: #0C1723;
 }
 
 /* Custom Scrollbar */
@@ -76,16 +82,16 @@
   left: 0;
   width: 7px;
   height: 7px;
-  background-color: #06b6d4;
+  background-color: #68B9F5;
   border-radius: 50%;
   z-index: 1000000;
   transform: translate(-50%, -50%);
   transition: opacity 0.15s ease;
-  box-shadow: 0 0 10px #06b6d4, 0 0 20px rgba(6, 182, 212, 0.6);
+  box-shadow: 0 0 10px #68B9F5, 0 0 20px rgba(104, 185, 245, 0.6);
 }
 html.light .custom-cursor-dot {
-  background-color: #2563EB;
-  box-shadow: 0 0 10px #2563EB, 0 0 20px rgba(37, 99, 235, 0.4);
+  background-color: #1764A5;
+  box-shadow: 0 0 10px #1764A5, 0 0 20px rgba(23, 100, 165, 0.4);
 }
 
 .custom-cursor-ring {
@@ -95,7 +101,7 @@ html.light .custom-cursor-dot {
   left: 0;
   width: 38px;
   height: 38px;
-  border: 1.5px solid rgba(6, 182, 212, 0.7);
+  border: 1.5px solid rgba(104, 185, 245, 0.7);
   border-radius: 50%;
   z-index: 999999;
   transform: translate(-50%, -50%);
@@ -106,19 +112,19 @@ html.light .custom-cursor-dot {
               transform 0.1s ease;
 }
 html.light .custom-cursor-ring {
-  border-color: rgba(37, 99, 235, 0.7);
+  border-color: rgba(23, 100, 165, 0.7);
 }
 
 .custom-cursor-ring.cursor-hover {
   width: 58px;
   height: 58px;
-  background-color: rgba(6, 182, 212, 0.12);
-  border-color: #06b6d4;
+  background-color: rgba(104, 185, 245, 0.15);
+  border-color: #68B9F5;
   backdrop-filter: blur(1.5px);
 }
 html.light .custom-cursor-ring.cursor-hover {
-  background-color: rgba(37, 99, 235, 0.1);
-  border-color: #2563EB;
+  background-color: rgba(23, 100, 165, 0.1);
+  border-color: #1764A5;
 }
 
 .custom-cursor-ring.cursor-view::after {
@@ -130,10 +136,10 @@ html.light .custom-cursor-ring.cursor-hover {
   font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #06b6d4;
+  color: #68B9F5;
 }
 html.light .custom-cursor-ring.cursor-view::after {
-  color: #2563EB;
+  color: #1764A5;
 }
 
 .custom-cursor-ring.cursor-click {
@@ -176,19 +182,19 @@ html.light .custom-cursor-ring.cursor-view::after {
 footer {
   position: relative;
   z-index: 10;
-  background: rgba(10, 15, 29, 0.54);
+  background: rgba(20, 37, 54, 0.65);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(234, 245, 255, 0.08);
   box-shadow: 0 24px 50px -15px rgba(0, 0, 0, 0.45);
 }
 html.light .section-solid-bg,
 html.light footer {
-  background: rgba(244, 247, 251, 0.38) !important;
+  background: rgba(231, 241, 249, 0.75) !important;
   backdrop-filter: blur(12px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
-  border-top: 1px solid rgba(226, 232, 240, 0.75) !important;
-  box-shadow: 0 20px 40px -15px rgba(32, 44, 59, 0.06);
+  border-top: 1px solid rgba(91, 113, 136, 0.25) !important;
+  box-shadow: 0 20px 40px -15px rgba(23, 46, 69, 0.06);
 }
 
 #hero, #research, #gallery, #skills, #terminal, #contact {
@@ -202,27 +208,27 @@ html.light footer {
    Luminous transparent glass with depth shadow hierarchy
    ========================================= */
 .glass-panel {
-  background: rgba(28, 41, 57, 0.42);
+  background: rgba(27, 48, 68, 0.48);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(234, 245, 255, 0.1);
   box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.55),
               0 6px 16px -4px rgba(0, 0, 0, 0.35),
-              inset 0 1px 1px rgba(255, 255, 255, 0.12);
+              inset 0 1px 1px rgba(234, 245, 255, 0.12);
 }
 
 .glass-card {
-  background: rgba(28, 41, 57, 0.38);
+  background: rgba(27, 48, 68, 0.42);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(234, 245, 255, 0.1);
   box-shadow: 0 18px 42px -10px rgba(0, 0, 0, 0.60),
               0 6px 18px -4px rgba(0, 0, 0, 0.35),
-              inset 0 1px 1px rgba(255, 255, 255, 0.14);
+              inset 0 1px 1px rgba(234, 245, 255, 0.14);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-card:hover {
-  border-color: rgba(96, 165, 250, 0.4);
+  border-color: rgba(104, 185, 245, 0.4);
   box-shadow: 0 22px 48px -10px var(--glow-color),
               0 8px 24px -4px rgba(0, 0, 0, 0.45);
   transform: translateY(-3px);
@@ -231,18 +237,18 @@ html.light footer {
 /* Bento Client Cards in Clear Background Gallery */
 .bento-card {
   position: relative;
-  background: rgba(28, 41, 57, 0.42);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(27, 48, 68, 0.48);
+  border: 1px solid rgba(234, 245, 255, 0.1);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
   box-shadow: 0 18px 42px -10px rgba(0, 0, 0, 0.62),
               0 6px 18px -4px rgba(0, 0, 0, 0.35),
-              inset 0 1px 1px rgba(255, 255, 255, 0.14);
+              inset 0 1px 1px rgba(234, 245, 255, 0.14);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .bento-card:hover {
-  border-color: rgba(96, 165, 250, 0.5);
-  box-shadow: 0 24px 48px -6px rgba(96, 165, 250, 0.25),
+  border-color: rgba(104, 185, 245, 0.5);
+  box-shadow: 0 24px 48px -6px rgba(104, 185, 245, 0.25),
               0 8px 24px -4px rgba(0, 0, 0, 0.45);
   transform: translateY(-4px);
 }
@@ -252,7 +258,7 @@ html.light footer {
 .section-solid-bg .glass-panel {
   box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.38),
               0 4px 10px -2px rgba(0, 0, 0, 0.20),
-              inset 0 1px 1px rgba(255, 255, 255, 0.10);
+              inset 0 1px 1px rgba(234, 245, 255, 0.10);
 }
 .section-solid-bg .glass-card:hover {
   box-shadow: 0 14px 28px -6px var(--glow-color),
@@ -261,10 +267,10 @@ html.light footer {
 
 /* High-Contrast Bento Titles & Metadata */
 .bento-card h4 {
-  color: #E8EEF7 !important;
+  color: #EAF5FF !important;
 }
 .bento-card p.font-mono {
-  color: #A0AEC0 !important;
+  color: #A1B6C9 !important;
 }
 
 /* Sticky Stacked Cards Parallax (Desktop / Tablet only) */
@@ -295,9 +301,9 @@ html.light footer {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
   letter-spacing: 0.05em;
-  background: rgba(96, 165, 250, 0.1);
-  border: 1px solid rgba(96, 165, 250, 0.28);
-  color: #60A5FA;
+  background: rgba(104, 185, 245, 0.12);
+  border: 1px solid rgba(104, 185, 245, 0.3);
+  color: #68B9F5;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -311,12 +317,12 @@ html.light footer {
   font-size: 0.75rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
-  background: rgba(96, 165, 250, 0.1);
-  border: 1px solid rgba(96, 165, 250, 0.28);
-  color: #60A5FA;
+  background: rgba(104, 185, 245, 0.12);
+  border: 1px solid rgba(104, 185, 245, 0.3);
+  color: #68B9F5;
 }
 
-/* Apple Liquid Glass Skill Chips */
+/* Apple Liquid Glass Skill Chips (Night Mode) */
 .skill-chip {
   display: inline-flex;
   align-items: center;
@@ -325,113 +331,118 @@ html.light footer {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   font-weight: 500;
-  background: rgba(16, 23, 34, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #E8EEF7;
+  background: rgba(20, 37, 54, 0.65);
+  border: 1px solid rgba(234, 245, 255, 0.1);
+  color: #EAF5FF;
   transition: all 0.2s ease;
 }
 .skill-chip:hover {
-  border-color: rgba(96, 165, 250, 0.4);
-  background: rgba(30, 58, 95, 0.4);
+  border-color: rgba(104, 185, 245, 0.4);
+  background: rgba(27, 48, 68, 0.8);
 }
 
 /* =========================================
    DAY MODE: IOS 27 APPLE LIQUID GLASS
-   Palette: #F4F7FB (bg), #FFFFFF (cards), 
-            #202C3B (text), #2563EB (accent), #64748B (slate)
+   Palette: #F3F8FC (bg), #E7F1F9 (sections), #FFFFFF (cards), 
+            #172E45 (primary text), #5B7188 (secondary text),
+            #1764A5 (primary accent), #4B55B5 (secondary accent), #087E78 (tertiary accent)
    ========================================= */
 html.light body {
-  background-color: #F4F7FB;
-  color: #202C3B;
+  background-color: #F3F8FC;
+  color: #172E45;
 }
 
 html.light .text-white {
-  color: #202C3B !important;
+  color: #172E45 !important;
 }
 
 html.light .text-slate-300 {
-  color: #334155 !important;
+  color: #3A526A !important;
 }
 
 html.light .text-slate-400 {
-  color: #64748B !important;
+  color: #5B7188 !important;
+}
+
+html.light .text-slate-500 {
+  color: #788EA4 !important;
 }
 
 /* Apple Liquid Glass Panels & Cards in Day Mode (Clear / Non-Solid Background Sections) */
 html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.34) !important;
-  border: 1px solid rgba(255, 255, 255, 0.85) !important;
-  box-shadow: 0 20px 45px -8px rgba(32, 44, 59, 0.11), 
-              0 6px 16px -3px rgba(32, 44, 59, 0.05),
+  background: rgba(255, 255, 255, 0.70) !important;
+  border: 1px solid rgba(91, 113, 136, 0.22) !important;
+  box-shadow: 0 20px 45px -8px rgba(23, 46, 69, 0.08), 
+              0 6px 16px -3px rgba(23, 46, 69, 0.04),
               inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(5px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(5px) saturate(130%) !important;
 }
 
 html.light .glass-card {
-  background: rgba(255, 255, 255, 0.30) !important;
-  border: 1px solid rgba(255, 255, 255, 0.85) !important;
-  box-shadow: 0 22px 48px -10px rgba(32, 44, 59, 0.12), 
-              0 8px 20px -4px rgba(32, 44, 59, 0.06),
+  background: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(91, 113, 136, 0.22) !important;
+  box-shadow: 0 22px 48px -10px rgba(23, 46, 69, 0.09), 
+              0 8px 20px -4px rgba(23, 46, 69, 0.04),
               inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(5px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(5px) saturate(130%) !important;
 }
 html.light .glass-card:hover {
-  border-color: rgba(37, 99, 235, 0.35) !important;
-  box-shadow: 0 24px 50px -8px rgba(37, 99, 235, 0.16),
-              0 10px 24px -4px rgba(32, 44, 59, 0.08),
+  border-color: rgba(23, 100, 165, 0.40) !important;
+  box-shadow: 0 24px 50px -8px rgba(23, 100, 165, 0.15),
+              0 10px 24px -4px rgba(23, 46, 69, 0.06),
               inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Bento Card in Day Mode (Clear Background Gallery) */
 html.light .bento-card {
-  background: rgba(255, 255, 255, 0.32) !important;
-  border: 1px solid rgba(255, 255, 255, 0.85) !important;
-  box-shadow: 0 22px 48px -10px rgba(32, 44, 59, 0.12), 
-              0 8px 20px -4px rgba(32, 44, 59, 0.06),
+  background: rgba(255, 255, 255, 0.68) !important;
+  border: 1px solid rgba(91, 113, 136, 0.22) !important;
+  box-shadow: 0 22px 48px -10px rgba(23, 46, 69, 0.09), 
+              0 8px 20px -4px rgba(23, 46, 69, 0.04),
               inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(5px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(5px) saturate(130%) !important;
 }
 html.light .bento-card:hover {
-  border-color: rgba(37, 99, 235, 0.45) !important;
-  box-shadow: 0 26px 54px -8px rgba(37, 99, 235, 0.18),
-              0 10px 24px -4px rgba(32, 44, 59, 0.08),
+  border-color: rgba(23, 100, 165, 0.45) !important;
+  box-shadow: 0 26px 54px -8px rgba(23, 100, 165, 0.18),
+              0 10px 24px -4px rgba(23, 46, 69, 0.06),
               inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Day Mode Solid Background Section Contents (Slightly softer, lighter depth shadow) */
 html.light .section-solid-bg .glass-card,
 html.light .section-solid-bg .glass-panel {
-  box-shadow: 0 10px 24px -6px rgba(32, 44, 59, 0.05),
-              0 4px 10px -2px rgba(32, 44, 59, 0.02),
+  box-shadow: 0 10px 24px -6px rgba(23, 46, 69, 0.05),
+              0 4px 10px -2px rgba(23, 46, 69, 0.02),
               inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
 }
 html.light .section-solid-bg .glass-card:hover {
-  box-shadow: 0 14px 28px -6px rgba(37, 99, 235, 0.12),
-              0 4px 12px -2px rgba(32, 44, 59, 0.04),
+  box-shadow: 0 14px 28px -6px rgba(23, 100, 165, 0.12),
+              0 4px 12px -2px rgba(23, 46, 69, 0.04),
               inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
 }
 html.light .bento-card h4 {
-  color: #202C3B !important;
+  color: #172E45 !important;
 }
 html.light .bento-card p.font-mono {
-  color: #64748B !important;
+  color: #5B7188 !important;
 }
 
 /* Input Fields & Textareas (Day Mode Liquid Glass) */
 html.light input,
 html.light textarea,
 html.light select {
-  background: rgba(255, 255, 255, 0.8) !important;
-  border: 1px solid rgba(226, 232, 240, 0.95) !important;
-  color: #202C3B !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(91, 113, 136, 0.28) !important;
+  color: #172E45 !important;
 }
 html.light input:focus,
 html.light textarea:focus {
-  border-color: #2563EB !important;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+  border-color: #1764A5 !important;
+  box-shadow: 0 0 0 3px rgba(23, 100, 165, 0.15) !important;
 }
 
 /* Unified Primary CTA Buttons */
@@ -439,16 +450,16 @@ html.light button[type="submit"],
 html.light #hero a[download],
 html.light header a[download],
 html.light .btn-download {
-  background: #2563EB !important;
+  background: linear-gradient(135deg, #1764A5, #4B55B5) !important;
   color: #FFFFFF !important;
-  box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.35) !important;
+  box-shadow: 0 8px 20px -4px rgba(23, 100, 165, 0.35) !important;
 }
 
 /* Footer Link Reset in Day Mode */
 html.light footer a,
 html.light footer a[download] {
   background: transparent !important;
-  color: #64748B !important;
+  color: #5B7188 !important;
   box-shadow: none !important;
   padding: 0 !important;
   border-radius: 0 !important;
@@ -456,49 +467,49 @@ html.light footer a[download] {
 }
 html.light footer a:hover,
 html.light footer a[download]:hover {
-  color: #2563EB !important;
+  color: #1764A5 !important;
 }
 
 /* Section Number Pills in Day Mode */
 html.light .section-pill,
 html.light .section-pill span {
-  background: rgba(37, 99, 235, 0.08) !important;
-  border-color: rgba(37, 99, 235, 0.22) !important;
-  color: #1D4ED8 !important;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.05);
+  background: rgba(23, 100, 165, 0.08) !important;
+  border-color: rgba(23, 100, 165, 0.22) !important;
+  color: #1764A5 !important;
+  box-shadow: 0 2px 8px rgba(23, 100, 165, 0.05);
 }
 
 html.light .research-badge {
-  background: rgba(37, 99, 235, 0.08) !important;
-  border: 1px solid rgba(37, 99, 235, 0.22) !important;
-  color: #1D4ED8 !important;
+  background: rgba(23, 100, 165, 0.08) !important;
+  border: 1px solid rgba(23, 100, 165, 0.22) !important;
+  color: #1764A5 !important;
 }
 
-/* Apple Liquid Glass Skill Chips in Day Mode (Completely Solves White-on-White) */
+/* Skill Chips in Day Mode */
 html.light .skill-chip {
-  background: rgba(241, 245, 249, 0.92) !important;
-  border: 1px solid #E2E8F0 !important;
-  color: #202C3B !important;
-  box-shadow: 0 1px 3px rgba(32, 44, 59, 0.04);
+  background: rgba(231, 241, 249, 0.90) !important;
+  border: 1px solid rgba(91, 113, 136, 0.25) !important;
+  color: #172E45 !important;
+  box-shadow: 0 1px 3px rgba(23, 46, 69, 0.04);
 }
 html.light .skill-chip:hover {
-  background: rgba(239, 246, 255, 0.95) !important;
-  border-color: rgba(37, 99, 235, 0.3) !important;
-  color: #1D4ED8 !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(23, 100, 165, 0.4) !important;
+  color: #1764A5 !important;
 }
 
-/* Experience Timeline Progression Line in Day Mode (Soft Gray Fix) */
+/* Experience Timeline Progression Line in Day Mode */
 html.light #timeline-container .bg-slate-800 {
-  background-color: #E2E8F0 !important;
+  background-color: rgba(91, 113, 136, 0.25) !important;
 }
 html.light #timeline-container .border-dark-bg {
-  border-color: #F4F7FB !important;
+  border-color: #F3F8FC !important;
 }
 
 /* Live Clock High-Contrast in Day Mode */
 html.light #dhaka-live-clock,
 html.light #dhaka-live-clock + svg {
-  color: #2563EB !important;
+  color: #1764A5 !important;
 }
 
 /* Flagship Software Engineering Tech Badges (Day Mode Fix) */
@@ -506,9 +517,9 @@ html.light .stacked-card span.font-mono,
 html.light .stacked-card span.text-cyan-300,
 html.light .stacked-card span.text-indigo-300,
 html.light .stacked-card span.text-emerald-300 {
-  background-color: #EFF6FF !important;
-  border: 1px solid #BFDBFE !important;
-  color: #1D4ED8 !important;
+  background-color: #E7F1F9 !important;
+  border: 1px solid rgba(23, 100, 165, 0.25) !important;
+  color: #1764A5 !important;
   font-weight: 600 !important;
 }
 
@@ -516,9 +527,9 @@ html.light .stacked-card span.text-emerald-300 {
 html.light .bg-slate-950\/70,
 html.light .bg-slate-900\/80,
 html.light .bg-slate-900 {
-  background-color: #F8FAFC !important;
-  border: 1px solid #E2E8F0 !important;
-  color: #202C3B !important;
+  background-color: #E7F1F9 !important;
+  border: 1px solid rgba(91, 113, 136, 0.22) !important;
+  color: #172E45 !important;
 }
 
 /* Terminal Output Body Responsive Sizing */
@@ -536,53 +547,53 @@ html.light .bg-slate-900 {
   }
 }
 
-/* Day Mode Developer CLI Terminal & Command Reference Suite (Clear / Transparent Section) */
+/* Day Mode Developer CLI Terminal & Command Reference Suite */
 html.light #terminal-card,
 html.light .terminal-ref-card {
-  background: rgba(255, 255, 255, 0.35) !important;
-  border: 1px solid rgba(255, 255, 255, 0.9) !important;
-  box-shadow: 0 24px 52px -10px rgba(32, 44, 59, 0.12), 
-              0 8px 20px -4px rgba(32, 44, 59, 0.05),
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: 1px solid rgba(91, 113, 136, 0.22) !important;
+  box-shadow: 0 24px 52px -10px rgba(23, 46, 69, 0.10), 
+              0 8px 20px -4px rgba(23, 46, 69, 0.04),
               inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(5px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(5px) saturate(130%) !important;
 }
 
 html.light #terminal-card .bg-slate-900\/90 {
-  background-color: #F1F5F9 !important;
-  border-bottom: 1px solid #E2E8F0 !important;
+  background-color: #E7F1F9 !important;
+  border-bottom: 1px solid rgba(91, 113, 136, 0.2) !important;
 }
 html.light #terminal-card .bg-slate-900\/50 {
-  background-color: #F8FAFC !important;
-  border-top: 1px solid #E2E8F0 !important;
+  background-color: #F3F8FC !important;
+  border-top: 1px solid rgba(91, 113, 136, 0.2) !important;
 }
 html.light #terminal-card .text-white,
 html.light .terminal-ref-card .text-white {
-  color: #1E293B !important;
+  color: #172E45 !important;
 }
 html.light #terminal-card .text-slate-400,
 html.light .terminal-ref-card .text-slate-400 {
-  color: #64748B !important;
+  color: #5B7188 !important;
 }
 html.light #terminal-card .text-slate-300 {
-  color: #334155 !important;
+  color: #3A526A !important;
 }
 html.light #terminal-card input {
-  color: #1E293B !important;
+  color: #172E45 !important;
 }
 html.light #terminal-card input::placeholder {
-  color: #94A3B8 !important;
+  color: #788EA4 !important;
 }
 html.light .terminal-cmd-btn {
-  background: rgba(241, 245, 249, 0.9) !important;
-  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  background: rgba(231, 241, 249, 0.8) !important;
+  border: 1px solid rgba(91, 113, 136, 0.25) !important;
 }
 html.light .terminal-cmd-btn:hover {
-  background: rgba(239, 246, 255, 0.98) !important;
-  border-color: rgba(37, 99, 235, 0.35) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(23, 100, 165, 0.4) !important;
 }
 html.light .terminal-cmd-btn span.text-slate-300 {
-  color: #475569 !important;
+  color: #3A526A !important;
 }
 
 /* Buttons with Gradient preserve crisp white text */
@@ -595,7 +606,7 @@ html.light .bg-emerald-600 {
   color: #ffffff !important;
 }
 
-/* Dennis Snellenberg Preloader */
+/* Preloader - Night Mode */
 #preloader {
   position: fixed;
   top: 0;
@@ -603,7 +614,7 @@ html.light .bg-emerald-600 {
   width: 100vw;
   height: 100vh;
   z-index: 9999999;
-  background-color: #07090e;
+  background-color: #0C1723;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -613,36 +624,148 @@ html.light .bg-emerald-600 {
 }
 #preloader,
 #preloader * {
-  color: #ffffff !important;
+  color: #EAF5FF !important;
+}
+#preloader .bg-cyan-400 {
+  background-color: #68B9F5 !important;
 }
 #preloader-curve {
-  background-color: #07090e;
+  background-color: #0C1723;
   transition: background-color 0.2s ease;
 }
 
-/* Day Mode Preloader */
+/* Preloader - Day Mode */
 html.light #preloader {
-  background-color: #F4F7FB !important;
+  background-color: #F3F8FC !important;
 }
 html.light #preloader-curve {
-  background-color: #F4F7FB !important;
+  background-color: #F3F8FC !important;
 }
 html.light #preloader,
 html.light #preloader * {
-  color: #0F172A !important;
+  color: #172E45 !important;
 }
 html.light #preloader .bg-cyan-400 {
-  background-color: #2563EB !important;
+  background-color: #1764A5 !important;
 }
 
 /* Light Mode Badges & Floating Pills High-Contrast */
 html.light [data-parallax-speed] {
   background: rgba(255, 255, 255, 0.95) !important;
-  color: #202C3B !important;
-  border: 1px solid rgba(226, 232, 240, 1) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+  color: #172E45 !important;
+  border: 1px solid rgba(91, 113, 136, 0.25) !important;
+  box-shadow: 0 4px 16px rgba(23, 46, 69, 0.06) !important;
 }
 html.light [data-parallax-speed] span:not(.rounded-full) {
-  color: #202C3B !important;
+  color: #172E45 !important;
   font-weight: 600;
+}
+
+/* =========================================
+   UNIVERSAL ACCENT MAPPINGS (NIGHT & DAY)
+   Ensures complete palette consistency across components
+   ========================================= */
+
+/* Night Mode Accents */
+.text-cyan-400,
+.text-cyan-300,
+.text-cyan-400\/90,
+.text-cyan-400\/80,
+.text-cyan-300\/80 {
+  color: #68B9F5 !important;
+}
+.text-indigo-400,
+.text-indigo-300,
+.text-indigo-400\/90,
+.text-indigo-400\/80 {
+  color: #9B9EFF !important;
+}
+.text-emerald-400,
+.text-emerald-300,
+.text-emerald-400\/90,
+.text-emerald-400\/80 {
+  color: #4AD1C0 !important;
+}
+.hover\:text-cyan-400:hover,
+.group:hover .group-hover\:text-cyan-400,
+.group:hover .group-hover\:text-cyan-300 {
+  color: #68B9F5 !important;
+}
+.border-cyan-500,
+.border-cyan-400,
+.border-cyan-500\/30,
+.border-cyan-500\/20 {
+  border-color: rgba(104, 185, 245, 0.35) !important;
+}
+.border-indigo-500,
+.border-indigo-400,
+.border-indigo-500\/30,
+.border-indigo-500\/20 {
+  border-color: rgba(155, 158, 255, 0.35) !important;
+}
+.border-emerald-500,
+.border-emerald-400,
+.border-emerald-500\/30,
+.border-emerald-500\/20 {
+  border-color: rgba(74, 209, 192, 0.35) !important;
+}
+
+/* Day Mode Accents (High Contrast, No Washout) */
+html.light .text-cyan-400,
+html.light .text-cyan-300,
+html.light .text-cyan-500,
+html.light .text-cyan-400\/90,
+html.light .text-cyan-400\/80,
+html.light .text-cyan-300\/80 {
+  color: #1764A5 !important;
+}
+html.light .text-indigo-400,
+html.light .text-indigo-300,
+html.light .text-indigo-500,
+html.light .text-indigo-400\/90,
+html.light .text-indigo-400\/80 {
+  color: #4B55B5 !important;
+}
+html.light .text-emerald-400,
+html.light .text-emerald-300,
+html.light .text-emerald-500,
+html.light .text-emerald-400\/90,
+html.light .text-emerald-400\/80 {
+  color: #087E78 !important;
+}
+html.light .hover\:text-cyan-400:hover,
+html.light .group:hover .group-hover\:text-cyan-400,
+html.light .group:hover .group-hover\:text-cyan-300 {
+  color: #1764A5 !important;
+}
+html.light .border-cyan-500,
+html.light .border-cyan-400,
+html.light .border-cyan-500\/30,
+html.light .border-cyan-500\/20 {
+  border-color: rgba(23, 100, 165, 0.35) !important;
+}
+html.light .border-indigo-500,
+html.light .border-indigo-400,
+html.light .border-indigo-500\/30,
+html.light .border-indigo-500\/20 {
+  border-color: rgba(75, 85, 181, 0.35) !important;
+}
+html.light .border-emerald-500,
+html.light .border-emerald-400,
+html.light .border-emerald-500\/30,
+html.light .border-emerald-500\/20 {
+  border-color: rgba(8, 126, 120, 0.35) !important;
+}
+html.light .bg-cyan-400,
+html.light .bg-cyan-500 {
+  background-color: #1764A5 !important;
+}
+html.light .bg-indigo-400,
+html.light .bg-indigo-500,
+html.light .bg-indigo-600 {
+  background-color: #4B55B5 !important;
+}
+html.light .bg-emerald-400,
+html.light .bg-emerald-500 {
+  background-color: #087E78 !important;
 }

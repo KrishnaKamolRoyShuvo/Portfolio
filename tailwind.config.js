@@ -9,26 +9,26 @@ export default {
     extend: {
       colors: {
         dark: {
-          bg: '#07090e',
-          surface: '#0d111a',
-          card: '#121722',
-          border: '#1e2638',
-          text: '#f1f5f9',
-          muted: '#94a3b8'
+          bg: '#0C1723',
+          surface: '#142536',
+          card: '#1B3044',
+          border: 'rgba(234, 245, 255, 0.08)',
+          text: '#EAF5FF',
+          muted: '#A1B6C9'
         },
         light: {
-          bg: '#f8fafc',
-          surface: '#ffffff',
-          card: '#f1f5f9',
-          border: '#e2e8f0',
-          text: '#0f172a',
-          muted: '#64748b'
+          bg: '#F3F8FC',
+          surface: '#E7F1F9',
+          card: '#FFFFFF',
+          border: 'rgba(91, 113, 136, 0.2)',
+          text: '#172E45',
+          muted: '#5B7188'
         },
         brand: {
-          cyan: '#06b6d4',
-          indigo: '#6366f1',
-          violet: '#8b5cf6',
-          emerald: '#10b981'
+          cyan: '#68B9F5',
+          indigo: '#9B9EFF',
+          violet: '#9B9EFF',
+          emerald: '#4AD1C0'
         }
       },
       fontFamily: {
