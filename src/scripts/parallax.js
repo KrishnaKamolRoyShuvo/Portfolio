@@ -98,15 +98,16 @@ export function initParallaxAndMotion() {
       const projectCards = document.querySelectorAll('.stacked-card');
       projectCards.forEach((card, index) => {
         if (index < projectCards.length - 1) {
+          const nextCard = projectCards[index + 1];
           gsap.to(card, {
-            scale: 0.96,
-            opacity: 0.65,
-            ease: 'power1.out',
+            scale: 0.95,
+            autoAlpha: 0,
+            ease: 'none',
             scrollTrigger: {
-              trigger: projectCards[index + 1],
-              start: 'top 70%',
-              end: 'top 25%',
-              scrub: 0.6
+              trigger: nextCard,
+              start: 'top 55%',
+              end: 'top 120px',
+              scrub: true
             }
           });
         }

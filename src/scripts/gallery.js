@@ -62,33 +62,8 @@ export function initGallery(cursorController) {
     container.innerHTML = toShow
       .map((p, idx) => {
         const isLive = p.status === 200 || p.status === '200';
-        
-        // Exact Bento dynamic rhythm every 12 items:
-        // 0: 1 Big horizontal (2 cols, 2 rows)
-        // 1, 2: 2 Small vertical (in col 3, rows 1 & 2)
-        // 3, 4, 5: 3 Small horizontal (row 3)
-        // 6: 1 Big horizontal on Right (cols 2-3, rows 4-5)
-        // 7, 8: 2 Small vertical on Left (in col 1, rows 4 & 5)
-        // 9, 10, 11: 3 Small horizontal (row 6)
-        const mod12 = idx % 12;
-        let spanClass = 'col-span-1 row-span-1';
-        let isBig = false;
-
-        if (mod12 === 0) {
-          spanClass = 'lg:col-span-2 lg:row-span-2';
-          isBig = true;
-        } else if (mod12 === 1 || mod12 === 2) {
-          spanClass = 'lg:col-span-1 lg:row-span-1';
-        } else if (mod12 >= 3 && mod12 <= 5) {
-          spanClass = 'lg:col-span-1 lg:row-span-1';
-        } else if (mod12 === 6) {
-          spanClass = 'lg:col-start-2 lg:col-span-2 lg:row-span-2';
-          isBig = true;
-        } else if (mod12 === 7 || mod12 === 8) {
-          spanClass = 'lg:col-span-1 lg:row-span-1';
-        } else {
-          spanClass = 'lg:col-span-1 lg:row-span-1';
-        }
+        const imgSrc = p.local_image || p.image;
+        const targetUrl = p.url || '#';
 
         const statusBadge = isLive
           ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
@@ -100,14 +75,9 @@ export function initGallery(cursorController) {
               Client System
             </span>`;
 
-        const imgSrc = p.local_image || p.image;
-        const targetUrl = p.url || '#';
-        const imgAspect = isBig ? 'aspect-[16/10] sm:aspect-[16/9]' : 'aspect-[16/10]';
-        const paddingClass = isBig ? 'p-6 sm:p-7' : 'p-5';
-
         return `
-          <div class="bento-card group rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-500 shadow-xl ${spanClass}" data-tilt data-cursor="view">
-            <div class="relative overflow-hidden ${imgAspect} bg-slate-950">
+          <div class="bento-card group rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-xl col-span-1 row-span-1" data-tilt data-cursor="view">
+            <div class="relative overflow-hidden aspect-[16/10] bg-slate-950">
               <img 
                 src="${imgSrc}" 
                 alt="${p.title}" 
@@ -115,24 +85,24 @@ export function initGallery(cursorController) {
                 class="w-full h-full object-cover object-top filter brightness-[0.95] group-hover:brightness-100 transition-all duration-700 group-hover:scale-105"
                 onerror="this.src='images/profile-hero.jpg'"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-85"></div>
-              <div class="absolute top-3.5 right-3.5">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+              <div class="absolute top-3.5 right-3.5 z-10">
                 ${statusBadge}
               </div>
-              <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-                <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 dark:text-emerald-300 bg-black/60 px-2.5 py-0.5 rounded-full border border-emerald-500/30 backdrop-blur">
+              <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between z-10">
+                <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 dark:text-emerald-300 bg-black/70 px-2.5 py-0.5 rounded-full border border-emerald-500/30 backdrop-blur">
                   ${p.category || 'Client System'}
                 </span>
                 <span class="text-[10px] text-slate-400 font-mono">#${idx + 1}</span>
               </div>
             </div>
 
-            <div class="${paddingClass} flex-1 flex flex-col justify-between space-y-4">
+            <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
               <div>
-                <h4 class="text-base ${isBig ? 'sm:text-xl' : 'sm:text-base'} font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1">
+                <h4 class="text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1">
                   ${p.title}
                 </h4>
-                <p class="text-xs text-slate-300 font-mono line-clamp-1 mt-1">
+                <p class="text-xs text-slate-400 font-mono line-clamp-1 mt-1">
                   ${p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'Commercial Client'}
                 </p>
               </div>
@@ -198,10 +168,10 @@ export function initGallery(cursorController) {
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       filterBtns.forEach((b) => {
-        b.classList.remove('bg-cyan-500', 'text-slate-950', 'shadow');
+        b.classList.remove('bg-emerald-500', 'text-slate-950', 'shadow-lg');
         b.classList.add('text-slate-400');
       });
-      btn.classList.add('bg-cyan-500', 'text-slate-950', 'shadow');
+      btn.classList.add('bg-emerald-500', 'text-slate-950', 'shadow-lg');
       btn.classList.remove('text-slate-400');
 
       const filterVal = btn.getAttribute('data-gallery-filter');
