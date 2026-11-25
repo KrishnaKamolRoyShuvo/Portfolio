@@ -107,14 +107,14 @@ export function initGallery(cursorController) {
                 </span>`;
 
             return `
-              <article class="bento-card ${slotClass} ${rowClass} group rounded-3xl p-3 flex flex-col justify-between overflow-hidden min-h-0 transition-all duration-300 shadow-xl col-span-1 row-span-1" data-tilt data-cursor="view">
+              <article class="bento-card ${slotClass} ${rowClass} group rounded-3xl p-3 flex flex-col justify-between min-h-0 shadow-xl col-span-1 row-span-1" data-tilt data-cursor="view">
                 <div class="card-img-wrap relative overflow-hidden rounded-2xl bg-slate-950 aspect-[16/10] w-full min-h-0">
                   <div class="absolute top-3 left-3 z-10">${statusBadge}</div>
                   <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between z-10">
-                    <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-300 bg-black/75 px-2 py-0.5 rounded-full border border-emerald-500/30 backdrop-blur">
+                    <span class="card-cat-badge">
                       ${p.category || 'Client System'}
                     </span>
-                    <span class="text-[10px] text-slate-400 font-mono bg-black/60 px-1.5 py-0.5 rounded">#${globalIdx + 1}</span>
+                    <span class="card-num-badge">#${globalIdx + 1}</span>
                   </div>
                   <img 
                     src="${imgSrc}" 
@@ -177,14 +177,14 @@ export function initGallery(cursorController) {
           </span>`;
 
       wideHtml = `
-        <article class="bento-card card-wide-final card-row-wide col-span-1 sm:col-span-2 xl:col-span-3 group rounded-3xl p-3 flex overflow-hidden min-h-0 transition-all duration-300 shadow-xl" data-tilt data-cursor="view">
+        <article class="bento-card card-wide-final card-row-wide col-span-1 sm:col-span-2 xl:col-span-3 group rounded-3xl p-3 flex min-h-0 shadow-xl" data-tilt data-cursor="view">
           <div class="card-img-wrap relative overflow-hidden rounded-2xl bg-slate-950 aspect-[16/10] xl:aspect-auto w-full min-h-0">
             <div class="absolute top-3 left-3 z-10">${statusBadge}</div>
             <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between z-10">
-              <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-300 bg-black/75 px-2 py-0.5 rounded-full border border-emerald-500/30 backdrop-blur">
+              <span class="card-cat-badge">
                 ${wideProject.category || 'Client System'}
               </span>
-              <span class="text-[10px] text-slate-400 font-mono bg-black/60 px-1.5 py-0.5 rounded">#36</span>
+              <span class="card-num-badge">#36</span>
             </div>
             <img 
               src="${imgSrc}" 
@@ -261,15 +261,15 @@ export function initGallery(cursorController) {
     });
   }
 
-  // Filter Buttons
+  // Filter Buttons with Colorish Blur Glass & Bold White Active Text
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       filterBtns.forEach((b) => {
-        b.classList.remove('bg-emerald-500', 'text-slate-950', 'shadow-lg');
-        b.classList.add('text-slate-400');
+        b.classList.remove('filter-btn-active', 'font-bold', 'text-white');
+        b.classList.add('font-semibold');
       });
-      btn.classList.add('bg-emerald-500', 'text-slate-950', 'shadow-lg');
-      btn.classList.remove('text-slate-400');
+      btn.classList.add('filter-btn-active', 'font-bold', 'text-white');
+      btn.classList.remove('font-semibold');
 
       const filterVal = btn.getAttribute('data-gallery-filter');
       applyFilter(filterVal);

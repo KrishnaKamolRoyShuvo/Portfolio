@@ -182,19 +182,29 @@ html.light .custom-cursor-ring.cursor-view::after {
 footer {
   position: relative;
   z-index: 10;
-  background: rgba(20, 37, 54, 0.65);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(20, 37, 54, 0.45);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   border-top: 1px solid rgba(234, 245, 255, 0.08);
   box-shadow: 0 24px 50px -15px rgba(0, 0, 0, 0.45);
 }
+footer {
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+  box-shadow: 0 -20px 50px -10px rgba(0, 0, 0, 0.4);
+}
 html.light .section-solid-bg,
 html.light footer {
-  background: rgba(231, 241, 249, 0.75) !important;
-  backdrop-filter: blur(12px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  background: rgba(231, 241, 249, 0.50) !important;
+  backdrop-filter: blur(10px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(130%) !important;
   border-top: 1px solid rgba(91, 113, 136, 0.25) !important;
   box-shadow: 0 20px 40px -15px rgba(23, 46, 69, 0.06);
+}
+html.light footer {
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+  box-shadow: 0 -20px 40px -10px rgba(23, 46, 69, 0.08) !important;
 }
 
 #hero, #research, #gallery, #skills, #terminal, #contact {
@@ -205,52 +215,235 @@ html.light footer {
 
 /* =========================================
    APPLE LIQUID GLASS SURFACES (NIGHT MODE)
-   Luminous transparent glass with depth shadow hierarchy
+   Ultra-transparent luminous glass with slight blur (Apple iOS aesthetic)
    ========================================= */
 .glass-panel {
-  background: rgba(27, 48, 68, 0.48);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid rgba(234, 245, 255, 0.1);
-  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.55),
-              0 6px 16px -4px rgba(0, 0, 0, 0.35),
-              inset 0 1px 1px rgba(234, 245, 255, 0.12);
+  background: rgba(20, 36, 52, 0.22);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(234, 245, 255, 0.12);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.45),
+              0 6px 16px -4px rgba(0, 0, 0, 0.25),
+              inset 0 1px 1px rgba(255, 255, 255, 0.18),
+              inset 0 -1px 1px rgba(0, 0, 0, 0.15);
 }
 
 .glass-card {
-  background: rgba(27, 48, 68, 0.42);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid rgba(234, 245, 255, 0.1);
-  box-shadow: 0 18px 42px -10px rgba(0, 0, 0, 0.60),
-              0 6px 18px -4px rgba(0, 0, 0, 0.35),
-              inset 0 1px 1px rgba(234, 245, 255, 0.14);
+  background: rgba(20, 36, 52, 0.20);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(234, 245, 255, 0.12);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.45),
+              0 6px 16px -4px rgba(0, 0, 0, 0.25),
+              inset 0 1px 1px rgba(255, 255, 255, 0.18),
+              inset 0 -1px 1px rgba(0, 0, 0, 0.15);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-card:hover {
-  border-color: rgba(104, 185, 245, 0.4);
-  box-shadow: 0 22px 48px -10px var(--glow-color),
-              0 8px 24px -4px rgba(0, 0, 0, 0.45);
+  border-color: rgba(104, 185, 245, 0.45);
+  box-shadow: 0 20px 42px -10px var(--glow-color),
+              0 8px 20px -4px rgba(0, 0, 0, 0.35),
+              inset 0 1px 2px rgba(255, 255, 255, 0.25);
   transform: translateY(-3px);
 }
 
 /* Bento Client Cards in Clear Background Gallery */
 .bento-card {
   position: relative;
-  background: rgba(27, 48, 68, 0.48);
-  border: 1px solid rgba(234, 245, 255, 0.1);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  box-shadow: 0 18px 42px -10px rgba(0, 0, 0, 0.62),
-              0 6px 18px -4px rgba(0, 0, 0, 0.35),
-              inset 0 1px 1px rgba(234, 245, 255, 0.14);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  contain: layout style;
+  background: rgba(20, 36, 52, 0.22);
+  border: 1px solid rgba(234, 245, 255, 0.12);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.45),
+              0 6px 16px -4px rgba(0, 0, 0, 0.25),
+              inset 0 1px 1px rgba(255, 255, 255, 0.18),
+              inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.50s cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 0.50s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.45s cubic-bezier(0.25, 1, 0.5, 1) 15ms,
+              box-shadow 0.60s cubic-bezier(0.35, 0, 0.25, 1) 15ms,
+              border-color 0.50s cubic-bezier(0.35, 0, 0.25, 1) 15ms;
+  will-change: transform, opacity, box-shadow;
 }
-.bento-card:hover {
-  border-color: rgba(104, 185, 245, 0.5);
-  box-shadow: 0 24px 48px -6px rgba(104, 185, 245, 0.25),
-              0 8px 24px -4px rgba(0, 0, 0, 0.45);
-  transform: translateY(-4px);
+.bento-card .card-img-wrap,
+.bento-card .card-content-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   PROJECT SHOWCASE SPOTLIGHT & FAST ROTATING GLOW SHADOW
+   ========================================= */
+
+@property --glow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotateCardGlow {
+  0% {
+    --glow-angle: 0deg;
+  }
+  100% {
+    --glow-angle: 360deg;
+  }
+}
+
+/* Outer Fast Rotating Glow Halo (Smooth gradual brightness increase and decrease) */
+.bento-card::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: calc(1.5rem + 8px);
+  background: conic-gradient(
+    from var(--glow-angle, 0deg) at 50% 50%,
+    rgba(74, 209, 192, 0.85) 0deg,
+    rgba(104, 185, 245, 0.95) 72deg,
+    rgba(155, 158, 255, 0.85) 144deg,
+    rgba(74, 209, 192, 0.85) 216deg,
+    rgba(104, 185, 245, 0.95) 288deg,
+    rgba(74, 209, 192, 0.85) 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 8px;
+  filter: blur(9px) brightness(0.35);
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.65s cubic-bezier(0.35, 0, 0.25, 1) 15ms,
+              filter 0.65s cubic-bezier(0.35, 0, 0.25, 1) 15ms;
+}
+
+/* Crisp 1px Hairline Inner Perimeter Light Track */
+.bento-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(1.5rem + 1px);
+  background: conic-gradient(
+    from var(--glow-angle, 0deg) at 50% 50%,
+    rgba(74, 209, 192, 0.85) 0deg,
+    rgba(104, 185, 245, 0.95) 72deg,
+    rgba(155, 158, 255, 0.85) 144deg,
+    rgba(74, 209, 192, 0.85) 216deg,
+    rgba(104, 185, 245, 0.95) 288deg,
+    rgba(74, 209, 192, 0.85) 360deg
+  );
+  z-index: 1;
+  opacity: 0;
+  filter: brightness(0.35);
+  pointer-events: none;
+  transition: opacity 0.65s cubic-bezier(0.35, 0, 0.25, 1) 15ms,
+              filter 0.65s cubic-bezier(0.35, 0, 0.25, 1) 15ms;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+/* Day Mode Rotating Glow Palette (Jewel Tone Border Intensity, Smooth Fade) */
+html.light .bento-card::before {
+  background: conic-gradient(
+    from var(--glow-angle, 0deg) at 50% 50%,
+    rgba(8, 126, 120, 0.75) 0deg,
+    rgba(23, 100, 165, 0.85) 72deg,
+    rgba(75, 85, 181, 0.75) 144deg,
+    rgba(8, 126, 120, 0.75) 216deg,
+    rgba(23, 100, 165, 0.85) 288deg,
+    rgba(8, 126, 120, 0.75) 360deg
+  );
+  filter: blur(9px) brightness(0.4);
+}
+
+html.light .bento-card::after {
+  background: conic-gradient(
+    from var(--glow-angle, 0deg) at 50% 50%,
+    rgba(8, 126, 120, 0.85) 0deg,
+    rgba(23, 100, 165, 0.95) 72deg,
+    rgba(75, 85, 181, 0.85) 144deg,
+    rgba(8, 126, 120, 0.85) 216deg,
+    rgba(23, 100, 165, 0.95) 288deg,
+    rgba(8, 126, 120, 0.85) 360deg
+  );
+  filter: brightness(0.4);
+}
+
+/* SPOTLIGHT FOCUS & SMOOTH SHADOW DIMMING */
+/* When any card is hovered, smoothly dim non-hovered cards into gentle shadow */
+#client-gallery-grid:has(.bento-card:hover) .bento-card:not(:hover) {
+  opacity: 0.52;
+  filter: brightness(0.72) saturate(0.80);
+  transform: scale(0.99);
+}
+
+html.light #client-gallery-grid:has(.bento-card:hover) .bento-card:not(:hover) {
+  opacity: 0.56;
+  filter: brightness(0.90) saturate(0.75);
+  transform: scale(0.99);
+}
+
+/* Hovered Card: Smooth Lift, Concentrated Border-Hugging Glow with Smooth Outward Blend */
+#client-gallery-grid .bento-card:hover {
+  background: rgba(14, 26, 40, 0.75) !important;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  opacity: 1 !important;
+  filter: brightness(1.04) contrast(1.02) saturate(1.05) !important;
+  transform: translateY(-4px) scale(1.012) !important;
+  z-index: 40 !important;
+  border-color: rgba(104, 185, 245, 0.65) !important;
+  box-shadow: 0 0 14px 2px rgba(104, 185, 245, 0.60),
+              0 0 28px 6px rgba(74, 209, 192, 0.35),
+              0 0 44px 10px rgba(104, 185, 245, 0.15),
+              0 18px 40px -8px rgba(0, 0, 0, 0.65) !important;
+  transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+html.light #client-gallery-grid .bento-card:hover {
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(14px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
+  border-color: rgba(23, 100, 165, 0.55) !important;
+  box-shadow: 0 0 14px 2px rgba(23, 100, 165, 0.45),
+              0 0 26px 5px rgba(8, 126, 120, 0.25),
+              0 0 40px 8px rgba(23, 100, 165, 0.12),
+              0 16px 36px -8px rgba(23, 46, 69, 0.12) !important;
+  transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+#client-gallery-grid .bento-card:hover::before {
+  opacity: 1;
+  filter: blur(9px) brightness(1.22);
+  animation: rotateCardGlow 1.8s linear infinite;
+  transition: opacity 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#client-gallery-grid .bento-card:hover::after {
+  opacity: 1;
+  filter: brightness(1.25);
+  animation: rotateCardGlow 1.8s linear infinite;
+  transition: opacity 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html.light #client-gallery-grid .bento-card:hover::before {
+  filter: blur(9px) brightness(1.15);
+  transition: opacity 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html.light #client-gallery-grid .bento-card:hover::after {
+  filter: brightness(1.20);
 }
 
 /* Solid Background Section Contents (Slightly softer, tighter depth shadow) */
@@ -366,14 +559,18 @@ html.light footer {
 
 /* Sticky Stacked Cards Parallax (Desktop / Tablet only) */
 .stacked-card {
-  background: rgba(11, 20, 34, 0.96) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  background: rgba(11, 20, 34, 0.55) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.65),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
 }
 html.light .stacked-card {
-  background: rgba(245, 248, 252, 0.96) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  background: rgba(245, 248, 252, 0.55) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  box-shadow: 0 24px 50px -12px rgba(23, 46, 69, 0.10),
+              inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
 }
 
 .stacked-card:nth-child(1) {
@@ -488,46 +685,49 @@ html.light .text-slate-500 {
 
 /* Apple Liquid Glass Panels & Cards in Day Mode (Clear / Non-Solid Background Sections) */
 html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.70) !important;
-  border: 1px solid rgba(91, 113, 136, 0.22) !important;
-  box-shadow: 0 20px 45px -8px rgba(23, 46, 69, 0.08), 
-              0 6px 16px -3px rgba(23, 46, 69, 0.04),
-              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(5px) saturate(130%) !important;
-  -webkit-backdrop-filter: blur(5px) saturate(130%) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 0 16px 36px -8px rgba(23, 46, 69, 0.06), 
+              0 6px 16px -3px rgba(23, 46, 69, 0.03),
+              inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+              inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
 }
 
 html.light .glass-card {
-  background: rgba(255, 255, 255, 0.65) !important;
-  border: 1px solid rgba(91, 113, 136, 0.22) !important;
-  box-shadow: 0 22px 48px -10px rgba(23, 46, 69, 0.09), 
-              0 8px 20px -4px rgba(23, 46, 69, 0.04),
-              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(5px) saturate(130%) !important;
-  -webkit-backdrop-filter: blur(5px) saturate(130%) !important;
+  background: rgba(255, 255, 255, 0.32) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 0 16px 36px -8px rgba(23, 46, 69, 0.06), 
+              0 6px 16px -3px rgba(23, 46, 69, 0.03),
+              inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+              inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
 }
 html.light .glass-card:hover {
-  border-color: rgba(23, 100, 165, 0.40) !important;
-  box-shadow: 0 24px 50px -8px rgba(23, 100, 165, 0.15),
-              0 10px 24px -4px rgba(23, 46, 69, 0.06),
-              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(23, 100, 165, 0.45) !important;
+  box-shadow: 0 20px 42px -8px rgba(23, 100, 165, 0.15),
+              0 8px 18px -4px rgba(23, 46, 69, 0.05),
+              inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Bento Card in Day Mode (Clear Background Gallery) */
 html.light .bento-card {
-  background: rgba(255, 255, 255, 0.68) !important;
-  border: 1px solid rgba(91, 113, 136, 0.22) !important;
-  box-shadow: 0 22px 48px -10px rgba(23, 46, 69, 0.09), 
-              0 8px 20px -4px rgba(23, 46, 69, 0.04),
-              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(5px) saturate(130%) !important;
-  -webkit-backdrop-filter: blur(5px) saturate(130%) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 0 16px 36px -8px rgba(23, 46, 69, 0.06), 
+              0 6px 16px -3px rgba(23, 46, 69, 0.03),
+              inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+              inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
 }
 html.light .bento-card:hover {
   border-color: rgba(23, 100, 165, 0.45) !important;
-  box-shadow: 0 26px 54px -8px rgba(23, 100, 165, 0.18),
-              0 10px 24px -4px rgba(23, 46, 69, 0.06),
-              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 20px 45px -8px rgba(23, 100, 165, 0.18),
+              0 8px 18px -4px rgba(23, 46, 69, 0.05),
+              inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Day Mode Solid Background Section Contents (Slightly softer, lighter depth shadow) */
@@ -535,12 +735,223 @@ html.light .section-solid-bg .glass-card,
 html.light .section-solid-bg .glass-panel {
   box-shadow: 0 10px 24px -6px rgba(23, 46, 69, 0.05),
               0 4px 10px -2px rgba(23, 46, 69, 0.02),
-              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+              inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
 }
 html.light .section-solid-bg .glass-card:hover {
   box-shadow: 0 14px 28px -6px rgba(23, 100, 165, 0.12),
               0 4px 12px -2px rgba(23, 46, 69, 0.04),
-              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+              inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+}
+
+/* =========================================
+   PRIMARY ACTION BUTTONS (Download CV, Launch Live App)
+   Default: Matches 'Send Message to Krishna' solid cyan-indigo gradient & clean shadow
+   Hover: Transforms into translucent blueish glass (previous resting look) in both modes
+   ========================================= */
+.btn-gradient-action {
+  position: relative;
+  font-weight: 700 !important;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.btn-gradient-action:not(:hover) {
+  background: linear-gradient(to right, #06b6d4, #4f46e5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.20) !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.35), 
+              0 8px 10px -6px rgba(0, 0, 0, 0.20) !important;
+}
+
+.btn-gradient-action:not(:hover) * {
+  color: #ffffff !important;
+}
+
+.btn-gradient-action:hover {
+  background: linear-gradient(135deg, rgba(104, 185, 245, 0.14) 0%, rgba(99, 102, 241, 0.18) 100%) !important;
+  border: 1px solid rgba(104, 185, 245, 0.45) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.35), 
+              0 0 18px rgba(104, 185, 245, 0.30),
+              inset 0 1px 1px rgba(255, 255, 255, 0.20) !important;
+  transform: translateY(-2px);
+}
+
+.btn-gradient-action:hover * {
+  color: #ffffff !important;
+}
+
+/* Day Mode: btn-gradient-action */
+html.light .btn-gradient-action:not(:hover) {
+  background: linear-gradient(to right, #06b6d4, #4f46e5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.30) !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.30), 
+              0 8px 10px -6px rgba(23, 46, 69, 0.12) !important;
+}
+
+html.light .btn-gradient-action:not(:hover) * {
+  color: #ffffff !important;
+}
+
+html.light .btn-gradient-action:hover {
+  background: linear-gradient(135deg, rgba(23, 100, 165, 0.10) 0%, rgba(75, 85, 181, 0.12) 100%) !important;
+  border: 1px solid rgba(23, 100, 165, 0.35) !important;
+  color: #1764A5 !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 16px -4px rgba(23, 46, 69, 0.08), 
+              0 0 18px rgba(23, 100, 165, 0.20),
+              inset 0 1px 1px rgba(255, 255, 255, 0.90) !important;
+  transform: translateY(-2px);
+}
+
+html.light .btn-gradient-action:hover * {
+  color: #1764A5 !important;
+}
+
+/* =========================================
+   BLUEISH TRANSPARENT CTA BUTTONS WITH SMOOTH HOVER GLOW
+   For Unveil More, Save vCard
+   ========================================= */
+.btn-blue-glow {
+  position: relative;
+  background: linear-gradient(135deg, rgba(104, 185, 245, 0.14) 0%, rgba(99, 102, 241, 0.18) 100%) !important;
+  border: 1px solid rgba(104, 185, 245, 0.40) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.20) !important;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.btn-blue-glow:hover {
+  background: linear-gradient(135deg, rgba(104, 185, 245, 0.28) 0%, rgba(99, 102, 241, 0.32) 100%) !important;
+  border-color: rgba(104, 185, 245, 0.85) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(104, 185, 245, 0.45), 
+              0 8px 24px -4px rgba(104, 185, 245, 0.30),
+              inset 0 1px 2px rgba(255, 255, 255, 0.35) !important;
+}
+
+html.light .btn-blue-glow {
+  background: linear-gradient(135deg, rgba(23, 100, 165, 0.10) 0%, rgba(75, 85, 181, 0.12) 100%) !important;
+  border: 1px solid rgba(23, 100, 165, 0.35) !important;
+  color: #1764A5 !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 16px -4px rgba(23, 46, 69, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.90) !important;
+}
+
+/* Day Mode Hover for Save vCard & Blue Glow: Translucent Glowing Glass Property matching Night Mode */
+html.light .btn-blue-glow:hover,
+html.light #download-vcard-btn:hover {
+  background: linear-gradient(135deg, rgba(23, 100, 165, 0.22) 0%, rgba(75, 85, 181, 0.26) 100%) !important;
+  border-color: rgba(23, 100, 165, 0.85) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 0 25px rgba(23, 100, 165, 0.40), 
+              0 8px 20px -4px rgba(23, 100, 165, 0.25),
+              inset 0 1px 2px rgba(255, 255, 255, 0.50) !important;
+}
+html.light .btn-blue-glow:hover *,
+html.light #download-vcard-btn:hover * {
+  color: #ffffff !important;
+}
+
+/* =========================================
+   GALLERY FILTER BUTTONS (COLORISH BLUR GLASS & WHITE BOLD TEXT)
+   ========================================= */
+.filter-btn {
+  background: rgba(20, 36, 52, 0.25);
+  border: 1px solid rgba(234, 245, 255, 0.12);
+  color: #A1B6C9;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+.filter-btn:hover {
+  border-color: rgba(104, 185, 245, 0.4);
+  color: #ffffff;
+}
+
+.filter-btn.filter-btn-active {
+  background: linear-gradient(135deg, rgba(74, 209, 192, 0.35) 0%, rgba(104, 185, 245, 0.45) 100%) !important;
+  border: 1px solid rgba(104, 185, 245, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 20px rgba(104, 185, 245, 0.35), 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+html.light .filter-btn {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(91, 113, 136, 0.22);
+  color: #5B7188;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+html.light .filter-btn:hover {
+  border-color: rgba(23, 100, 165, 0.45);
+  color: #172E45;
+}
+
+html.light .filter-btn.filter-btn-active {
+  background: linear-gradient(135deg, #1764A5 0%, #3B82F6 100%) !important;
+  border: 1px solid rgba(23, 100, 165, 0.85) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 16px rgba(23, 100, 165, 0.30) !important;
+}
+
+/* =========================================
+   CLEAN FROSTED GLASS BADGES (LIKE LIVE ONLINE)
+   ========================================= */
+.card-cat-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(104, 185, 245, 0.14);
+  border: 1px solid rgba(104, 185, 245, 0.35);
+  color: #68B9F5;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+html.light .card-cat-badge {
+  background: rgba(23, 100, 165, 0.10) !important;
+  border: 1px solid rgba(23, 100, 165, 0.30) !important;
+  color: #1764A5 !important;
+  font-weight: 700 !important;
+}
+
+.card-num-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  background: rgba(161, 182, 201, 0.12);
+  border: 1px solid rgba(161, 182, 201, 0.25);
+  color: #A1B6C9;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+html.light .card-num-badge {
+  background: rgba(91, 113, 136, 0.10) !important;
+  border: 1px solid rgba(91, 113, 136, 0.25) !important;
+  color: #5B7188 !important;
+  font-weight: 700 !important;
 }
 html.light .bento-card h4 {
   color: #172E45 !important;
@@ -564,9 +975,9 @@ html.light textarea:focus {
 }
 
 /* Unified Primary CTA Buttons */
-html.light button[type="submit"],
-html.light #hero a[download],
-html.light header a[download],
+html.light button[type="submit"]:not(.btn-gradient-action),
+html.light #hero a[download]:not(.btn-gradient-action),
+html.light header a[download]:not(.btn-gradient-action),
 html.light .btn-download {
   background: linear-gradient(135deg, #1764A5, #4B55B5) !important;
   color: #FFFFFF !important;
@@ -700,13 +1111,14 @@ html.light .bg-slate-900 {
 /* Day Mode Developer CLI Terminal & Command Reference Suite */
 html.light #terminal-card,
 html.light .terminal-ref-card {
-  background: rgba(255, 255, 255, 0.75) !important;
-  border: 1px solid rgba(91, 113, 136, 0.22) !important;
-  box-shadow: 0 24px 52px -10px rgba(23, 46, 69, 0.10), 
-              0 8px 20px -4px rgba(23, 46, 69, 0.04),
-              inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(5px) saturate(130%) !important;
-  -webkit-backdrop-filter: blur(5px) saturate(130%) !important;
+  background: rgba(255, 255, 255, 0.38) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 0 16px 40px -10px rgba(23, 46, 69, 0.08), 
+              0 6px 16px -4px rgba(23, 46, 69, 0.03),
+              inset 0 1px 2px rgba(255, 255, 255, 0.95),
+              inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
 }
 
 html.light #terminal-card .bg-slate-900\/90 {
@@ -756,7 +1168,7 @@ html.light .bg-emerald-600 {
   color: #ffffff !important;
 }
 
-/* Preloader - Night Mode */
+/* Preloader - Night Mode (Slightly Frosted Glass, Subtly Revealing Hero Behind) */
 #preloader {
   position: fixed;
   top: 0;
@@ -764,13 +1176,15 @@ html.light .bg-emerald-600 {
   width: 100vw;
   height: 100vh;
   z-index: 9999999;
-  background-color: #0C1723;
+  background: rgba(12, 23, 35, 0.64);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: visible;
-  transition: background-color 0.2s ease;
+  transition: background 0.3s ease;
 }
 #preloader,
 #preloader * {
@@ -780,16 +1194,22 @@ html.light .bg-emerald-600 {
   background-color: #68B9F5 !important;
 }
 #preloader-curve {
-  background-color: #0C1723;
-  transition: background-color 0.2s ease;
+  background: rgba(12, 23, 35, 0.64);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: background 0.3s ease;
 }
 
-/* Preloader - Day Mode */
+/* Preloader - Day Mode (Slightly Frosted Glass, Subtly Revealing Hero Behind) */
 html.light #preloader {
-  background-color: #F3F8FC !important;
+  background: rgba(243, 248, 252, 0.68) !important;
+  backdrop-filter: blur(18px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
 }
 html.light #preloader-curve {
-  background-color: #F3F8FC !important;
+  background: rgba(243, 248, 252, 0.68) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
 }
 html.light #preloader,
 html.light #preloader * {
@@ -797,6 +1217,33 @@ html.light #preloader * {
 }
 html.light #preloader .bg-cyan-400 {
   background-color: #1764A5 !important;
+}
+
+/* Preloader Greeting Capsule Pill */
+.preloader-pill {
+  background: rgba(16, 29, 44, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 9999px;
+  padding: 0.85rem 2.25rem;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.5),
+              0 0 25px rgba(104, 185, 245, 0.15);
+}
+
+html.light .preloader-pill {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border: 1px solid rgba(23, 100, 165, 0.25) !important;
+  box-shadow: 0 16px 40px -8px rgba(23, 46, 69, 0.12),
+              0 0 25px rgba(23, 100, 165, 0.12) !important;
+}
+
+/* Brand Logo (White KK on vibrant blue badges) */
+.brand-logo-kk {
+  filter: drop-shadow(0 2px 8px rgba(30, 144, 255, 0.45));
+}
+html.light .brand-logo-kk {
+  filter: drop-shadow(0 2px 8px rgba(23, 100, 165, 0.35));
 }
 
 /* Light Mode Badges & Floating Pills High-Contrast */

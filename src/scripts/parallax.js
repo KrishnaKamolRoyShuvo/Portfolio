@@ -200,5 +200,32 @@ export function initParallaxAndMotion() {
     });
   }
 
+  // 8. Smooth Momentum Anchor Navigation with Lenis
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#' || href === '#cv-modal') return;
+
+      if (href === '#hero') {
+        e.preventDefault();
+        history.pushState(null, null, '#hero');
+        lenis.scrollTo(0, { duration: 1.2 });
+        return;
+      }
+
+      const targetEl = document.querySelector(href);
+      if (targetEl) {
+        e.preventDefault();
+        history.pushState(null, null, href);
+        lenis.scrollTo(targetEl, { offset: -70, duration: 1.2 });
+      }
+    });
+  });
+
+  // Handle direct landing or reload with #hero
+  if (window.location.hash === '#hero') {
+    lenis.scrollTo(0, { immediate: true });
+  }
+
   return { lenis };
 }
