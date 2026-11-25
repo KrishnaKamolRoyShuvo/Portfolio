@@ -47,6 +47,7 @@
   background-color: #1764A5;
   color: #ffffff;
 }
+
 html:not(.light) ::selection {
   background-color: #68B9F5;
   color: #0C1723;
@@ -56,20 +57,35 @@ html:not(.light) ::selection {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(148, 163, 184, 0.3);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(37, 99, 235, 0.6);
 }
 
 /* UNIVERSAL CURSOR SUPPRESSION ON DESKTOP */
 @media (hover: hover) and (pointer: fine) {
-  html, body, a, button, input, textarea, select, [data-cursor], .glass-card, .bento-card, [data-tilt], * {
+
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [data-cursor],
+  .glass-card,
+  .bento-card,
+  [data-tilt],
+  * {
     cursor: none !important;
   }
 }
@@ -89,6 +105,7 @@ html:not(.light) ::selection {
   transition: opacity 0.15s ease;
   box-shadow: 0 0 10px #68B9F5, 0 0 20px rgba(104, 185, 245, 0.6);
 }
+
 html.light .custom-cursor-dot {
   background-color: #1764A5;
   box-shadow: 0 0 10px #1764A5, 0 0 20px rgba(23, 100, 165, 0.4);
@@ -105,12 +122,13 @@ html.light .custom-cursor-dot {
   border-radius: 50%;
   z-index: 999999;
   transform: translate(-50%, -50%);
-  transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
-              height 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.2s ease,
-              border-color 0.2s ease,
-              transform 0.1s ease;
+  transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.1s ease;
 }
+
 html.light .custom-cursor-ring {
   border-color: rgba(23, 100, 165, 0.7);
 }
@@ -122,6 +140,7 @@ html.light .custom-cursor-ring {
   border-color: #68B9F5;
   backdrop-filter: blur(1.5px);
 }
+
 html.light .custom-cursor-ring.cursor-hover {
   background-color: rgba(23, 100, 165, 0.1);
   border-color: #1764A5;
@@ -138,6 +157,7 @@ html.light .custom-cursor-ring.cursor-hover {
   letter-spacing: 0.1em;
   color: #68B9F5;
 }
+
 html.light .custom-cursor-ring.cursor-view::after {
   color: #1764A5;
 }
@@ -147,7 +167,9 @@ html.light .custom-cursor-ring.cursor-view::after {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .custom-cursor-dot, .custom-cursor-ring {
+
+  .custom-cursor-dot,
+  .custom-cursor-ring {
     display: none !important;
   }
 }
@@ -188,11 +210,13 @@ footer {
   border-top: 1px solid rgba(234, 245, 255, 0.08);
   box-shadow: 0 24px 50px -15px rgba(0, 0, 0, 0.45);
 }
+
 footer {
   border-top-left-radius: 2.5rem;
   border-top-right-radius: 2.5rem;
   box-shadow: 0 -20px 50px -10px rgba(0, 0, 0, 0.4);
 }
+
 html.light .section-solid-bg,
 html.light footer {
   background: rgba(231, 241, 249, 0.50) !important;
@@ -201,13 +225,19 @@ html.light footer {
   border-top: 1px solid rgba(91, 113, 136, 0.25) !important;
   box-shadow: 0 20px 40px -15px rgba(23, 46, 69, 0.06);
 }
+
 html.light footer {
   border-top-left-radius: 2.5rem;
   border-top-right-radius: 2.5rem;
   box-shadow: 0 -20px 40px -10px rgba(23, 46, 69, 0.08) !important;
 }
 
-#hero, #research, #gallery, #skills, #terminal, #contact {
+#hero,
+#research,
+#gallery,
+#skills,
+#terminal,
+#contact {
   position: relative;
   z-index: 10;
   background: transparent !important;
@@ -223,9 +253,9 @@ html.light footer {
   -webkit-backdrop-filter: blur(10px) saturate(150%);
   border: 1px solid rgba(234, 245, 255, 0.12);
   box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.45),
-              0 6px 16px -4px rgba(0, 0, 0, 0.25),
-              inset 0 1px 1px rgba(255, 255, 255, 0.18),
-              inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+    0 6px 16px -4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.15);
 }
 
 .glass-card {
@@ -234,16 +264,17 @@ html.light footer {
   -webkit-backdrop-filter: blur(10px) saturate(150%);
   border: 1px solid rgba(234, 245, 255, 0.12);
   box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.45),
-              0 6px 16px -4px rgba(0, 0, 0, 0.25),
-              inset 0 1px 1px rgba(255, 255, 255, 0.18),
-              inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+    0 6px 16px -4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.15);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .glass-card:hover {
   border-color: rgba(104, 185, 245, 0.45);
   box-shadow: 0 20px 42px -10px var(--glow-color),
-              0 8px 20px -4px rgba(0, 0, 0, 0.35),
-              inset 0 1px 2px rgba(255, 255, 255, 0.25);
+    0 8px 20px -4px rgba(0, 0, 0, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25);
   transform: translateY(-3px);
 }
 
@@ -257,16 +288,17 @@ html.light footer {
   backdrop-filter: blur(10px) saturate(150%);
   -webkit-backdrop-filter: blur(10px) saturate(150%);
   box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.45),
-              0 6px 16px -4px rgba(0, 0, 0, 0.25),
-              inset 0 1px 1px rgba(255, 255, 255, 0.18),
-              inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+    0 6px 16px -4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.15);
   transition: opacity 0.50s cubic-bezier(0.2, 0.8, 0.2, 1),
-              filter 0.50s cubic-bezier(0.2, 0.8, 0.2, 1),
-              transform 0.45s cubic-bezier(0.25, 1, 0.5, 1) 15ms,
-              box-shadow 0.60s cubic-bezier(0.35, 0, 0.25, 1) 15ms,
-              border-color 0.50s cubic-bezier(0.35, 0, 0.25, 1) 15ms;
+    filter 0.50s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.45s cubic-bezier(0.25, 1, 0.5, 1) 15ms,
+    box-shadow 0.60s cubic-bezier(0.35, 0, 0.25, 1) 15ms,
+    border-color 0.50s cubic-bezier(0.35, 0, 0.25, 1) 15ms;
   will-change: transform, opacity, box-shadow;
 }
+
 .bento-card .card-img-wrap,
 .bento-card .card-content-wrap {
   position: relative;
@@ -287,36 +319,38 @@ html.light footer {
   0% {
     --glow-angle: 0deg;
   }
+
   100% {
     --glow-angle: 360deg;
   }
 }
 
-/* Outer Fast Rotating Glow Halo (Smooth gradual brightness increase and decrease) */
+/* Outer Fast Rotating Glow Halo (7:3 ratio: 70% Cyan, 30% Electric Violet beam) */
 .bento-card::before {
   content: '';
   position: absolute;
-  inset: -8px;
-  border-radius: calc(1.5rem + 8px);
-  background: conic-gradient(
-    from var(--glow-angle, 0deg) at 50% 50%,
-    rgba(74, 209, 192, 0.85) 0deg,
-    rgba(104, 185, 245, 0.95) 72deg,
-    rgba(155, 158, 255, 0.85) 144deg,
-    rgba(74, 209, 192, 0.85) 216deg,
-    rgba(104, 185, 245, 0.95) 288deg,
-    rgba(74, 209, 192, 0.85) 360deg
-  );
+  inset: -1px;
+  border-radius: calc(1.5rem + 6px);
+  background: conic-gradient(from var(--glow-angle, 0deg) at 50% 50%,
+      rgba(6, 182, 212, 0.95) 0deg,
+      rgba(14, 165, 233, 0.90) 80deg,
+      rgba(6, 182, 212, 0.95) 170deg,
+      rgba(6, 182, 212, 0.95) 235deg,
+      rgba(139, 92, 246, 0.98) 265deg,
+      rgba(192, 132, 252, 1.0) 295deg,
+      rgba(139, 92, 246, 0.98) 325deg,
+      rgba(6, 182, 212, 0.95) 345deg,
+      rgba(6, 182, 212, 0.95) 360deg);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  padding: 8px;
-  filter: blur(9px) brightness(0.35);
+  padding: -1px;
+  filter: blur(8px) brightness(0.35);
   z-index: -1;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.65s cubic-bezier(0.35, 0, 0.25, 1) 15ms,
-              filter 0.65s cubic-bezier(0.35, 0, 0.25, 1) 15ms;
+    filter 0.65s cubic-bezier(0.35, 0, 0.25, 1) 15ms;
 }
 
 /* Crisp 1px Hairline Inner Perimeter Light Track */
@@ -325,51 +359,54 @@ html.light footer {
   position: absolute;
   inset: -1px;
   border-radius: calc(1.5rem + 1px);
-  background: conic-gradient(
-    from var(--glow-angle, 0deg) at 50% 50%,
-    rgba(74, 209, 192, 0.85) 0deg,
-    rgba(104, 185, 245, 0.95) 72deg,
-    rgba(155, 158, 255, 0.85) 144deg,
-    rgba(74, 209, 192, 0.85) 216deg,
-    rgba(104, 185, 245, 0.95) 288deg,
-    rgba(74, 209, 192, 0.85) 360deg
-  );
+  background: conic-gradient(from var(--glow-angle, 0deg) at 50% 50%,
+      rgba(6, 182, 212, 0.95) 0deg,
+      rgba(14, 165, 233, 0.90) 80deg,
+      rgba(6, 182, 212, 0.95) 170deg,
+      rgba(6, 182, 212, 0.95) 235deg,
+      rgba(139, 92, 246, 0.98) 265deg,
+      rgba(192, 132, 252, 1.0) 295deg,
+      rgba(139, 92, 246, 0.98) 325deg,
+      rgba(6, 182, 212, 0.95) 345deg,
+      rgba(6, 182, 212, 0.95) 360deg);
   z-index: 1;
   opacity: 0;
   filter: brightness(0.35);
   pointer-events: none;
   transition: opacity 0.65s cubic-bezier(0.35, 0, 0.25, 1) 15ms,
-              filter 0.65s cubic-bezier(0.35, 0, 0.25, 1) 15ms;
+    filter 0.65s cubic-bezier(0.35, 0, 0.25, 1) 15ms;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   padding: 1px;
 }
 
-/* Day Mode Rotating Glow Palette (Jewel Tone Border Intensity, Smooth Fade) */
+/* Day Mode Rotating Glow Palette (70% Deep Oceanic Teal / Cyan, 30% Royal Violet / Indigo) */
 html.light .bento-card::before {
-  background: conic-gradient(
-    from var(--glow-angle, 0deg) at 50% 50%,
-    rgba(8, 126, 120, 0.75) 0deg,
-    rgba(23, 100, 165, 0.85) 72deg,
-    rgba(75, 85, 181, 0.75) 144deg,
-    rgba(8, 126, 120, 0.75) 216deg,
-    rgba(23, 100, 165, 0.85) 288deg,
-    rgba(8, 126, 120, 0.75) 360deg
-  );
-  filter: blur(9px) brightness(0.4);
+  background: conic-gradient(from var(--glow-angle, 0deg) at 50% 50%,
+      rgba(8, 126, 120, 0.88) 0deg,
+      rgba(23, 100, 165, 0.92) 80deg,
+      rgba(8, 126, 120, 0.88) 170deg,
+      rgba(8, 126, 120, 0.88) 235deg,
+      rgba(99, 102, 241, 0.95) 265deg,
+      rgba(124, 58, 237, 1.0) 295deg,
+      rgba(99, 102, 241, 0.95) 325deg,
+      rgba(8, 126, 120, 0.88) 345deg,
+      rgba(8, 126, 120, 0.88) 360deg);
+  filter: blur(8px) brightness(0.4);
 }
 
 html.light .bento-card::after {
-  background: conic-gradient(
-    from var(--glow-angle, 0deg) at 50% 50%,
-    rgba(8, 126, 120, 0.85) 0deg,
-    rgba(23, 100, 165, 0.95) 72deg,
-    rgba(75, 85, 181, 0.85) 144deg,
-    rgba(8, 126, 120, 0.85) 216deg,
-    rgba(23, 100, 165, 0.95) 288deg,
-    rgba(8, 126, 120, 0.85) 360deg
-  );
+  background: conic-gradient(from var(--glow-angle, 0deg) at 50% 50%,
+      rgba(8, 126, 120, 0.88) 0deg,
+      rgba(23, 100, 165, 0.95) 80deg,
+      rgba(8, 126, 120, 0.88) 170deg,
+      rgba(8, 126, 120, 0.88) 235deg,
+      rgba(99, 102, 241, 0.95) 265deg,
+      rgba(124, 58, 237, 1.0) 295deg,
+      rgba(99, 102, 241, 0.95) 325deg,
+      rgba(8, 126, 120, 0.88) 345deg,
+      rgba(8, 126, 120, 0.88) 360deg);
   filter: brightness(0.4);
 }
 
@@ -397,13 +434,13 @@ html.light #client-gallery-grid:has(.bento-card:hover) .bento-card:not(:hover) {
   transform: translateY(-4px) scale(1.012) !important;
   z-index: 40 !important;
   border-color: rgba(104, 185, 245, 0.65) !important;
-  box-shadow: 0 0 14px 2px rgba(104, 185, 245, 0.60),
-              0 0 28px 6px rgba(74, 209, 192, 0.35),
-              0 0 44px 10px rgba(104, 185, 245, 0.15),
-              0 18px 40px -8px rgba(0, 0, 0, 0.65) !important;
+  box-shadow: 0 0 12px 1px rgba(6, 182, 212, 0.50),
+    0 0 24px 4px rgba(139, 92, 246, 0.35),
+    0 0 40px 8px rgba(6, 182, 212, 0.12),
+    0 18px 40px -8px rgba(0, 0, 0, 0.65) !important;
   transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              border-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    box-shadow 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
 html.light #client-gallery-grid .bento-card:hover {
@@ -411,35 +448,35 @@ html.light #client-gallery-grid .bento-card:hover {
   backdrop-filter: blur(14px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
   border-color: rgba(23, 100, 165, 0.55) !important;
-  box-shadow: 0 0 14px 2px rgba(23, 100, 165, 0.45),
-              0 0 26px 5px rgba(8, 126, 120, 0.25),
-              0 0 40px 8px rgba(23, 100, 165, 0.12),
-              0 16px 36px -8px rgba(23, 46, 69, 0.12) !important;
+  box-shadow: 0 0 12px 1px rgba(23, 100, 165, 0.45),
+    0 0 22px 3px rgba(124, 58, 237, 0.28),
+    0 0 36px 6px rgba(8, 126, 120, 0.15),
+    0 16px 36px -8px rgba(23, 46, 69, 0.12) !important;
   transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              border-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    box-shadow 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
 #client-gallery-grid .bento-card:hover::before {
   opacity: 1;
   filter: blur(9px) brightness(1.22);
-  animation: rotateCardGlow 1.8s linear infinite;
+  animation: rotateCardGlow 2.4s linear infinite;
   transition: opacity 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              filter 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 #client-gallery-grid .bento-card:hover::after {
   opacity: 1;
   filter: brightness(1.25);
-  animation: rotateCardGlow 1.8s linear infinite;
+  animation: rotateCardGlow 1.4s linear infinite;
   transition: opacity 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              filter 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 html.light #client-gallery-grid .bento-card:hover::before {
   filter: blur(9px) brightness(1.15);
   transition: opacity 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              filter 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 html.light #client-gallery-grid .bento-card:hover::after {
@@ -450,18 +487,20 @@ html.light #client-gallery-grid .bento-card:hover::after {
 .section-solid-bg .glass-card,
 .section-solid-bg .glass-panel {
   box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.38),
-              0 4px 10px -2px rgba(0, 0, 0, 0.20),
-              inset 0 1px 1px rgba(234, 245, 255, 0.10);
+    0 4px 10px -2px rgba(0, 0, 0, 0.20),
+    inset 0 1px 1px rgba(234, 245, 255, 0.10);
 }
+
 .section-solid-bg .glass-card:hover {
   box-shadow: 0 14px 28px -6px var(--glow-color),
-              0 4px 12px -2px rgba(0, 0, 0, 0.25);
+    0 4px 12px -2px rgba(0, 0, 0, 0.25);
 }
 
 /* High-Contrast Bento Titles & Metadata */
 .bento-card h4 {
   color: #EAF5FF !important;
 }
+
 .bento-card p.font-mono {
   color: #A1B6C9 !important;
 }
@@ -477,47 +516,106 @@ html.light #client-gallery-grid .bento-card:hover::after {
     flex-direction: column !important;
     gap: 19px !important;
   }
+
   .bento-group {
     display: grid !important;
     aspect-ratio: 1428 / 1052 !important;
     gap: 19px !important;
     grid-template-rows: minmax(0, 375fr) minmax(0, 301fr) minmax(0, 94fr) minmax(0, 225fr) !important;
   }
+
   .bento-cols-normal {
     grid-template-columns: minmax(0, 413fr) minmax(0, 470fr) minmax(0, 507fr) !important;
   }
+
   .bento-cols-mirror {
     grid-template-columns: minmax(0, 507fr) minmax(0, 470fr) minmax(0, 413fr) !important;
   }
 
   /* Slot positions - Normal block */
-  .slot-norm-0 { grid-column: 1 / span 2 !important; grid-row: 1 !important; }
-  .slot-norm-1 { grid-column: 3 !important; grid-row: 1 !important; }
-  .slot-norm-2 { grid-column: 1 !important; grid-row: 2 / span 2 !important; }
-  .slot-norm-3 { grid-column: 2 !important; grid-row: 2 !important; }
-  .slot-norm-4 { grid-column: 3 !important; grid-row: 2 / span 3 !important; }
-  .slot-norm-5 { grid-column: 2 !important; grid-row: 3 / span 2 !important; }
-  .slot-norm-6 { grid-column: 1 !important; grid-row: 4 !important; }
+  .slot-norm-0 {
+    grid-column: 1 / span 2 !important;
+    grid-row: 1 !important;
+  }
+
+  .slot-norm-1 {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+  }
+
+  .slot-norm-2 {
+    grid-column: 1 !important;
+    grid-row: 2 / span 2 !important;
+  }
+
+  .slot-norm-3 {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  .slot-norm-4 {
+    grid-column: 3 !important;
+    grid-row: 2 / span 3 !important;
+  }
+
+  .slot-norm-5 {
+    grid-column: 2 !important;
+    grid-row: 3 / span 2 !important;
+  }
+
+  .slot-norm-6 {
+    grid-column: 1 !important;
+    grid-row: 4 !important;
+  }
 
   /* Slot positions - Mirror block */
-  .slot-mirr-0 { grid-column: 2 / span 2 !important; grid-row: 1 !important; }
-  .slot-mirr-1 { grid-column: 1 !important; grid-row: 1 !important; }
-  .slot-mirr-2 { grid-column: 3 !important; grid-row: 2 / span 2 !important; }
-  .slot-mirr-3 { grid-column: 2 !important; grid-row: 2 !important; }
-  .slot-mirr-4 { grid-column: 1 !important; grid-row: 2 / span 3 !important; }
-  .slot-mirr-5 { grid-column: 2 !important; grid-row: 3 / span 2 !important; }
-  .slot-mirr-6 { grid-column: 3 !important; grid-row: 4 !important; }
+  .slot-mirr-0 {
+    grid-column: 2 / span 2 !important;
+    grid-row: 1 !important;
+  }
+
+  .slot-mirr-1 {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .slot-mirr-2 {
+    grid-column: 3 !important;
+    grid-row: 2 / span 2 !important;
+  }
+
+  .slot-mirr-3 {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  .slot-mirr-4 {
+    grid-column: 1 !important;
+    grid-row: 2 / span 3 !important;
+  }
+
+  .slot-mirr-5 {
+    grid-column: 2 !important;
+    grid-row: 3 / span 2 !important;
+  }
+
+  .slot-mirr-6 {
+    grid-column: 3 !important;
+    grid-row: 4 !important;
+  }
 
   /* Row card wide (slot 0) */
   .card-row-wide {
     flex-direction: row !important;
   }
+
   .card-row-wide .card-img-wrap {
     aspect-ratio: auto !important;
     height: 100% !important;
     flex: 1 1 0% !important;
     min-height: 0 !important;
   }
+
   .card-row-wide .card-content-wrap {
     width: 38% !important;
     align-self: center !important;
@@ -527,6 +625,7 @@ html.light #client-gallery-grid .bento-card:hover::after {
   .card-row-compact {
     flex-direction: row !important;
   }
+
   .card-row-compact .card-img-wrap {
     aspect-ratio: auto !important;
     height: 100% !important;
@@ -534,6 +633,7 @@ html.light #client-gallery-grid .bento-card:hover::after {
     flex-shrink: 0 !important;
     min-height: 0 !important;
   }
+
   .card-row-compact .card-content-wrap {
     flex: 1 1 0% !important;
     min-width: 0 !important;
@@ -544,6 +644,7 @@ html.light #client-gallery-grid .bento-card:hover::after {
   .card-col {
     flex-direction: column !important;
   }
+
   .card-col .card-img-wrap {
     aspect-ratio: auto !important;
     flex: 1 1 0% !important;
@@ -563,22 +664,25 @@ html.light #client-gallery-grid .bento-card:hover::after {
   backdrop-filter: blur(16px) saturate(160%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
   box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.65),
-              inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+    inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
 }
+
 html.light .stacked-card {
   background: rgba(245, 248, 252, 0.55) !important;
   backdrop-filter: blur(16px) saturate(160%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
   box-shadow: 0 24px 50px -12px rgba(23, 46, 69, 0.10),
-              inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+    inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
 }
 
 .stacked-card:nth-child(1) {
   z-index: 10;
 }
+
 .stacked-card:nth-child(2) {
   z-index: 20;
 }
+
 .stacked-card:nth-child(3) {
   z-index: 30;
 }
@@ -592,11 +696,13 @@ html.light .stacked-card {
     backface-visibility: hidden;
   }
 }
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .stacked-card {
     min-height: 765px;
   }
 }
+
 @media (max-width: 767px) {
   .stacked-card {
     position: relative !important;
@@ -651,6 +757,7 @@ html.light .stacked-card {
   color: #EAF5FF;
   transition: all 0.2s ease;
 }
+
 .skill-chip:hover {
   border-color: rgba(104, 185, 245, 0.4);
   background: rgba(27, 48, 68, 0.8);
@@ -687,10 +794,10 @@ html.light .text-slate-500 {
 html.light .glass-panel {
   background: rgba(255, 255, 255, 0.35) !important;
   border: 1px solid rgba(255, 255, 255, 0.65) !important;
-  box-shadow: 0 16px 36px -8px rgba(23, 46, 69, 0.06), 
-              0 6px 16px -3px rgba(23, 46, 69, 0.03),
-              inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
-              inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
+  box-shadow: 0 16px 36px -8px rgba(23, 46, 69, 0.06),
+    0 6px 16px -3px rgba(23, 46, 69, 0.03),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
   backdrop-filter: blur(10px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
 }
@@ -698,49 +805,52 @@ html.light .glass-panel {
 html.light .glass-card {
   background: rgba(255, 255, 255, 0.32) !important;
   border: 1px solid rgba(255, 255, 255, 0.65) !important;
-  box-shadow: 0 16px 36px -8px rgba(23, 46, 69, 0.06), 
-              0 6px 16px -3px rgba(23, 46, 69, 0.03),
-              inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
-              inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
+  box-shadow: 0 16px 36px -8px rgba(23, 46, 69, 0.06),
+    0 6px 16px -3px rgba(23, 46, 69, 0.03),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
   backdrop-filter: blur(10px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
 }
+
 html.light .glass-card:hover {
   border-color: rgba(23, 100, 165, 0.45) !important;
   box-shadow: 0 20px 42px -8px rgba(23, 100, 165, 0.15),
-              0 8px 18px -4px rgba(23, 46, 69, 0.05),
-              inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+    0 8px 18px -4px rgba(23, 46, 69, 0.05),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Bento Card in Day Mode (Clear Background Gallery) */
 html.light .bento-card {
   background: rgba(255, 255, 255, 0.35) !important;
   border: 1px solid rgba(255, 255, 255, 0.65) !important;
-  box-shadow: 0 16px 36px -8px rgba(23, 46, 69, 0.06), 
-              0 6px 16px -3px rgba(23, 46, 69, 0.03),
-              inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
-              inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
+  box-shadow: 0 16px 36px -8px rgba(23, 46, 69, 0.06),
+    0 6px 16px -3px rgba(23, 46, 69, 0.03),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
   backdrop-filter: blur(10px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
 }
+
 html.light .bento-card:hover {
   border-color: rgba(23, 100, 165, 0.45) !important;
   box-shadow: 0 20px 45px -8px rgba(23, 100, 165, 0.18),
-              0 8px 18px -4px rgba(23, 46, 69, 0.05),
-              inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+    0 8px 18px -4px rgba(23, 46, 69, 0.05),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Day Mode Solid Background Section Contents (Slightly softer, lighter depth shadow) */
 html.light .section-solid-bg .glass-card,
 html.light .section-solid-bg .glass-panel {
   box-shadow: 0 10px 24px -6px rgba(23, 46, 69, 0.05),
-              0 4px 10px -2px rgba(23, 46, 69, 0.02),
-              inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+    0 4px 10px -2px rgba(23, 46, 69, 0.02),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
 }
+
 html.light .section-solid-bg .glass-card:hover {
   box-shadow: 0 14px 28px -6px rgba(23, 100, 165, 0.12),
-              0 4px 12px -2px rgba(23, 46, 69, 0.04),
-              inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+    0 4px 12px -2px rgba(23, 46, 69, 0.04),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
 }
 
 /* =========================================
@@ -758,8 +868,8 @@ html.light .section-solid-bg .glass-card:hover {
   background: linear-gradient(to right, #06b6d4, #4f46e5) !important;
   border: 1px solid rgba(255, 255, 255, 0.20) !important;
   color: #ffffff !important;
-  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.35), 
-              0 8px 10px -6px rgba(0, 0, 0, 0.20) !important;
+  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.35),
+    0 8px 10px -6px rgba(0, 0, 0, 0.20) !important;
 }
 
 .btn-gradient-action:not(:hover) * {
@@ -772,9 +882,9 @@ html.light .section-solid-bg .glass-card:hover {
   color: #ffffff !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.35), 
-              0 0 18px rgba(104, 185, 245, 0.30),
-              inset 0 1px 1px rgba(255, 255, 255, 0.20) !important;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.35),
+    0 0 18px rgba(104, 185, 245, 0.30),
+    inset 0 1px 1px rgba(255, 255, 255, 0.20) !important;
   transform: translateY(-2px);
 }
 
@@ -787,8 +897,8 @@ html.light .btn-gradient-action:not(:hover) {
   background: linear-gradient(to right, #06b6d4, #4f46e5) !important;
   border: 1px solid rgba(255, 255, 255, 0.30) !important;
   color: #ffffff !important;
-  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.30), 
-              0 8px 10px -6px rgba(23, 46, 69, 0.12) !important;
+  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.30),
+    0 8px 10px -6px rgba(23, 46, 69, 0.12) !important;
 }
 
 html.light .btn-gradient-action:not(:hover) * {
@@ -801,9 +911,9 @@ html.light .btn-gradient-action:hover {
   color: #1764A5 !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  box-shadow: 0 4px 16px -4px rgba(23, 46, 69, 0.08), 
-              0 0 18px rgba(23, 100, 165, 0.20),
-              inset 0 1px 1px rgba(255, 255, 255, 0.90) !important;
+  box-shadow: 0 4px 16px -4px rgba(23, 46, 69, 0.08),
+    0 0 18px rgba(23, 100, 165, 0.20),
+    inset 0 1px 1px rgba(255, 255, 255, 0.90) !important;
   transform: translateY(-2px);
 }
 
@@ -831,9 +941,9 @@ html.light .btn-gradient-action:hover * {
   border-color: rgba(104, 185, 245, 0.85) !important;
   color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(104, 185, 245, 0.45), 
-              0 8px 24px -4px rgba(104, 185, 245, 0.30),
-              inset 0 1px 2px rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 0 25px rgba(104, 185, 245, 0.45),
+    0 8px 24px -4px rgba(104, 185, 245, 0.30),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35) !important;
 }
 
 html.light .btn-blue-glow {
@@ -854,13 +964,66 @@ html.light #download-vcard-btn:hover {
   transform: translateY(-2px);
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  box-shadow: 0 0 25px rgba(23, 100, 165, 0.40), 
-              0 8px 20px -4px rgba(23, 100, 165, 0.25),
-              inset 0 1px 2px rgba(255, 255, 255, 0.50) !important;
+  box-shadow: 0 0 25px rgba(23, 100, 165, 0.40),
+    0 8px 20px -4px rgba(23, 100, 165, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.50) !important;
 }
+
 html.light .btn-blue-glow:hover *,
 html.light #download-vcard-btn:hover * {
   color: #ffffff !important;
+}
+
+/* =========================================
+   INTERACTIVE SHIMMER SWEEP (Diagonal Light Sheen)
+   Applied to Profile Photo Card, Hero Buttons, Research Dossiers,
+   Skills Matrix Cards, and Contact CTA Buttons
+   Calibrated 800ms duration with smooth feathered gradient
+   ========================================= */
+.shimmer-sweep {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.shimmer-sweep>* {
+  position: relative;
+  z-index: 2;
+}
+
+.shimmer-sweep::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -130%;
+  width: 60%;
+  height: 220%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 25%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0.05) 75%,
+      transparent 100%);
+  transform: rotate(32deg);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: left 1000ms cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+
+.shimmer-sweep:hover::after {
+  left: 175%;
+  opacity: 1;
+  transition: left 2000ms cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+}
+
+/* Day Mode Shimmer Light Sheen */
+html.light .shimmer-sweep::after {
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(23, 100, 165, 0.04) 25%,
+      rgba(255, 255, 255, 0.60) 50%,
+      rgba(23, 100, 165, 0.04) 75%,
+      transparent 100%);
 }
 
 /* =========================================
@@ -874,6 +1037,7 @@ html.light #download-vcard-btn:hover * {
   -webkit-backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
+
 .filter-btn:hover {
   border-color: rgba(104, 185, 245, 0.4);
   color: #ffffff;
@@ -894,6 +1058,7 @@ html.light .filter-btn {
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
 }
+
 html.light .filter-btn:hover {
   border-color: rgba(23, 100, 165, 0.45);
   color: #172E45;
@@ -926,6 +1091,7 @@ html.light .filter-btn.filter-btn-active {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+
 html.light .card-cat-badge {
   background: rgba(23, 100, 165, 0.10) !important;
   border: 1px solid rgba(23, 100, 165, 0.30) !important;
@@ -947,15 +1113,18 @@ html.light .card-cat-badge {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+
 html.light .card-num-badge {
   background: rgba(91, 113, 136, 0.10) !important;
   border: 1px solid rgba(91, 113, 136, 0.25) !important;
   color: #5B7188 !important;
   font-weight: 700 !important;
 }
+
 html.light .bento-card h4 {
   color: #172E45 !important;
 }
+
 html.light .bento-card p.font-mono {
   color: #5B7188 !important;
 }
@@ -968,6 +1137,7 @@ html.light select {
   border: 1px solid rgba(91, 113, 136, 0.28) !important;
   color: #172E45 !important;
 }
+
 html.light input:focus,
 html.light textarea:focus {
   border-color: #1764A5 !important;
@@ -994,6 +1164,7 @@ html.light footer a[download] {
   border-radius: 0 !important;
   font-weight: 500 !important;
 }
+
 html.light footer a:hover,
 html.light footer a[download]:hover {
   color: #1764A5 !important;
@@ -1021,6 +1192,7 @@ html.light .skill-chip {
   color: #172E45 !important;
   box-shadow: 0 1px 3px rgba(23, 46, 69, 0.04);
 }
+
 html.light .skill-chip:hover {
   background: rgba(255, 255, 255, 0.98) !important;
   border-color: rgba(23, 100, 165, 0.4) !important;
@@ -1031,13 +1203,14 @@ html.light .skill-chip:hover {
 html.light #timeline-container .bg-slate-800 {
   background-color: rgba(91, 113, 136, 0.25) !important;
 }
+
 html.light #timeline-container .border-dark-bg {
   border-color: #F3F8FC !important;
 }
 
 /* Live Clock High-Contrast in Day Mode */
 html.light #dhaka-live-clock,
-html.light #dhaka-live-clock + svg {
+html.light #dhaka-live-clock+svg {
   color: #1764A5 !important;
 }
 
@@ -1071,6 +1244,7 @@ html.light .project-type-badge {
   border: 1px solid rgba(74, 209, 192, 0.3) !important;
   color: #4AD1C0 !important;
 }
+
 .live-status-badge span.rounded-full {
   background-color: #4AD1C0 !important;
 }
@@ -1080,6 +1254,7 @@ html.light .live-status-badge {
   border: 1px solid rgba(8, 126, 120, 0.25) !important;
   color: #087E78 !important;
 }
+
 html.light .live-status-badge span.rounded-full {
   background-color: #087E78 !important;
 }
@@ -1097,11 +1272,13 @@ html.light .bg-slate-900 {
 #terminal-body {
   min-height: 420px;
 }
+
 @media (min-width: 640px) {
   #terminal-body {
     min-height: 460px;
   }
 }
+
 @media (min-width: 1024px) {
   #terminal-body {
     min-height: 480px;
@@ -1113,10 +1290,10 @@ html.light #terminal-card,
 html.light .terminal-ref-card {
   background: rgba(255, 255, 255, 0.38) !important;
   border: 1px solid rgba(255, 255, 255, 0.65) !important;
-  box-shadow: 0 16px 40px -10px rgba(23, 46, 69, 0.08), 
-              0 6px 16px -4px rgba(23, 46, 69, 0.03),
-              inset 0 1px 2px rgba(255, 255, 255, 0.95),
-              inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
+  box-shadow: 0 16px 40px -10px rgba(23, 46, 69, 0.08),
+    0 6px 16px -4px rgba(23, 46, 69, 0.03),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(23, 46, 69, 0.03) !important;
   backdrop-filter: blur(10px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
 }
@@ -1125,35 +1302,44 @@ html.light #terminal-card .bg-slate-900\/90 {
   background-color: #E7F1F9 !important;
   border-bottom: 1px solid rgba(91, 113, 136, 0.2) !important;
 }
+
 html.light #terminal-card .bg-slate-900\/50 {
   background-color: #F3F8FC !important;
   border-top: 1px solid rgba(91, 113, 136, 0.2) !important;
 }
+
 html.light #terminal-card .text-white,
 html.light .terminal-ref-card .text-white {
   color: #172E45 !important;
 }
+
 html.light #terminal-card .text-slate-400,
 html.light .terminal-ref-card .text-slate-400 {
   color: #5B7188 !important;
 }
+
 html.light #terminal-card .text-slate-300 {
   color: #3A526A !important;
 }
+
 html.light #terminal-card input {
   color: #172E45 !important;
 }
+
 html.light #terminal-card input::placeholder {
   color: #788EA4 !important;
 }
+
 html.light .terminal-cmd-btn {
   background: rgba(231, 241, 249, 0.8) !important;
   border: 1px solid rgba(91, 113, 136, 0.25) !important;
 }
+
 html.light .terminal-cmd-btn:hover {
   background: rgba(255, 255, 255, 0.95) !important;
   border-color: rgba(23, 100, 165, 0.4) !important;
 }
+
 html.light .terminal-cmd-btn span.text-slate-300 {
   color: #3A526A !important;
 }
@@ -1186,13 +1372,16 @@ html.light .bg-emerald-600 {
   overflow: visible;
   transition: background 0.3s ease;
 }
+
 #preloader,
 #preloader * {
   color: #EAF5FF !important;
 }
+
 #preloader .bg-cyan-400 {
   background-color: #68B9F5 !important;
 }
+
 #preloader-curve {
   background: rgba(12, 23, 35, 0.64);
   backdrop-filter: blur(18px);
@@ -1206,15 +1395,18 @@ html.light #preloader {
   backdrop-filter: blur(18px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
 }
+
 html.light #preloader-curve {
   background: rgba(243, 248, 252, 0.68) !important;
   backdrop-filter: blur(18px) !important;
   -webkit-backdrop-filter: blur(18px) !important;
 }
+
 html.light #preloader,
 html.light #preloader * {
   color: #172E45 !important;
 }
+
 html.light #preloader .bg-cyan-400 {
   background-color: #1764A5 !important;
 }
@@ -1228,20 +1420,21 @@ html.light #preloader .bg-cyan-400 {
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.5),
-              0 0 25px rgba(104, 185, 245, 0.15);
+    0 0 25px rgba(104, 185, 245, 0.15);
 }
 
 html.light .preloader-pill {
   background: rgba(255, 255, 255, 0.88) !important;
   border: 1px solid rgba(23, 100, 165, 0.25) !important;
   box-shadow: 0 16px 40px -8px rgba(23, 46, 69, 0.12),
-              0 0 25px rgba(23, 100, 165, 0.12) !important;
+    0 0 25px rgba(23, 100, 165, 0.12) !important;
 }
 
 /* Brand Logo (White KK on vibrant blue badges) */
 .brand-logo-kk {
   filter: drop-shadow(0 2px 8px rgba(30, 144, 255, 0.45));
 }
+
 html.light .brand-logo-kk {
   filter: drop-shadow(0 2px 8px rgba(23, 100, 165, 0.35));
 }
@@ -1254,6 +1447,7 @@ html.light .hero-floating-badge {
   border: 1px solid rgba(91, 113, 136, 0.25) !important;
   box-shadow: 0 4px 16px rgba(23, 46, 69, 0.06) !important;
 }
+
 html.light [data-parallax-speed] span:not(.rounded-full),
 html.light .hero-floating-badge span:not(.rounded-full) {
   color: #172E45 !important;
@@ -1265,42 +1459,85 @@ html.light .hero-floating-badge span:not(.rounded-full) {
    Gentle, minimal vertical drift with asynchronous timing
    ========================================= */
 @keyframes heroFloat1 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
 }
+
 @keyframes heroFloat2 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(5px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
 }
+
 @keyframes heroFloat3 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
 }
+
 @keyframes heroFloat4 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(5px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
 }
+
 @keyframes heroFloatCard {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .hero-float-1 {
   animation: heroFloat1 5.4s ease-in-out infinite;
   will-change: transform;
 }
+
 .hero-float-2 {
   animation: heroFloat2 6.2s ease-in-out infinite 0.7s;
   will-change: transform;
 }
+
 .hero-float-3 {
   animation: heroFloat3 5.8s ease-in-out infinite 1.3s;
   will-change: transform;
 }
+
 .hero-float-4 {
   animation: heroFloat4 6.6s ease-in-out infinite 0.4s;
   will-change: transform;
 }
+
 .hero-float-card {
   animation: heroFloatCard 6.0s ease-in-out infinite 1.0s;
   will-change: transform;
@@ -1313,18 +1550,21 @@ html.light .hero-floating-badge span:not(.rounded-full) {
   left: 0;
   z-index: 20;
 }
+
 .hero-satellite-badge-tr {
   position: absolute;
   top: -60px;
   right: 0;
   z-index: 20;
 }
+
 .hero-satellite-badge-bl {
   position: absolute;
   bottom: -57px;
   left: 0;
   z-index: 20;
 }
+
 .hero-satellite-badge-br {
   position: absolute;
   bottom: -52px;
@@ -1336,9 +1576,11 @@ html.light .hero-floating-badge span:not(.rounded-full) {
   transition: border-color 0.25s ease;
   user-select: none;
 }
+
 .hero-floating-badge:hover {
   box-shadow: none;
 }
+
 html.light .hero-floating-badge:hover {
   box-shadow: none;
 }
@@ -1348,6 +1590,7 @@ html.light .hero-floating-badge:hover {
   border-color: rgba(168, 85, 247, 0.3) !important;
   box-shadow: none !important;
 }
+
 html.light .hero-satellite-badge-bl .hero-floating-badge:hover {
   border-color: rgba(91, 113, 136, 0.25) !important;
   box-shadow: none !important;
@@ -1366,35 +1609,41 @@ html.light .hero-satellite-badge-bl .hero-floating-badge:hover {
 .text-cyan-300\/80 {
   color: #68B9F5 !important;
 }
+
 .text-indigo-400,
 .text-indigo-300,
 .text-indigo-400\/90,
 .text-indigo-400\/80 {
   color: #9B9EFF !important;
 }
+
 .text-emerald-400,
 .text-emerald-300,
 .text-emerald-400\/90,
 .text-emerald-400\/80 {
   color: #4AD1C0 !important;
 }
+
 .hover\:text-cyan-400:hover,
 .group:hover .group-hover\:text-cyan-400,
 .group:hover .group-hover\:text-cyan-300 {
   color: #68B9F5 !important;
 }
+
 .border-cyan-500,
 .border-cyan-400,
 .border-cyan-500\/30,
 .border-cyan-500\/20 {
   border-color: rgba(104, 185, 245, 0.35) !important;
 }
+
 .border-indigo-500,
 .border-indigo-400,
 .border-indigo-500\/30,
 .border-indigo-500\/20 {
   border-color: rgba(155, 158, 255, 0.35) !important;
 }
+
 .border-emerald-500,
 .border-emerald-400,
 .border-emerald-500\/30,
@@ -1411,6 +1660,7 @@ html.light .text-cyan-400\/80,
 html.light .text-cyan-300\/80 {
   color: #1764A5 !important;
 }
+
 html.light .text-indigo-400,
 html.light .text-indigo-300,
 html.light .text-indigo-500,
@@ -1418,6 +1668,7 @@ html.light .text-indigo-400\/90,
 html.light .text-indigo-400\/80 {
   color: #4B55B5 !important;
 }
+
 html.light .text-emerald-400,
 html.light .text-emerald-300,
 html.light .text-emerald-500,
@@ -1425,38 +1676,45 @@ html.light .text-emerald-400\/90,
 html.light .text-emerald-400\/80 {
   color: #087E78 !important;
 }
+
 html.light .hover\:text-cyan-400:hover,
 html.light .group:hover .group-hover\:text-cyan-400,
 html.light .group:hover .group-hover\:text-cyan-300 {
   color: #1764A5 !important;
 }
+
 html.light .border-cyan-500,
 html.light .border-cyan-400,
 html.light .border-cyan-500\/30,
 html.light .border-cyan-500\/20 {
   border-color: rgba(23, 100, 165, 0.35) !important;
 }
+
 html.light .border-indigo-500,
 html.light .border-indigo-400,
 html.light .border-indigo-500\/30,
 html.light .border-indigo-500\/20 {
   border-color: rgba(75, 85, 181, 0.35) !important;
 }
+
 html.light .border-emerald-500,
 html.light .border-emerald-400,
 html.light .border-emerald-500\/30,
 html.light .border-emerald-500\/20 {
   border-color: rgba(8, 126, 120, 0.35) !important;
 }
+
 html.light .bg-cyan-400,
 html.light .bg-cyan-500 {
   background-color: #1764A5 !important;
 }
+
 html.light .bg-indigo-400,
 html.light .bg-indigo-500,
 html.light .bg-indigo-600 {
   background-color: #4B55B5 !important;
 }
+
 html.light .bg-emerald-400,
 html.light .bg-emerald-500 {
   background-color: #087E78 !important;
